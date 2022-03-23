@@ -1,12 +1,12 @@
 # Mech-Eye C# Samples
 
-This repository contains C# samples with the Mech-Eye Industrial 3D camera. 
+This repository contains C# samples for Mech-Eye SDK_1.5.0. 
 
 ## Installation
 
 1. Download and install [Mech-Eye SDK_1.5.0](https://www.mech-mind.com.cn/down.aspx?TypeId=31&fid=t14:31:14).
 
-2. Clone this repository to a location where you want.
+2. Clone this repository to a specific folder.
 
 3. Open MechEyeNETSamples.sln file in Visual Studio (2019 is recommended), build and run it.
 
@@ -16,7 +16,7 @@ This repository contains C# samples with the Mech-Eye Industrial 3D camera.
 
 - **[ConnectAndCaptureImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/samples/connectAndCaptureImage)**
 
-    Connect the Mech-Eye Camera and capture 2D and 3D data.
+    Connect to the Mech-Eye Camera and capture 2D and 3D data.
 
 - **[SetAndGetParameter](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/samples/setAndGetParameter)**
 
