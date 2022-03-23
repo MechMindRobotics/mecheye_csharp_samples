@@ -12,7 +12,7 @@ This repository contains C# samples with the Mech-Eye Industrial 3D camera.
 
    > Make sure .Net Desktop Development is installed in Visual Studio.
 
-## Samples list
+## Sample list
 
 - **[ConnectAndCaptureImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/samples/connectAndCaptureImage)**
 
