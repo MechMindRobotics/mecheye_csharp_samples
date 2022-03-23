@@ -4,7 +4,7 @@ This repository contains C# samples for Mech-Eye SDK_1.5.0.
 
 ## Installation
 
-1. Download and install [Mech-Eye SDK_1.5.0](https://www.mech-mind.com.cn/down.aspx?TypeId=31&fid=t14:31:14).
+1. Download and install [Mech-Eye SDK_1.5.0](https://www.mech-mind.com/download/CameraSDK.html).
 
 2. Clone this repository to a specific folder.
 
