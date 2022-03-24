@@ -1,6 +1,6 @@
 # Mech-Eye C# Samples
 
-This repository contains C# samples for Mech-Eye SDK_1.5.0. 
+This repository contains C# samples for Mech-Eye SDK_1.5.0.
 
 ## Installation
 
@@ -8,7 +8,7 @@ This repository contains C# samples for Mech-Eye SDK_1.5.0.
 
 2. Clone this repository to a specific folder.
 
-3. Open MechEyeNETSamples.sln file in Visual Studio (2019 is recommended), build and run it.
+3. Open MechEyeCSharpSamples.sln file in Visual Studio (2019 is recommended), build and run it.
 
    > Make sure .Net Desktop Development is installed in Visual Studio.
 

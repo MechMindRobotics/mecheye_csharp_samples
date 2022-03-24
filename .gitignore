@@ -1,0 +1,9 @@
+.vs/
+API/MechEyeApiNet/obj/
+API/MechEyeApiWrapper/x64/
+Build/
+samples/captureResultToOpenCV/obj/
+samples/captureResultToPLY/obj/
+samples/connectAndCaptureImage/obj/
+samples/setAndGetParameter/obj/
+*.user

@@ -1,13 +1,13 @@
 #pragma once
 #include "comdef.h"
 
-struct ErrorStatusWrapper
+struct ErrorStatus
 {
 	int errorCode;
 	BSTR errorDescription;
 };
 
-struct MechEyeDeviceInfoWrapper
+struct MechEyeDeviceInfo
 {
 	BSTR model;
 	BSTR id;
@@ -17,7 +17,7 @@ struct MechEyeDeviceInfoWrapper
 	uint16_t port;
 };
 
-struct DeviceIntriWrapper
+struct DeviceIntri
 {
 	double k1;
 	double k2;
