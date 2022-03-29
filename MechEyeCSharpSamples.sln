@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MechEyeApiWrapper", "API\MechEyeApiWrapper\MechEyeApiWrapper.vcxproj", "{134DC55B-6DD8-48CE-9B8F-2FE4467AE84C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechEyeApiNet", "API\MechEyeApiNet\MechEyeApiNet.csproj", "{2B9DAC5C-9D9C-4F52-9D94-686A542F438E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{134DC55B-6DD8-48CE-9B8F-2FE4467AE84C} = {134DC55B-6DD8-48CE-9B8F-2FE4467AE84C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "captureResultToOpenCV", "samples\captureResultToOpenCV\captureResultToOpenCV.csproj", "{EDAAF5D2-9369-4DDC-8382-9D41CB5F5279}"
 EndProject

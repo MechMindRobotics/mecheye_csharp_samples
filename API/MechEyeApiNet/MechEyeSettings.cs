@@ -9,8 +9,8 @@ namespace mmind
         [StructLayout(LayoutKind.Sequential)]
         public struct Scanning3DSettings
         {
-            public List<Double> ExposureSequence;
-            public Double Gain;
+            public List<double> ExposureSequence;
+            public double Gain;
             public ROI Scan3DROI;
             public DepthRange DepthRange;
         }
@@ -27,12 +27,12 @@ namespace mmind
         public struct Scanning2DSettings
         {
             public Scan2DExposureMode ExposureMode;
-            public Double ExposureTime;
-            public Double SharpenFactor;
-            public Int32 ExpectedGrayValue;
+            public double ExposureTime;
+            public double SharpenFactor;
+            public int ExpectedGrayValue;
             public ROI Scan2DROI;
-            public Boolean ToneMappingEnable;
-            List<Double> HDRExposureSequence;
+            public bool ToneMappingEnable;
+            List<double> HDRExposureSequence;
         }
 
         public enum CloudOutlierFilterMode
@@ -53,8 +53,8 @@ namespace mmind
         [StructLayout(LayoutKind.Sequential)]
         public struct PointCloudProcessingSettings
         {
-            public Int32 FringeContrastThreshold;
-            public Int32 FringeMinThreshold;
+            public int FringeContrastThreshold;
+            public int FringeMinThreshold;
             public CloudOutlierFilterMode OutlierFilterMode;
             public CloudSmoothMode CloudSmoothMode;
         }
@@ -69,10 +69,10 @@ namespace mmind
         public struct LaserSettings
         {
             public LaserFringeCodingMode FringeCodingMode;
-            public Int32 FrameAmplitude;
-            public Int32 FrameOffset;
-            public Int32 FramePartitionCount;
-            public Int32 PowerLevel;
+            public int FrameAmplitude;
+            public int FrameOffset;
+            public int FramePartitionCount;
+            public int PowerLevel;
         }
     }
 }

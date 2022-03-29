@@ -195,12 +195,12 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan2DExposureMode(mmind::api::M
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetScan2DExposureMode(mmind::api::MechEyeDevice * devicePtr, int& value)
+extern "C" __declspec(dllexport) ErrorStatus GetScan2DExposureMode(mmind::api::MechEyeDevice * devicePtr, int* value)
 {
 	if (devicePtr != nullptr) {
 		mmind::api::Scanning2DSettings::Scan2DExposureMode mode;
 		ErrorStatus wrapper = errorStatusToWrapper(devicePtr->getScan2DExposureMode(mode));
-		value = mode;
+		*value = mode;
 		return wrapper;
 	}
 	else
@@ -215,10 +215,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan2DExposureTime(mmind::api::M
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetScan2DExposureTime(mmind::api::MechEyeDevice * devicePtr, double& value)
+extern "C" __declspec(dllexport) ErrorStatus GetScan2DExposureTime(mmind::api::MechEyeDevice * devicePtr, double* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getScan2DExposureTime(value));
+		return errorStatusToWrapper(devicePtr->getScan2DExposureTime(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -254,10 +254,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan2DExpectedGrayValue(mmind::a
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetScan2DExpectedGrayValue(mmind::api::MechEyeDevice * devicePtr, int& value)
+extern "C" __declspec(dllexport) ErrorStatus GetScan2DExpectedGrayValue(mmind::api::MechEyeDevice * devicePtr, int* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getScan2DExpectedGrayValue(value));
+		return errorStatusToWrapper(devicePtr->getScan2DExpectedGrayValue(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -271,10 +271,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan2DToneMappingEnable(mmind::a
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetScan2DToneMappingEnable(mmind::api::MechEyeDevice * devicePtr, bool& value)
+extern "C" __declspec(dllexport) ErrorStatus GetScan2DToneMappingEnable(mmind::api::MechEyeDevice * devicePtr, bool* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getScan2DToneMappingEnable(value));
+		return errorStatusToWrapper(devicePtr->getScan2DToneMappingEnable(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -288,10 +288,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan2DSharpenFactor(mmind::api::
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetScan2DSharpenFactor(mmind::api::MechEyeDevice * devicePtr, double& value)
+extern "C" __declspec(dllexport) ErrorStatus GetScan2DSharpenFactor(mmind::api::MechEyeDevice * devicePtr, double* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getScan2DSharpenFactor(value));
+		return errorStatusToWrapper(devicePtr->getScan2DSharpenFactor(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -324,24 +324,17 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan3DExposure(mmind::api::MechE
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) int GetScan3DExposureSize(mmind::api::MechEyeDevice * devicePtr)
-{
-	if (devicePtr != nullptr) {
-		std::vector<double> sequence;
-		devicePtr->getScan3DExposure(sequence);
-		return sequence.size();
-	}
-	else
-		return 0;
-}
-
-extern "C" __declspec(dllexport) ErrorStatus GetScan3DExposure(mmind::api::MechEyeDevice * devicePtr, double* values)
+extern "C" __declspec(dllexport) ErrorStatus GetScan3DExposure(mmind::api::MechEyeDevice* devicePtr, double** ppArray, int* pSize)
 {
 	if (devicePtr != nullptr) {
 		std::vector<double> sequence;
 		ErrorStatus status = errorStatusToWrapper(devicePtr->getScan3DExposure(sequence));
+		double* newArr = (double*)CoTaskMemAlloc(sizeof(double) * sequence.size());
 		for (int i = 0; i < sequence.size(); ++i)
-			values[i] = sequence[i];
+			newArr[i] = sequence[i];
+		CoTaskMemFree(*ppArray);
+		*ppArray = newArr;
+		*pSize = sequence.size();
 		return status;
 	}
 	else
@@ -356,10 +349,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetScan3DGain(mmind::api::MechEyeDe
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetScan3DGain(mmind::api::MechEyeDevice * devicePtr, double& value)
+extern "C" __declspec(dllexport) ErrorStatus GetScan3DGain(mmind::api::MechEyeDevice * devicePtr, double* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getScan3DGain(value));
+		return errorStatusToWrapper(devicePtr->getScan3DGain(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -407,10 +400,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetFringeContrastThreshold(mmind::a
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetFringeContrastThreshold(mmind::api::MechEyeDevice * devicePtr, int& value)
+extern "C" __declspec(dllexport) ErrorStatus GetFringeContrastThreshold(mmind::api::MechEyeDevice * devicePtr, int* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getFringeContrastThreshold(value));
+		return errorStatusToWrapper(devicePtr->getFringeContrastThreshold(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -424,10 +417,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetFringeMinThreshold(mmind::api::M
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetFringeMinThreshold(mmind::api::MechEyeDevice * devicePtr, int& value)
+extern "C" __declspec(dllexport) ErrorStatus GetFringeMinThreshold(mmind::api::MechEyeDevice * devicePtr, int* value)
 {
 	if (devicePtr != nullptr) {
-		return errorStatusToWrapper(devicePtr->getFringeMinThreshold(value));
+		return errorStatusToWrapper(devicePtr->getFringeMinThreshold(*value));
 	}
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
@@ -441,12 +434,12 @@ extern "C" __declspec(dllexport) ErrorStatus SetCloudOutlierFilterMode(mmind::ap
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetCloudOutlierFilterMode(mmind::api::MechEyeDevice * devicePtr, int& value)
+extern "C" __declspec(dllexport) ErrorStatus GetCloudOutlierFilterMode(mmind::api::MechEyeDevice * devicePtr, int* value)
 {
 	if (devicePtr != nullptr) {
 		mmind::api::PointCloudProcessingSettings::CloudOutlierFilterMode mode;
 		ErrorStatus wrapper = errorStatusToWrapper(devicePtr->getCloudOutlierFilterMode(mode));
-		value = static_cast<int>(mode);
+		*value = static_cast<int>(mode);
 		return wrapper;
 	}
 	else
@@ -461,12 +454,12 @@ extern "C" __declspec(dllexport) ErrorStatus SetCloudSmoothMode(mmind::api::Mech
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetCloudSmoothMode(mmind::api::MechEyeDevice * devicePtr, int& value)
+extern "C" __declspec(dllexport) ErrorStatus GetCloudSmoothMode(mmind::api::MechEyeDevice * devicePtr, int* value)
 {
 	if (devicePtr != nullptr) {
 		mmind::api::PointCloudProcessingSettings::CloudSmoothMode mode;
 		ErrorStatus wrapper = errorStatusToWrapper(devicePtr->getCloudSmoothMode(mode));
-		value = static_cast<int>(mode);
+		*value = static_cast<int>(mode);
 		return wrapper;
 	}
 	else
@@ -481,10 +474,10 @@ extern "C" __declspec(dllexport) ErrorStatus SetLaserSettings(mmind::api::MechEy
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetLaserSettings(mmind::api::MechEyeDevice * devicePtr, mmind::api::LaserSettings& value)
+extern "C" __declspec(dllexport) ErrorStatus GetLaserSettings(mmind::api::MechEyeDevice * devicePtr, mmind::api::LaserSettings* value)
 {
 	if (devicePtr != nullptr)
-		return errorStatusToWrapper(devicePtr->getLaserSettings(value));
+		return errorStatusToWrapper(devicePtr->getLaserSettings(*value));
 	else
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }

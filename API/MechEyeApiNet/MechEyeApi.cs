@@ -13,7 +13,7 @@ namespace mmind
             private static extern IntPtr CreateMechEyeDevice();
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern Int32 GetMechEyeDeviceListSize();
+            private static extern int GetMechEyeDeviceListSize();
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void EnumerateMechEyeDeviceList([In, Out] MechEyeDeviceInfo[] list);
@@ -46,40 +46,40 @@ namespace mmind
             private static extern void CapturePointXYZBGRMap(out ErrorStatus status, IntPtr devicePtr, IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan2DExposureMode(out ErrorStatus status, IntPtr devicePtr, Int32 value);
+            private static extern void SetScan2DExposureMode(out ErrorStatus status, IntPtr devicePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan2DExposureMode(out ErrorStatus status, IntPtr devicePtr, ref Int32 value);
+            private static extern void GetScan2DExposureMode(out ErrorStatus status, IntPtr devicePtr, ref int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan2DExposureTime(out ErrorStatus status, IntPtr devicePtr, Double value);
+            private static extern void SetScan2DExposureTime(out ErrorStatus status, IntPtr devicePtr, double value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan2DExposureTime(out ErrorStatus status, IntPtr devicePtr, ref Double value);
+            private static extern void GetScan2DExposureTime(out ErrorStatus status, IntPtr devicePtr, ref double value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan2DHDRExposureSequence(out ErrorStatus status, IntPtr devicePtr, Double[] values, Int32 size);
+            private static extern void SetScan2DHDRExposureSequence(out ErrorStatus status, IntPtr devicePtr, double[] values, int size);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan2DHDRExposureSequence(out ErrorStatus status, IntPtr devicePtr, ref Double[] values);
+            private static extern void GetScan2DHDRExposureSequence(out ErrorStatus status, IntPtr devicePtr, ref double[] values);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan2DExpectedGrayValue(out ErrorStatus status, IntPtr devicePtr, Int32 value);
+            private static extern void SetScan2DExpectedGrayValue(out ErrorStatus status, IntPtr devicePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan2DExpectedGrayValue(out ErrorStatus status, IntPtr devicePtr, ref Int32 value);
+            private static extern void GetScan2DExpectedGrayValue(out ErrorStatus status, IntPtr devicePtr, ref int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan2DToneMappingEnable(out ErrorStatus status, IntPtr devicePtr, Boolean value);
+            private static extern void SetScan2DToneMappingEnable(out ErrorStatus status, IntPtr devicePtr, bool value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan2DToneMappingEnable(out ErrorStatus status, IntPtr devicePtr, ref Boolean value);
+            private static extern void GetScan2DToneMappingEnable(out ErrorStatus status, IntPtr devicePtr, ref bool value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan2DSharpenFactor(out ErrorStatus status, IntPtr devicePtr, Double value);
+            private static extern void SetScan2DSharpenFactor(out ErrorStatus status, IntPtr devicePtr, double value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan2DSharpenFactor(out ErrorStatus status, IntPtr devicePtr, ref Double value);
+            private static extern void GetScan2DSharpenFactor(out ErrorStatus status, IntPtr devicePtr, ref double value);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void SetScan2DROI(out ErrorStatus status, IntPtr devicePtr, IntPtr roi);
@@ -88,19 +88,16 @@ namespace mmind
             private static extern void GetScan2DROI(out ErrorStatus status, IntPtr devicePtr, IntPtr roi);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan3DExposure(out ErrorStatus status, IntPtr devicePtr, Double[] values, Int32 size);
+            private static extern void SetScan3DExposure(out ErrorStatus status, IntPtr devicePtr, [In, Out] double[] values, int size);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern Int32 GetScan3DExposureSize(IntPtr devicePtr);
+            private static extern void GetScan3DExposure(out ErrorStatus status, IntPtr devicePtr, ref IntPtr values, ref int size);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan3DExposure(out ErrorStatus status, IntPtr devicePtr, [In, Out] Double[] values);
+            private static extern void SetScan3DGain(out ErrorStatus status, IntPtr devicePtr, double value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetScan3DGain(out ErrorStatus status, IntPtr devicePtr, Double value);
-
-            [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetScan3DGain(out ErrorStatus status, IntPtr devicePtr, ref Double value);
+            private static extern void GetScan3DGain(out ErrorStatus status, IntPtr devicePtr, ref double value);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void SetScan3DROI(out ErrorStatus status, IntPtr devicePtr, IntPtr roi);
@@ -115,28 +112,28 @@ namespace mmind
             private static extern void GetDepthRange(out ErrorStatus status, IntPtr devicePtr, IntPtr depthRange);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetFringeContrastThreshold(out ErrorStatus status, IntPtr devicePtr, Int32 value);
+            private static extern void SetFringeContrastThreshold(out ErrorStatus status, IntPtr devicePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetFringeContrastThreshold(out ErrorStatus status, IntPtr devicePtr, ref Int32 value);
+            private static extern void GetFringeContrastThreshold(out ErrorStatus status, IntPtr devicePtr, ref int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetFringeMinThreshold(out ErrorStatus status, IntPtr devicePtr, Int32 value);
+            private static extern void SetFringeMinThreshold(out ErrorStatus status, IntPtr devicePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetFringeMinThreshold(out ErrorStatus status, IntPtr devicePtr, ref Int32 value);
+            private static extern void GetFringeMinThreshold(out ErrorStatus status, IntPtr devicePtr, ref int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetCloudOutlierFilterMode(out ErrorStatus status, IntPtr devicePtr, Int32 value);
+            private static extern void SetCloudOutlierFilterMode(out ErrorStatus status, IntPtr devicePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetCloudOutlierFilterMode(out ErrorStatus status, IntPtr devicePtr, ref Int32 value);
+            private static extern void GetCloudOutlierFilterMode(out ErrorStatus status, IntPtr devicePtr, ref int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetCloudSmoothMode(out ErrorStatus status, IntPtr devicePtr, Int32 value);
+            private static extern void SetCloudSmoothMode(out ErrorStatus status, IntPtr devicePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetCloudSmoothMode(out ErrorStatus status, IntPtr devicePtr, ref Int32 value);
+            private static extern void GetCloudSmoothMode(out ErrorStatus status, IntPtr devicePtr, ref int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void SetLaserSettings(out ErrorStatus status, IntPtr devicePtr, LaserSettings value);
@@ -148,22 +145,22 @@ namespace mmind
             private static extern void SaveAllSettingsToUserSets(out ErrorStatus status, IntPtr devicePtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetCurrentUserSet(out ErrorStatus status, IntPtr devicePtr, String value);
+            private static extern void SetCurrentUserSet(out ErrorStatus status, IntPtr devicePtr, string value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetCurrentUserSet(out ErrorStatus status, IntPtr devicePtr, [MarshalAs(UnmanagedType.BStr)] ref String value);
+            private static extern void GetCurrentUserSet(out ErrorStatus status, IntPtr devicePtr, [MarshalAs(UnmanagedType.BStr)] ref string value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern Int32 GetUserSetsCount(IntPtr devicePtr);
+            private static extern int GetUserSetsCount(IntPtr devicePtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void GetAllUserSets(out ErrorStatus status, IntPtr devicePtr, [In, Out] String[] values);
+            private static extern void GetAllUserSets(out ErrorStatus status, IntPtr devicePtr, [In, Out] string[] values);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void DeleteUserSet(out ErrorStatus status, IntPtr devicePtr, String value);
+            private static extern void DeleteUserSet(out ErrorStatus status, IntPtr devicePtr, string value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void AddUserSet(out ErrorStatus status, IntPtr devicePtr, String value);
+            private static extern void AddUserSet(out ErrorStatus status, IntPtr devicePtr, string value);
 
             public MechEyeDevice()
             {
@@ -172,7 +169,7 @@ namespace mmind
 
             public static List<MechEyeDeviceInfo> enumerateMechEyeDeviceList()
             {
-                Int32 size = GetMechEyeDeviceListSize();
+                int size = GetMechEyeDeviceListSize();
                 MechEyeDeviceInfo[] arr = new MechEyeDeviceInfo[size];
                 EnumerateMechEyeDeviceList(arr);
                 return arr.ToList<MechEyeDeviceInfo>();
@@ -192,6 +189,11 @@ namespace mmind
 
             public ErrorStatus getDeviceInfo(ref MechEyeDeviceInfo info)
             {
+                info.model = "";
+                info.hardwareVersion = "";
+                info.firmwareVersion = "";
+                info.ipAddress = "";
+                info.id = "";
                 ErrorStatus status = new ErrorStatus();
                 GetDeviceInfo(out status, _devicePtr, ref info);
                 return status;
@@ -269,58 +271,58 @@ namespace mmind
                 return status;
             }
 
-            public ErrorStatus setScan2DHDRExposureSequence(List<Double> list)
+            public ErrorStatus setScan2DHDRExposureSequence(List<double> list)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetScan2DHDRExposureSequence(out status, _devicePtr, list.ToArray(), list.Count);
                 return status;
             }
 
-            public ErrorStatus getScan2DHDRExposureSequence(ref List<Double> list)
+            public ErrorStatus getScan2DHDRExposureSequence(ref List<double> list)
             {
                 ErrorStatus status = new ErrorStatus();
-                Double[] vals = list.ToArray();
+                double[] vals = list.ToArray();
                 GetScan2DHDRExposureSequence(out status, _devicePtr, ref vals);
                 list = vals.ToList<Double>();
                 return status;
             }
 
-            public ErrorStatus setScan2DExpectedGrayValue(Int32 value)
+            public ErrorStatus setScan2DExpectedGrayValue(int value)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetScan2DExpectedGrayValue(out status, _devicePtr, value);
                 return status;
             }
 
-            public ErrorStatus getScan2DExpectedGrayValue(ref Int32 value)
+            public ErrorStatus getScan2DExpectedGrayValue(ref int value)
             {
                 ErrorStatus status = new ErrorStatus();
                 GetScan2DExpectedGrayValue(out status, _devicePtr, ref value);
                 return status;
             }
 
-            public ErrorStatus setScan2DToneMappingEnable(Boolean value)
+            public ErrorStatus setScan2DToneMappingEnable(bool value)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetScan2DToneMappingEnable(out status, _devicePtr, value);
                 return status;
             }
 
-            public ErrorStatus getScan2DToneMappingEnable(ref Boolean value)
+            public ErrorStatus getScan2DToneMappingEnable(ref bool value)
             {
                 ErrorStatus status = new ErrorStatus();
                 GetScan2DToneMappingEnable(out status, _devicePtr, ref value);
                 return status;
             }
 
-            public ErrorStatus setScan2DSharpenFactor(Double value)
+            public ErrorStatus setScan2DSharpenFactor(double value)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetScan2DSharpenFactor(out status, _devicePtr, value);
                 return status;
             }
 
-            public ErrorStatus getScan2DSharpenFactor(ref Double value)
+            public ErrorStatus getScan2DSharpenFactor(ref double value)
             {
                 ErrorStatus status = new ErrorStatus();
                 GetScan2DSharpenFactor(out status, _devicePtr, ref value);
@@ -341,31 +343,36 @@ namespace mmind
                 return status;
             }
 
-            public ErrorStatus setScan3DExposure(List<Double> list)
+            public ErrorStatus setScan3DExposure(List<double> list)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetScan3DExposure(out status, _devicePtr, list.ToArray(), list.Count);
                 return status;
             }
 
-            public ErrorStatus getScan3DExposure(ref List<Double> list)
+            public ErrorStatus getScan3DExposure(ref List<double> list)
             {
                 ErrorStatus status = new ErrorStatus();
-                int size = GetScan3DExposureSize(_devicePtr);
-                Double[] vals = new Double[size];
-                GetScan3DExposure(out status, _devicePtr, vals);
+                int size = 1;
+                double[] vals = new double[size];
+                vals[0] = 0;
+                IntPtr buffer = Marshal.AllocCoTaskMem(Marshal.SizeOf(vals[0]) * vals.Length);
+                GetScan3DExposure(out status, _devicePtr, ref buffer, ref size);
+                vals = new double[size];
+                Marshal.Copy(buffer, vals, 0, size);
+                Marshal.FreeCoTaskMem(buffer);
                 list = vals.ToList<Double>();
                 return status;
             }
 
-            public ErrorStatus setScan3DGain(Double value)
+            public ErrorStatus setScan3DGain(double value)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetScan3DGain(out status, _devicePtr, value);
                 return status;
             }
 
-            public ErrorStatus getScan3DGain(ref Double value)
+            public ErrorStatus getScan3DGain(ref double value)
             {
                 ErrorStatus status = new ErrorStatus();
                 GetScan3DGain(out status, _devicePtr, ref value);
@@ -481,38 +488,38 @@ namespace mmind
                 return status;
             }
 
-            public ErrorStatus setCurrentUserSet(String name)
+            public ErrorStatus setCurrentUserSet(string name)
             {
                 ErrorStatus status = new ErrorStatus();
                 SetCurrentUserSet(out status, _devicePtr, name);
                 return status;
             }
 
-            public ErrorStatus getCurrentUserSet(ref String name)
+            public ErrorStatus getCurrentUserSet(ref string name)
             {
                 ErrorStatus status = new ErrorStatus();
                 GetCurrentUserSet(out status, _devicePtr, ref name);
                 return status;
             }
 
-            public ErrorStatus getAllUserSets(ref List<String> names)
+            public ErrorStatus getAllUserSets(ref List<string> names)
             {
                 ErrorStatus status = new ErrorStatus();
-                Int32 size = GetUserSetsCount(_devicePtr);
-                String[] namesArr = new String[size];
+                int size = GetUserSetsCount(_devicePtr);
+                string[] namesArr = new string[size];
                 GetAllUserSets(out status, _devicePtr, namesArr);
                 names = namesArr.ToList<String>();
                 return status;
             }
 
-            public ErrorStatus deleteUserSet(String name)
+            public ErrorStatus deleteUserSet(string name)
             {
                 ErrorStatus status = new ErrorStatus();
                 DeleteUserSet(out status, _devicePtr, name);
                 return status;
             }
 
-            public ErrorStatus addUserSet(String name)
+            public ErrorStatus addUserSet(string name)
             {
                 ErrorStatus status = new ErrorStatus();
                 AddUserSet(out status, _devicePtr, name);
