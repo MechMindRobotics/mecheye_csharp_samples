@@ -69,8 +69,8 @@ namespace mmind
         public struct LaserSettings
         {
             public LaserFringeCodingMode FringeCodingMode;
-            public int FrameAmplitude;
-            public int FrameOffset;
+            public int FrameRangeStart;
+            public int FrameRangeEnd;
             public int FramePartitionCount;
             public int PowerLevel;
         }
