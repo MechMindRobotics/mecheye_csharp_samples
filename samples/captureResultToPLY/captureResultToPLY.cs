@@ -6,7 +6,7 @@ using mmind.apiSharp;
 
 class sample
 {
-    static bool isNumber(String str)
+    static bool isNumber(string str)
     {
         foreach(char c in str)
         {
@@ -18,7 +18,7 @@ class sample
 
     static void showError(ErrorStatus status)
     {
-        if (status.errorCode == (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
             return;
         Console.WriteLine("Error Code : {0}, Error Description: {1}.", status.errorCode, status.errorDescription);
     }
@@ -52,12 +52,12 @@ class sample
         }
 
         Console.WriteLine("Please enter the device index you want to connect: ");
-        Int32 inputIndex = 0;
+        int inputIndex = 0;
 
         while (true)
         {
-            String input = Console.ReadLine();
-            if (Int32.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
                 break;
             Console.WriteLine("Input invalid! Please enter the device index you wnat to connect: ");
         }
@@ -70,7 +70,7 @@ class sample
 
         //status = device.connect(deviceInfo);
 
-        if (status.errorCode != (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
             showError(status);
             return -1;
@@ -88,8 +88,8 @@ class sample
 
         PointXYZMap pointXYZMap = new PointXYZMap();
         showError(device.capturePointXYZMap(ref pointXYZMap));
-        String pointCloudPath = "pointCloudXYZ.ply";
-        String pointCloudColorPath = "pointCloudXYZRGB.ply";
+        string pointCloudPath = "pointCloudXYZ.ply";
+        string pointCloudColorPath = "pointCloudXYZRGB.ply";
         Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.height()), unchecked((int)pointXYZMap.width()), DepthType.Cv32F, 3, pointXYZMap.data(), unchecked((int)pointXYZMap.width()) * 12);
 
         CvInvoke.WriteCloud(pointCloudPath, depth32FC3);

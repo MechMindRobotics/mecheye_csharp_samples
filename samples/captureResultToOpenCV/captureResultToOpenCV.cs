@@ -6,7 +6,7 @@ using mmind.apiSharp;
 
 class captureResultToOpenCV
 {
-    static bool isNumber(String str)
+    static bool isNumber(string str)
     {
         foreach(char c in str)
         {
@@ -18,7 +18,7 @@ class captureResultToOpenCV
 
     static void showError(ErrorStatus status)
     {
-        if (status.errorCode == (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
             return;
         Console.WriteLine("Error Code : {0}, Error Description: {1}.", status.errorCode, status.errorDescription);
     }
@@ -52,12 +52,12 @@ class captureResultToOpenCV
         }
 
         Console.WriteLine("Please enter the device index you want to connect: ");
-        Int32 inputIndex = 0;
+        int inputIndex = 0;
 
         while (true)
         {
-            String input = Console.ReadLine();
-            if (Int32.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
                 break;
             Console.WriteLine("Input invalid! Please enter the device index you wnat to connect: ");
         }
@@ -70,7 +70,7 @@ class captureResultToOpenCV
 
         //status = device.connect(deviceInfo);
 
-        if (status.errorCode != (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
             showError(status);
             return -1;
@@ -84,17 +84,17 @@ class captureResultToOpenCV
 
         ColorMap color = new ColorMap();
         showError(device.captureColorMap(ref color));
-        String colorFile = "colorMap.png";
+        string colorFile = "colorMap.png";
         Mat color8UC3 = new Mat(unchecked((int)color.height()), unchecked((int)color.width()), DepthType.Cv8U, 3, color.data(), unchecked((int)color.width()) * 3);
         CvInvoke.Imwrite(colorFile, color8UC3);
         Console.WriteLine("Capture and save color image: {0}", colorFile);
 
         DepthMap depth = new DepthMap();
         showError(device.captureDepthMap(ref depth));
-        String depthFile = "depthMap.png";
+        string depthFile = "depthMap.png";
         Mat depth8U = new Mat();
         Mat depth32F = new Mat(unchecked((int)depth.height()), unchecked((int)depth.width()), DepthType.Cv32F, 1, depth.data(), unchecked((int)depth.width()) * 4);
-        Double minDepth = 1, maxDepth = 1;
+        double minDepth = 1, maxDepth = 1;
         System.Drawing.Point minLoc = new System.Drawing.Point(), maxLoc = new System.Drawing.Point();
         CvInvoke.MinMaxLoc(depth32F, ref minDepth, ref maxDepth, ref minLoc, ref maxLoc);
         depth32F.ConvertTo(depth8U, DepthType.Cv8U, 255.0 / (maxDepth));

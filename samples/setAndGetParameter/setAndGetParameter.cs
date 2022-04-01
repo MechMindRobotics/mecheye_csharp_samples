@@ -4,7 +4,7 @@ using mmind.apiSharp;
 
 class sample
 {
-    static bool isNumber(String str)
+    static bool isNumber(string str)
     {
         foreach(char c in str)
         {
@@ -16,7 +16,7 @@ class sample
 
     static void showError(ErrorStatus status)
     {
-        if (status.errorCode == (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
             return;
         Console.WriteLine("Error Code : {0}, Error Description: {1}.", status.errorCode, status.errorDescription);
     }
@@ -51,12 +51,12 @@ class sample
         }
 
         Console.WriteLine("Please enter the device index you want to connect: ");
-        Int32 inputIndex = 0;
+        int inputIndex = 0;
 
         while (true)
         {
-            String input = Console.ReadLine();
-            if (Int32.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
                 break;
             Console.WriteLine("Input invalid! Please enter the device index you wnat to connect: ");
         }
@@ -69,7 +69,7 @@ class sample
 
         //status = device.connect(deviceInfo);
 
-        if (status.errorCode != (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
             showError(status);
             return -1;
@@ -81,7 +81,7 @@ class sample
         showError(device.getDeviceInfo(ref deviceInfo));
         printDeviceInfo(deviceInfo);
 
-        List<String> userSets = new List<String>();
+        List<string> userSets = new List<string>();
         showError(device.getAllUserSets(ref userSets));
 
         Console.WriteLine("All user sets : ");
@@ -92,7 +92,7 @@ class sample
         }
         Console.WriteLine("");
 
-        String currentUserSet = "";
+        string currentUserSet = "";
         showError(device.getCurrentUserSet(ref currentUserSet));
         Console.WriteLine("Current user set: {0}", currentUserSet);
 
@@ -100,9 +100,9 @@ class sample
         Console.WriteLine("Set \"{0}\" as the current user set.", userSets[0]);
         Console.WriteLine("");
 
-        showError(device.setScan3DExposure(new List<Double>{5, 10}));
+        showError(device.setScan3DExposure(new List<double> {59, 0.1, 99}));
 
-        List<Double> exposureSequence = new List<Double>();
+        List<double> exposureSequence = new List<double>();
         showError(device.getScan3DExposure(ref exposureSequence));
 
         Console.WriteLine("The 3D scanning exposure multiplier : {0}.", exposureSequence.Count);
@@ -120,10 +120,10 @@ class sample
         Console.WriteLine("3D Scanning ROI topLeftX : {0}, topLeftY : {1}, width : {2}, height : {3}", scan3dRoi.x, scan3dRoi.y, scan3dRoi.width, scan3dRoi.height);
 
         showError(device.setScan2DExposureMode(Scan2DExposureMode.Timed));
-        showError(device.setScan2DExposureTime(100));
+        showError(device.setScan2DExposureTime(999));
 
         Scan2DExposureMode exposureMode2D = new Scan2DExposureMode();
-        Double scan2DExposureTime = new Double();
+        double scan2DExposureTime = new double();
         showError(device.getScan2DExposureMode(ref exposureMode2D));
         showError(device.getScan2DExposureTime(ref scan2DExposureTime));
         Console.WriteLine("2D scanning exposure mode enum : {0}, exposure time : {1} ms.", exposureMode2D, scan2DExposureTime);

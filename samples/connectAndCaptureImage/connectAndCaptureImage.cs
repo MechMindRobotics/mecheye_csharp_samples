@@ -4,7 +4,7 @@ using mmind.apiSharp;
 
 class sample
 {
-    static bool isNumber(String str)
+    static bool isNumber(string str)
     {
         foreach(char c in str)
         {
@@ -16,7 +16,7 @@ class sample
 
     static void showError(ErrorStatus status)
     {
-        if (status.errorCode == (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
             return;
         Console.WriteLine("Error Code : {0}, Error Description: {1}.", status.errorCode, status.errorDescription);
     }
@@ -69,12 +69,12 @@ class sample
         }
 
         Console.WriteLine("Please enter the device index you want to connect: ");
-        Int32 inputIndex = 0;
+        int inputIndex = 0;
 
         while (true)
         {
-            String input = Console.ReadLine();
-            if (Int32.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out inputIndex) && inputIndex < deviceInfoList.Count)
                 break;
             Console.WriteLine("Input invalid! Please enter the device index you wnat to connect: ");
         }
@@ -87,7 +87,7 @@ class sample
 
         //status = device.connect(deviceInfo);
 
-        if (status.errorCode != (Int32)ErrorCode.MMIND_STATUS_SUCCESS)
+        if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
             showError(status);
             return -1;
@@ -110,8 +110,8 @@ class sample
         ColorMap color = new ColorMap();
         showError(device.captureColorMap(ref color));
         Console.WriteLine("Color map size is width: {0} height: {1}.", color.width(), color.height());
-        UInt32 row = 0;
-        UInt32 col = 0;
+        uint row = 0;
+        uint col = 0;
         try
         {
             ElementColor colorElem = color.at(row, col);

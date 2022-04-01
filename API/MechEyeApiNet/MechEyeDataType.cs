@@ -22,51 +22,51 @@ namespace mmind
             public ErrorCode errorCode;
 
             [MarshalAs(UnmanagedType.BStr)]
-            public String errorDescription;
+            public string errorDescription;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MechEyeDeviceInfo
         {
             [MarshalAs(UnmanagedType.BStr)]
-            public String model;
+            public string model;
 
             [MarshalAs(UnmanagedType.BStr)]
-            public String id;
+            public string id;
 
             [MarshalAs(UnmanagedType.BStr)]
-            public String hardwareVersion;
+            public string hardwareVersion;
             
             [MarshalAs(UnmanagedType.BStr)]
-            public String firmwareVersion;
+            public string firmwareVersion;
 
             [MarshalAs(UnmanagedType.BStr)]
-            public String ipAddress;
+            public string ipAddress;
 
-            public UInt16 port;
+            public ushort port;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         public struct DeviceIntri
         {
-            public Double k1;
-            public Double k2;
-            public Double p1;
-            public Double p2;
-            public Double k3;
-            public Double fx;
-            public Double fy;
-            public Double cx;
-            public Double cy;
+            public double k1;
+            public double k2;
+            public double p1;
+            public double p2;
+            public double k3;
+            public double fx;
+            public double fy;
+            public double cx;
+            public double cy;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         public struct DeviceResolution
         {
-            public UInt32 colorMapWidth;
-            public UInt32 colorMapHeight;
-            public UInt32 depthMapWidth;
-            public UInt32 depthMapHeight;
+            public uint colorMapWidth;
+            public uint colorMapHeight;
+            public uint depthMapWidth;
+            public uint depthMapHeight;
         }
 
         public class ROI
@@ -75,36 +75,36 @@ namespace mmind
             private static extern IntPtr CreateROIWithoutParameter();
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern IntPtr CreateROIWithParameter(Int32 x, Int32 y, Int32 width, Int32 height);
+            private static extern IntPtr CreateROIWithParameter(int x, int y, int width, int height);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void DeleteROI(IntPtr roiPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 GetROIX(IntPtr roiPtr);
+            private static extern uint GetROIX(IntPtr roiPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetROIX(IntPtr roiPtr, UInt32 value);
+            private static extern void SetROIX(IntPtr roiPtr, uint value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 GetROIY(IntPtr roiPtr);
+            private static extern uint GetROIY(IntPtr roiPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetROIY(IntPtr roiPtr, UInt32 value);
+            private static extern void SetROIY(IntPtr roiPtr, uint value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 GetROIWidth(IntPtr roiPtr);
+            private static extern uint GetROIWidth(IntPtr roiPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetROIWidth(IntPtr roiPtr, UInt32 value);
+            private static extern void SetROIWidth(IntPtr roiPtr, uint value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 GetROIHeight(IntPtr roiPtr);
+            private static extern uint GetROIHeight(IntPtr roiPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetROIHeight(IntPtr roiPtr, UInt32 value);
+            private static extern void SetROIHeight(IntPtr roiPtr, uint value);
 
-            public UInt32 x
+            public uint x
             {
                 get
                 {
@@ -115,7 +115,7 @@ namespace mmind
                     SetROIX(_roiPtr, value);
                 }
             }
-            public UInt32 y
+            public uint y
             {
                 get
                 {
@@ -126,7 +126,7 @@ namespace mmind
                     SetROIY(_roiPtr, value);
                 }
             }
-            public UInt32 width
+            public uint width
             {
                 get
                 {
@@ -137,7 +137,7 @@ namespace mmind
                     SetROIWidth(_roiPtr, value);
                 }
             }
-            public UInt32 height
+            public uint height
             {
                 get
                 {
@@ -154,7 +154,7 @@ namespace mmind
                 _roiPtr = CreateROIWithoutParameter();
             }
 
-            public ROI(Int32 x, Int32 y, Int32 width, Int32 height)
+            public ROI(int x, int y, int width, int height)
             {
                 _roiPtr = CreateROIWithParameter(x, y, width, height);
             }
@@ -173,24 +173,24 @@ namespace mmind
             private static extern IntPtr CreateDepthRangeWithoutParameter();
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern IntPtr CreateDepthRangeWithParameter(Int32 lower, Int32 upper);
+            private static extern IntPtr CreateDepthRangeWithParameter(int lower, int upper);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void DeleteDepthRange(IntPtr depthRangePtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern Int32 GetLower(IntPtr depthRangePtr);
+            private static extern int GetLower(IntPtr depthRangePtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetLower(IntPtr depthRangePtr, Int32 value);
+            private static extern void SetLower(IntPtr depthRangePtr, int value);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern Int32 GetUpper(IntPtr depthRangePtr);
+            private static extern int GetUpper(IntPtr depthRangePtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void SetUpper(IntPtr depthRangePtr, Int32 value);
+            private static extern void SetUpper(IntPtr depthRangePtr, int value);
 
-            public Int32 lower
+            public int lower
             {
                 get
                 {
@@ -202,7 +202,7 @@ namespace mmind
                 }
             }
 
-            public Int32 upper
+            public int upper
             {
                 get
                 {
@@ -219,7 +219,7 @@ namespace mmind
                 _depthRangePtr = CreateDepthRangeWithoutParameter();
             }
 
-            public DepthRange(Int32 lower, Int32 upper)
+            public DepthRange(int lower, int upper)
             {
                 _depthRangePtr = CreateDepthRangeWithParameter(lower, upper);
             }

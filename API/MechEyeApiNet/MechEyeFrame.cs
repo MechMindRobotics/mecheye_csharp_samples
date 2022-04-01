@@ -14,9 +14,9 @@ namespace mmind
         [StructLayout(LayoutKind.Sequential)]
         public struct ElementColor
         {
-            public Byte b;
-            public Byte g;
-            public Byte r;
+            public byte b;
+            public byte g;
+            public byte r;
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -30,9 +30,9 @@ namespace mmind
         [StructLayout(LayoutKind.Sequential)]
         public struct ElementPointXYZBGR
         {
-            public Byte b;
-            public Byte g;
-            public Byte r;
+            public byte b;
+            public byte g;
+            public byte r;
             public float x;
             public float y;
             public float z;
@@ -47,10 +47,10 @@ namespace mmind
             private static extern void DeleteColorMap(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 ColorMapWidth(IntPtr mapPtr);
+            private static extern uint ColorMapWidth(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 ColorMapHeight(IntPtr mapPtr);
+            private static extern uint ColorMapHeight(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern bool ColorMapEmpty(IntPtr mapPtr);
@@ -59,10 +59,10 @@ namespace mmind
             private static extern IntPtr ColorMapData(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern ref ElementColor ColorMapAt(IntPtr mapPtr, UInt32 row, UInt32 col);
+            private static extern ref ElementColor ColorMapAt(IntPtr mapPtr, uint row, uint col);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void ColorMapResize(IntPtr mapPtr, UInt32 width, UInt32 height);
+            private static extern void ColorMapResize(IntPtr mapPtr, uint width, uint height);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void ColorMapRelease(IntPtr mapPtr);
@@ -80,17 +80,17 @@ namespace mmind
                 DeleteColorMap(_mapPtr);
             }
 
-            public UInt32 width()
+            public uint width()
             {
                 return ColorMapWidth(_mapPtr);
             }
 
-            public UInt32 height()
+            public uint height()
             {
                 return ColorMapHeight(_mapPtr);
             }
 
-            public Boolean empty()
+            public bool empty()
             {
                 return ColorMapEmpty(_mapPtr);
             }
@@ -100,12 +100,14 @@ namespace mmind
                 return ColorMapData(_mapPtr);
             }
 
-            public ref ElementColor at(UInt32 row, UInt32 col)
+            public ref ElementColor at(uint row, uint col)
             {
+                if (row >= height() || col >= width())
+                    throw new IndexOutOfRangeException("invalid subscript.");
                 return ref ColorMapAt(_mapPtr, row, col);
             }
 
-            public void resize(UInt32 width, UInt32 height)
+            public void resize(uint width, uint height)
             {
                 ColorMapResize(_mapPtr, width, height);
             }
@@ -124,10 +126,10 @@ namespace mmind
             private static extern void DeleteDepthMap(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 DepthMapWidth(IntPtr mapPtr);
+            private static extern uint DepthMapWidth(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 DepthMapHeight(IntPtr mapPtr);
+            private static extern uint DepthMapHeight(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern bool DepthMapEmpty(IntPtr mapPtr);
@@ -136,10 +138,10 @@ namespace mmind
             private static extern IntPtr DepthMapData(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern ref ElementDepth DepthMapAt(IntPtr mapPtr, UInt32 row, UInt32 col);
+            private static extern ref ElementDepth DepthMapAt(IntPtr mapPtr, uint row, uint col);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void DepthMapResize(IntPtr mapPtr, UInt32 width, UInt32 height);
+            private static extern void DepthMapResize(IntPtr mapPtr, uint width, uint height);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void DepthMapRelease(IntPtr mapPtr);
@@ -157,17 +159,17 @@ namespace mmind
                 DeleteDepthMap(_mapPtr);
             }
 
-            public UInt32 width()
+            public uint width()
             {
                 return DepthMapWidth(_mapPtr);
             }
 
-            public UInt32 height()
+            public uint height()
             {
                 return DepthMapHeight(_mapPtr);
             }
 
-            public Boolean empty()
+            public bool empty()
             {
                 return DepthMapEmpty(_mapPtr);
             }
@@ -177,12 +179,14 @@ namespace mmind
                 return DepthMapData(_mapPtr);
             }
 
-            public ref ElementDepth at(UInt32 row, UInt32 col)
+            public ref ElementDepth at(uint row, uint col)
             {
+                if (row >= height() || col >= width())
+                    throw new IndexOutOfRangeException("invalid subscript.");
                 return ref DepthMapAt(_mapPtr, row, col);
             }
 
-            public void resize(UInt32 width, UInt32 height)
+            public void resize(uint width, uint height)
             {
                 DepthMapResize(_mapPtr, width, height);
             }
@@ -201,10 +205,10 @@ namespace mmind
             private static extern void DeletePointXYZMap(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 PointXYZMapWidth(IntPtr mapPtr);
+            private static extern uint PointXYZMapWidth(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 PointXYZMapHeight(IntPtr mapPtr);
+            private static extern uint PointXYZMapHeight(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern bool PointXYZMapEmpty(IntPtr mapPtr);
@@ -213,10 +217,10 @@ namespace mmind
             private static extern IntPtr PointXYZMapData(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern ref ElementPointXYZ PointXYZMapAt(IntPtr mapPtr, UInt32 row, UInt32 col);
+            private static extern ref ElementPointXYZ PointXYZMapAt(IntPtr mapPtr, uint row, uint col);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void PointXYZMapResize(IntPtr mapPtr, UInt32 width, UInt32 height);
+            private static extern void PointXYZMapResize(IntPtr mapPtr, uint width, uint height);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void PointXYZMapRelease(IntPtr mapPtr);
@@ -234,17 +238,17 @@ namespace mmind
                 DeletePointXYZMap(_mapPtr);
             }
 
-            public UInt32 width()
+            public uint width()
             {
                 return PointXYZMapWidth(_mapPtr);
             }
 
-            public UInt32 height()
+            public uint height()
             {
                 return PointXYZMapHeight(_mapPtr);
             }
 
-            public Boolean empty()
+            public bool empty()
             {
                 return PointXYZMapEmpty(_mapPtr);
             }
@@ -254,12 +258,14 @@ namespace mmind
                 return PointXYZMapData(_mapPtr);
             }
 
-            public ref ElementPointXYZ at(UInt32 row, UInt32 col)
+            public ref ElementPointXYZ at(uint row, uint col)
             {
+                if (row >= height() || col >= width())
+                    throw new IndexOutOfRangeException("invalid subscript.");
                 return ref PointXYZMapAt(_mapPtr, row, col);
             }
 
-            public void resize(UInt32 width, UInt32 height)
+            public void resize(uint width, uint height)
             {
                 PointXYZMapResize(_mapPtr, width, height);
             }
@@ -278,10 +284,10 @@ namespace mmind
             private static extern void DeletePointXYZBGRMap(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 PointXYZBGRMapWidth(IntPtr mapPtr);
+            private static extern uint PointXYZBGRMapWidth(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern UInt32 PointXYZBGRMapHeight(IntPtr mapPtr);
+            private static extern uint PointXYZBGRMapHeight(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern bool PointXYZBGRMapEmpty(IntPtr mapPtr);
@@ -290,10 +296,10 @@ namespace mmind
             private static extern IntPtr PointXYZBGRMapData(IntPtr mapPtr);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern ref ElementPointXYZBGR PointXYZBGRMapAt(IntPtr mapPtr, UInt32 row, UInt32 col);
+            private static extern ref ElementPointXYZBGR PointXYZBGRMapAt(IntPtr mapPtr, uint row, uint col);
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void PointXYZBGRMapResize(IntPtr mapPtr, UInt32 width, UInt32 height);
+            private static extern void PointXYZBGRMapResize(IntPtr mapPtr, uint width, uint height);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void PointXYZBGRMapRelease(IntPtr mapPtr);
@@ -311,17 +317,17 @@ namespace mmind
                 DeletePointXYZBGRMap(_mapPtr);
             }
 
-            public UInt32 width()
+            public uint width()
             {
                 return PointXYZBGRMapWidth(_mapPtr);
             }
 
-            public UInt32 height()
+            public uint height()
             {
                 return PointXYZBGRMapHeight(_mapPtr);
             }
 
-            public Boolean empty()
+            public bool empty()
             {
                 return PointXYZBGRMapEmpty(_mapPtr);
             }
@@ -331,12 +337,14 @@ namespace mmind
                 return PointXYZBGRMapData(_mapPtr);
             }
 
-            public ref ElementPointXYZBGR at(UInt32 row, UInt32 col)
+            public ref ElementPointXYZBGR at(uint row, uint col)
             {
+                if (row >= height() || col >= width())
+                    throw new IndexOutOfRangeException("invalid subscript.");
                 return ref PointXYZBGRMapAt(_mapPtr, row, col);
             }
 
-            public void resize(UInt32 width, UInt32 height)
+            public void resize(uint width, uint height)
             {
                 PointXYZBGRMapResize(_mapPtr, width, height);
             }
