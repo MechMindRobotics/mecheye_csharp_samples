@@ -1,6 +1,6 @@
 # Mech-Eye C# Samples
 
-This repository contains C# samples for Mech-Eye SDK_1.5.0.
+This repository contains C# samples for Mech-Eye SDK_1.5.1.
 
 ## Installation
 
