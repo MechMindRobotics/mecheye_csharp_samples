@@ -7,3 +7,4 @@ samples/captureResultToPLY/obj/
 samples/connectAndCaptureImage/obj/
 samples/setAndGetParameter/obj/
 *.user
+samples/captureCloudFromDepth/obj/
