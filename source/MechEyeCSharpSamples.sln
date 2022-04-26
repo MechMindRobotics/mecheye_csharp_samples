@@ -15,13 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "capturePointCloudROI", "Bas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "connectToCamera", "Basic\connectToCamera\connectToCamera.csproj", "{2952ED3D-5E77-4F15-8627-C74DD5A6F4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cameraUserSets", "Util\cameraUserSets\cameraUserSets.csproj", "{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getCameraIntri", "Util\getCameraIntri\getCameraIntri.csproj", "{EB53944D-78C5-4E0B-BB78-B59C4CB07732}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "printDeviceInfo", "Util\printDeviceInfo\printDeviceInfo.csproj", "{6BE8D07B-6DFD-4AB8-A129-7930FB230107}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "printFrameInfo", "Util\printFrameInfo\printFrameInfo.csproj", "{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setDepthRange", "Util\setDepthRange\setDepthRange.csproj", "{2FC8A72A-6A6A-44A8-B051-71ACD2F8D20D}"
 EndProject
@@ -42,6 +38,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setFringeCodingMode", "Laser\setFringeCodingMode\setFringeCodingMode.csproj", "{25AFA76A-3169-4375-80C8-838A972CCD6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setPowerLevel", "Laser\setPowerLevel\setPowerLevel.csproj", "{46B92A15-77DB-4316-A584-480B388FA75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "connectAndCaptureImage", "Basic\connectAndCaptureImage\connectAndCaptureImage.csproj", "{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setUserSets", "Util\setUserSets\setUserSets.csproj", "{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,18 +67,12 @@ Global
 		{2952ED3D-5E77-4F15-8627-C74DD5A6F4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2952ED3D-5E77-4F15-8627-C74DD5A6F4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2952ED3D-5E77-4F15-8627-C74DD5A6F4A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB53944D-78C5-4E0B-BB78-B59C4CB07732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB53944D-78C5-4E0B-BB78-B59C4CB07732}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB53944D-78C5-4E0B-BB78-B59C4CB07732}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6BE8D07B-6DFD-4AB8-A129-7930FB230107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6BE8D07B-6DFD-4AB8-A129-7930FB230107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BE8D07B-6DFD-4AB8-A129-7930FB230107}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FC8A72A-6A6A-44A8-B051-71ACD2F8D20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FC8A72A-6A6A-44A8-B051-71ACD2F8D20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FC8A72A-6A6A-44A8-B051-71ACD2F8D20D}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -116,6 +110,14 @@ Global
 		{46B92A15-77DB-4316-A584-480B388FA75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B92A15-77DB-4316-A584-480B388FA75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46B92A15-77DB-4316-A584-480B388FA75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F98E9B-6E26-4D54-8E4A-B468DB0D4403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD47985-03D6-4FFA-8DDC-C9E7E2B03792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
