@@ -13,10 +13,10 @@ This repository contains C# samples for Mech-Eye SDK.
 
 There are four categoires of samples: **Basic**, **Advanced**, **Util**, and **Laser**.  
 
-The category **Basic** contains samples that are related to basic connecting and capturing.  
-The category **Advanced** contains samples that use advanced capturing tricks.  
-The category **Util** contains samples that get and print information and set parameters.  
-The category **Laser** contains samples that can only be used on laser cameras.  
+- The category **Basic** contains samples that are related to basic connecting and capturing.  
+- The category **Advanced** contains samples that use advanced capturing tricks.  
+- The category **Util** contains samples that get and print information and set parameters.  
+- The category **Laser** contains samples that can only be used on Mech-Eye Laser cameras.  
 
 The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) to be installed via NuGet.
 
@@ -43,7 +43,7 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
   - [CaptureSimultaneouslyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/CaptureSimultaneouslyMultiCamera) `(EmguCV)`  
     Capture simultaneously from multiple cameras.
   - [CaptureTimedAndPeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/CaptureTimedAndPeriodically) `(EmguCV)`  
-    Capture periodically for a specific time form a camera.
+    Capture periodically for a specific time from a camera.
 - **Util**
   - [GetCameraIntri](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/GetCameraIntri)  
     Get and print a camera's intrinsic parameters.
@@ -57,10 +57,15 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
     Get current user set name and available user sets, save settings to a specific user set. The User Set feature allows the user to customize and store the individual settings.
 - **Laser**
   - [SetLaserFramePartitionCount](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserFramePartitionCount)  
-    Set the laser scan partition number for a laser camera.
+    Set the laser scan partition count for a Mech-Eye Laser camera.
   - [SetLaserFrameRange](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserFrameRange)  
-    Set the laser scan field of view for a laser camera.
+    Set the laser scan range for a Mech-Eye Laser camera.
   - [SetLaserFringeCodingMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserFringeCodingMode)  
-    Set the fringe coding mode for a laser camera.
+    Set the fringe coding mode for a Mech-Eye Laser camera.
   - [SetLaserPowerLevel](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserPowerLevel)  
-    Set the power level for a laser camera.
+    Set the laser power level for a Mech-Eye Laser camera.
+    
+    
+## License
+
+Mech-Eye Samples are distributed under the [BSD license](https://github.com/MechMindRobotics/mecheye_cpp_samples/blob/main/LICENSE).
