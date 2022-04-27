@@ -4,7 +4,7 @@ This repository contains C# samples for Mech-Eye SDK.
 
 ## Installation
 
-1. Download and install [Mech-Eye SDK](https://www.mech-mind.com/download/camera-sdk.html)
+1. Download and install [Mech-Eye SDK](https://www.mech-mind.com/download/camera-sdk.html).
 2. Clone this repository to a specific folder.
 3. Open MechEyeCSharpSamples.sln file in Visual Studio (2019 is recommended), build and run it.
     > Make sure .Net Development is installed in Visual Studio.
