@@ -1,4 +1,4 @@
-# C++ Samples
+# C# Samples
 
 This repository contains C# samples for Mech-Eye SDK.
 
