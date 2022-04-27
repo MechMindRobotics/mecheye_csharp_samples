@@ -38,8 +38,8 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
 - **Advanced**
   - [CaptureCloudFromDepth](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/captureCloudFromDepth) `(EmguCV)`  
     Construct point clouds from depth map and color map captured from a camera.
-  - [CaptureTimedAndPeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/captureTimedAndPeriodically) `(EmguCV)`  
-    Capture periodically for a specific time form a camera.
+  - [CaptureSequentiallyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/captureSequentiallyMultiCamera) `(EmguCV)`  
+    Capture sequentially from multiple cameras.
   - [CaptureSimultaneouslyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/captureSimultaneouslyMultiCamera) `(EmguCV)`  
     Capture simultaneously from multiple cameras.
   - [CaptureTimedAndPeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/captureTimedAndPeriodically) `(EmguCV)`  
