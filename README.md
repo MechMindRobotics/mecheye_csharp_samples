@@ -51,7 +51,7 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
     Get and print a camera's information.
   - [SetDepthRange](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetDepthRange)  
     Set the depth range of a camera.
-  - [SetParameters](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetAndGetParameter)  
+  - [SetParameters](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetParameters)  
     Set and get the parameters from a camera.
   - [SetUserSets](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetUserSets)  
     Get current user set name and available user sets, save settings to a specific user set. The User Set feature allows the user to customize and store the individual settings.
