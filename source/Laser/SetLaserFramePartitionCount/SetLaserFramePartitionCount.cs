@@ -84,7 +84,7 @@ class sample
         showError(device.setLaserSettings(laserSettings));
 
         showError(device.getLaserSettings(ref laserSettings));
-        Console.WriteLine("New FramePartitionCount:", laserSettings.FramePartitionCount);
+        Console.WriteLine("New FramePartitionCount: {0}", laserSettings.FramePartitionCount);
 
         device.disconnect();
         Console.WriteLine("Disconnect Mech-Eye Success.");
