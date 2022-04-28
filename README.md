@@ -21,46 +21,46 @@ There are four categories of samples: **Basic**, **Advanced**, **Util**, and **L
 The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) to be installed via NuGet.
 
 - **Basic**
-  - [ConnectToCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/ConnectToCamera)  
+  - [ConnectToCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/ConnectToCamera)  
     Connect to a Mech-Eye Industrial 3D Camera.
-  - [ConnectAndCaptureImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/ConnectAndCaptureImage)  
+  - [ConnectAndCaptureImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/ConnectAndCaptureImage)  
     Connect to a Mech-Eye Industrial 3D Camera and capture 2D and 3D data.
-  - [CaptureColorMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/CaptureColorMap) `(EmguCV)`  
+  - [CaptureColorMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/CaptureColorMap) `(EmguCV)`  
     Capture color image data with OpenCV data structure from a camera.
-  - [CaptureDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/CaptureDepthMap) `(EmguCV)`  
+  - [CaptureDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/CaptureDepthMap) `(EmguCV)`  
     Capture depth map data with OpenCV data structure from a camera.
-  - [CapturePointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/CapturePointCloud) `(EmguCV)`  
+  - [CapturePointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/CapturePointCloud) `(EmguCV)`  
     Capture monochrome and color point clouds with PCL data structure from a camera.
-  - [CaptureHDRPointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/CaptureHDRPointCloud) `(EmguCV)`  
+  - [CaptureHDRPointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/CaptureHDRPointCloud) `(EmguCV)`  
     Capture monochrome and color point clouds in HDR mode with PCL data structure from a camera.
-  - [CapturePointCloudROI](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Basic/CapturePointCloudROI) `(EmguCV)`  
+  - [CapturePointCloudROI](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Basic/CapturePointCloudROI) `(EmguCV)`  
     Capture monochrome and color point clouds in ROI with PCL data structure from a camera.
 - **Advanced**
-  - [CaptureCloudFromDepth](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/CaptureCloudFromDepth) `(EmguCV)`  
+  - [CaptureCloudFromDepth](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Advanced/CaptureCloudFromDepth) `(EmguCV)`  
     Construct point clouds from depth map and color image captured from a camera.
-  - [CaptureSequentiallyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/CaptureSequentiallyMultiCamera) `(EmguCV)`  
+  - [CaptureSequentiallyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Advanced/CaptureSequentiallyMultiCamera) `(EmguCV)`  
     Capture sequentially from multiple cameras.
-  - [CaptureSimultaneouslyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/CaptureSimultaneouslyMultiCamera) `(EmguCV)`  
+  - [CaptureSimultaneouslyMultiCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Advanced/CaptureSimultaneouslyMultiCamera) `(EmguCV)`  
     Capture simultaneously from multiple cameras.
-  - [CaptureTimedAndPeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Advanced/CaptureTimedAndPeriodically) `(EmguCV)`  
+  - [CaptureTimedAndPeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Advanced/CaptureTimedAndPeriodically) `(EmguCV)`  
     Capture periodically for a specific time from a camera.
 - **Util**
-  - [GetCameraIntri](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/GetCameraIntri)  
+  - [GetCameraIntri](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Util/GetCameraIntri)  
     Get and print a camera's intrinsic parameters.
-  - [PrintDeviceInfo](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/PrintDeviceInfo)  
+  - [PrintDeviceInfo](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Util/PrintDeviceInfo)  
     Get and print a camera's information.
-  - [SetDepthRange](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetDepthRange)  
+  - [SetDepthRange](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Util/SetDepthRange)  
     Set the depth range of a camera.
-  - [SetParameters](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetParameters)  
+  - [SetParameters](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Util/SetParameters)  
     Set specified parameters to a camera.
-  - [SetUserSets](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Util/SetUserSets)  
+  - [SetUserSets](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Util/SetUserSets)  
     Get the current userset name and available usersets of parameter settings, and save the settings to a specific userset. The User Set feature allows the user to customize and store the individual settings.
 - **Laser**
-  - [SetLaserFramePartitionCount](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserFramePartitionCount)  
+  - [SetLaserFramePartitionCount](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Laser/SetLaserFramePartitionCount)  
     Set the laser scan partition count for a Mech-Eye Laser camera.
-  - [SetLaserFrameRange](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserFrameRange)  
+  - [SetLaserFrameRange](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Laser/SetLaserFrameRange)  
     Set the laser scan range for a Mech-Eye Laser camera.
-  - [SetLaserFringeCodingMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserFringeCodingMode)  
+  - [SetLaserFringeCodingMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Laser/SetLaserFringeCodingMode)  
     Set the fringe coding mode for a Mech-Eye Laser camera.
-  - [SetLaserPowerLevel](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserPowerLevel)  
+  - [SetLaserPowerLevel](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Laser/SetLaserPowerLevel)  
     Set the laser power level for a Mech-Eye Laser camera.
