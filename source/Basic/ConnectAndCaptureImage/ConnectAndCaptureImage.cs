@@ -4,16 +4,6 @@ using mmind.apiSharp;
 
 class sample
 {
-    static bool isNumber(string str)
-    {
-        foreach (char c in str)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-        }
-        return false;
-    }
-
     static void showError(ErrorStatus status)
     {
         if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
@@ -53,7 +43,7 @@ class sample
 
     static int Main()
     {
-        Console.WriteLine("Find Mech-Eye device :");
+        Console.WriteLine("Find Mech-Eye device...");
         List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
@@ -93,7 +83,7 @@ class sample
             return -1;
         }
 
-        Console.WriteLine("Connect Mech-Eye Success.");
+        Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         DeviceResolution deviceResolution = new DeviceResolution();
         showError(device.getDeviceResolution(ref deviceResolution));
@@ -147,7 +137,7 @@ class sample
         }
 
         device.disconnect();
-        Console.WriteLine("Disconnect Mech-Eye Success.");
+        Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;
     }

@@ -5,16 +5,6 @@ using Emgu.CV.CvEnum;
 using mmind.apiSharp;
 class sample
 {
-    static bool isNumber(string str)
-    {
-        foreach(char c in str)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-        }
-        return false;
-    }
-
     static void showError(ErrorStatus status)
     {
         if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
@@ -35,7 +25,7 @@ class sample
 
     static int Main()
     {
-        Console.WriteLine("Find Mech-Eye device :");
+        Console.WriteLine("Find Mech-Eye devices...");
         List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
@@ -75,7 +65,7 @@ class sample
             return -1;
         }
 
-        Console.WriteLine("Connect Mech-Eye Success.");
+        Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo();
         showError(device.getDeviceInfo(ref deviceInfo));
@@ -101,7 +91,8 @@ class sample
                 {
                     d = depth.at(m, n).d;
                 }
-                catch (Exception e) {
+                catch (Exception e)
+                {
                     Console.WriteLine("Exception: {0}", e);
                     device.disconnect();
                     return 0;
@@ -111,8 +102,8 @@ class sample
                 pointXYZMap.at(m, n).y = ((float)m - (float)deviceIntri.cy) * d / (float)deviceIntri.fy;
             }
 
-        string pointCloudPath = "pointCloudXYZ.ply";
-        string pointCloudColorPath = "pointCloudXYZRGB.ply";
+        string pointCloudPath = "PointCloudXYZ.ply";
+        string pointCloudColorPath = "PointCloudXYZRGB.ply";
         Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.height()), unchecked((int)pointXYZMap.width()), DepthType.Cv32F, 3, pointXYZMap.data(), unchecked((int)pointXYZMap.width()) * 12);
 
         CvInvoke.WriteCloud(pointCloudPath, depth32FC3);
@@ -121,7 +112,7 @@ class sample
         Console.WriteLine("PointCloudXYZRGB has: {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
 
         device.disconnect();
-        Console.WriteLine("Disconnect Mech-Eye Success.");
+        Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;
     }

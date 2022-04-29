@@ -6,16 +6,6 @@ using mmind.apiSharp;
 
 class captureResultToOpenCV
 {
-    static bool isNumber(string str)
-    {
-        foreach (char c in str)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-        }
-        return false;
-    }
-
     static void showError(ErrorStatus status)
     {
         if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
@@ -36,7 +26,7 @@ class captureResultToOpenCV
     }
     static int Main()
     {
-        Console.WriteLine("Find Mech-Eye device :");
+        Console.WriteLine("Find Mech-Eye devices...");
         List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
@@ -76,11 +66,11 @@ class captureResultToOpenCV
             return -1;
         }
 
-        Console.WriteLine("Connect Mech-Eye Success.");
+        Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         DepthMap depth = new DepthMap();
         showError(device.captureDepthMap(ref depth));
-        string depthFile = "depthMap.png";
+        string depthFile = "DepthMap.png";
         Mat depth8U = new Mat();
         Mat depth32F = new Mat(unchecked((int)depth.height()), unchecked((int)depth.width()), DepthType.Cv32F, 1, depth.data(), unchecked((int)depth.width()) * 4);
         double minDepth = 1, maxDepth = 1;
@@ -91,7 +81,7 @@ class captureResultToOpenCV
         Console.WriteLine("Capture and save depth image: {0}", depthFile);
 
         device.disconnect();
-        Console.WriteLine("Disconnect Mech-Eye Success.");
+        Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;
     }

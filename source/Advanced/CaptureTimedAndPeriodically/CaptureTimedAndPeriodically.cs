@@ -6,16 +6,6 @@ using Emgu.CV.CvEnum;
 using mmind.apiSharp;
 class sample
 {
-    static bool isNumber(string str)
-    {
-        foreach (char c in str)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-        }
-        return false;
-    }
-
     static void showError(ErrorStatus status)
     {
         if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
@@ -39,7 +29,7 @@ class sample
         TimeSpan captureTime = new TimeSpan(0, 5, 0);
         TimeSpan capturePeriod = new TimeSpan(0, 0, 10);
 
-        Console.WriteLine("Find Mech-Eye device :");
+        Console.WriteLine("Find Mech-Eye devices...");
         List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
@@ -79,7 +69,7 @@ class sample
             return -1;
         }
 
-        Console.WriteLine("Connect Mech-Eye Success.");
+        Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo();
         showError(device.getDeviceInfo(ref deviceInfo));
@@ -96,14 +86,14 @@ class sample
 
             ColorMap color = new ColorMap();
             showError(device.captureColorMap(ref color));
-            string colorFile = "colorMap_" + time.ToString() + ".png";
+            string colorFile = "ColorMap_" + time.ToString() + ".png";
             Mat color8UC3 = new Mat(unchecked((int)color.height()), unchecked((int)color.width()), DepthType.Cv8U, 3, color.data(), unchecked((int)color.width()) * 3);
             CvInvoke.Imwrite(colorFile, color8UC3);
             Console.WriteLine("Capture and save color image: {0}", colorFile);
 
             DepthMap depth = new DepthMap();
             showError(device.captureDepthMap(ref depth));
-            string depthFile = "depthMap_" + time.ToString() + ".png";
+            string depthFile = "DepthMap_" + time.ToString() + ".png";
             Mat depth8U = new Mat();
             Mat depth32F = new Mat(unchecked((int)depth.height()), unchecked((int)depth.width()), DepthType.Cv32F, 1, depth.data(), unchecked((int)depth.width()) * 4);
             double minDepth = 1, maxDepth = 1;
@@ -115,8 +105,8 @@ class sample
 
             PointXYZMap pointXYZMap = new PointXYZMap();
             showError(device.capturePointXYZMap(ref pointXYZMap));
-            string pointCloudPath = "pointCloudXYZ_" + time.ToString() + ".ply";
-            string pointCloudColorPath = "pointCloudXYZRGB_" + time.ToString() + ".ply";
+            string pointCloudPath = "PointCloudXYZ_" + time.ToString() + ".ply";
+            string pointCloudColorPath = "PointCloudXYZRGB_" + time.ToString() + ".ply";
             Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.height()), unchecked((int)pointXYZMap.width()), DepthType.Cv32F, 3, pointXYZMap.data(), unchecked((int)pointXYZMap.width()) * 12);
 
             CvInvoke.WriteCloud(pointCloudPath, depth32FC3);
@@ -135,7 +125,7 @@ class sample
         Console.WriteLine("Capturing completed for {0} minutes.", captureTime.Minutes);
 
         device.disconnect();
-        Console.WriteLine("Disconnect Mech-Eye Success.");
+        Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;
     }

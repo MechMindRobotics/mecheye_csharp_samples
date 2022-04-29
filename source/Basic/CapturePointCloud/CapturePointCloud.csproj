@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7E497210-9394-42C1-AA77-39ECA4FCDD9B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>capturePointCloud</RootNamespace>
-    <AssemblyName>capturePointCloud</AssemblyName>
+    <RootNamespace>CapturePointCloud</RootNamespace>
+    <AssemblyName>CapturePointCloud</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,10 +18,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\Build_debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -32,10 +33,44 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Reference Include="MechEyeApiNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(MECHEYE_DIR)\API\dll\MechEyeApiNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Reference Include="MechEyeApiNetd, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(MECHEYE_DIR)\API\dll_debug\MechEyeApiNetd.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,6 +99,9 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApi.dll" "$(SolutionDir)Build"
 xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiNet.dll" "$(SolutionDir)Build"
-xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiWrapper.dll" "$(SolutionDir)Build"</PostBuildEvent>
+xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiWrapper.dll" "$(SolutionDir)Build"
+xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApid.dll" "$(SolutionDir)Build_debug"
+xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiNetd.dll" "$(SolutionDir)Build_debug"
+xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiWrapperd.dll" "$(SolutionDir)Build_debug"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -6,16 +6,6 @@ using mmind.apiSharp;
 
 class captureResultToOpenCV
 {
-    static bool isNumber(string str)
-    {
-        foreach (char c in str)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-        }
-        return false;
-    }
-
     static void showError(ErrorStatus status)
     {
         if (status.errorCode == (int)ErrorCode.MMIND_STATUS_SUCCESS)
@@ -36,7 +26,7 @@ class captureResultToOpenCV
     }
     static int Main()
     {
-        Console.WriteLine("Find Mech-Eye device :");
+        Console.WriteLine("Find Mech-Eye devices...");
         List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
@@ -76,10 +66,10 @@ class captureResultToOpenCV
             return -1;
         }
 
-        Console.WriteLine("Connect Mech-Eye Success.");
+        Console.WriteLine("Connected from the Mech-Eye device successfully.");
 
         device.disconnect();
-        Console.WriteLine("Disconnect Mech-Eye Success.");
+        Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;
     }
