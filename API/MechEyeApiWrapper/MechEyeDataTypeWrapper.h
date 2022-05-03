@@ -4,16 +4,16 @@
 struct ErrorStatus
 {
 	int errorCode;
-	BSTR errorDescription;
+	char* errorDescription;
 };
 
 struct MechEyeDeviceInfo
 {
-	BSTR model;
-	BSTR id;
-	BSTR hardwareVersion;
-	BSTR firmwareVersion;
-	BSTR ipAddress;
+	char* model;
+	char* id;
+	char* hardwareVersion;
+	char* firmwareVersion;
+	char* ipAddress;
 	uint16_t port;
 };
 

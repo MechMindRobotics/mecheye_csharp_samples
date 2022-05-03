@@ -16,7 +16,7 @@ namespace mmind
             private static extern int GetMechEyeDeviceListSize();
 
             [DllImport("MechEyeApiWrapper.dll")]
-            private static extern void EnumerateMechEyeDeviceList([In, Out] MechEyeDeviceInfo[] list);
+            private static extern void EnumerateMechEyeDeviceList(ref IntPtr infos, ref int size);
 
             [DllImport("MechEyeApiWrapper.dll")]
             private static extern void Connect(out ErrorStatus status, IntPtr devicePtr, MechEyeDeviceInfo info);
@@ -169,10 +169,20 @@ namespace mmind
 
             public static List<MechEyeDeviceInfo> enumerateMechEyeDeviceList()
             {
-                int size = GetMechEyeDeviceListSize();
-                MechEyeDeviceInfo[] arr = new MechEyeDeviceInfo[size];
-                EnumerateMechEyeDeviceList(arr);
-                return arr.ToList<MechEyeDeviceInfo>();
+                int size = 1;
+                MechEyeDeviceInfo[] infos = new MechEyeDeviceInfo[size];
+                infos[0] = new MechEyeDeviceInfo();
+                int structSize = Marshal.SizeOf(infos[0]);
+                IntPtr buffer = Marshal.AllocCoTaskMem(structSize * infos.Length);
+                EnumerateMechEyeDeviceList(ref buffer, ref size);
+                infos = new MechEyeDeviceInfo[size];
+                int offset = 0;
+                for (int i = 0; i < size; ++i)
+                {
+                    infos[i] = Marshal.PtrToStructure<MechEyeDeviceInfo>(new IntPtr(buffer.ToInt32() + offset));
+                    offset += structSize;
+                }
+                return infos.ToList<MechEyeDeviceInfo>();
             }
 
             public ErrorStatus connect(MechEyeDeviceInfo info)

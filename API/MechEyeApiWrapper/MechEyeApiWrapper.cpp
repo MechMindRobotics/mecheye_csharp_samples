@@ -1,41 +1,31 @@
 #include <comutil.h>
 #include <wtypes.h>
 #include <strsafe.h>
+#include <string>
 #include "MechEyeApi.h"
 #include "MechEyeDataTypeWrapper.h"
 
-std::string bstrToString(const BSTR & bstr)
+std::string charArrToString(const char* charPtr)
 {
-	_bstr_t bstr_t(bstr, true);
-	std::string str(bstr_t.operator const char *());
+	std::string str = charPtr;
 	return str;
 }
 
-BSTR stringToBSTR(const std::string& str)
+char* stringToCharArr(const std::string& str)
 {
-	if (str.size()) {
-		int wslen = ::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
-			str.data(), str.length(),
-			NULL, 0);
-
-		BSTR wsdata = ::SysAllocStringLen(NULL, wslen);
-		::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
-			str.data(), str.length(),
-			wsdata, wslen);
-		return wsdata;
-	}
-	else
-		return NULL;
+	char* charArr = new char[str.length() + 1];
+	strcpy_s(charArr, str.length() + 1, str.c_str());
+	return charArr;
 }
 
 MechEyeDeviceInfo infoToWrapper(const mmind::api::MechEyeDeviceInfo & info)
 {
 	MechEyeDeviceInfo wrapper;
-	wrapper.model = stringToBSTR(info.model);
-	wrapper.id = stringToBSTR(info.id);
-	wrapper.hardwareVersion = stringToBSTR(info.hardwareVersion);
-	wrapper.firmwareVersion = stringToBSTR(info.firmwareVersion);
-	wrapper.ipAddress = stringToBSTR(info.ipAddress);
+	wrapper.model = stringToCharArr(info.model);
+	wrapper.id = stringToCharArr(info.id);
+	wrapper.hardwareVersion = stringToCharArr(info.hardwareVersion);
+	wrapper.firmwareVersion = stringToCharArr(info.firmwareVersion);
+	wrapper.ipAddress = stringToCharArr(info.ipAddress);
 	wrapper.port = info.port;
 	return wrapper;
 }
@@ -43,11 +33,11 @@ MechEyeDeviceInfo infoToWrapper(const mmind::api::MechEyeDeviceInfo & info)
 mmind::api::MechEyeDeviceInfo wrapperToInfo(const MechEyeDeviceInfo & wrapper)
 {
 	mmind::api::MechEyeDeviceInfo info;
-	info.model = bstrToString(wrapper.model);
-	info.id = bstrToString(wrapper.id);
-	info.hardwareVersion = bstrToString(wrapper.hardwareVersion);
-	info.firmwareVersion = bstrToString(wrapper.firmwareVersion);
-	info.ipAddress = bstrToString(wrapper.ipAddress);
+	info.model = charArrToString(wrapper.model);
+	info.id = charArrToString(wrapper.id);
+	info.hardwareVersion = charArrToString(wrapper.hardwareVersion);
+	info.firmwareVersion = charArrToString(wrapper.firmwareVersion);
+	info.ipAddress = charArrToString(wrapper.ipAddress);
 	info.port = wrapper.port;
 	return info;
 }
@@ -81,13 +71,13 @@ ErrorStatus errorStatusToWrapper(mmind::api::ErrorStatus status)
 {
 	ErrorStatus wrapper;
 	wrapper.errorCode = status.errorCode;
-	wrapper.errorDescription = stringToBSTR(status.errorDescription);
+	wrapper.errorDescription = stringToCharArr(status.errorDescription);
 	return wrapper;
 }
 
 mmind::api::ErrorStatus wrapperToErrorStatus(ErrorStatus wrapper)
 {
-	mmind::api::ErrorStatus status(static_cast<mmind::api::ErrorStatus::ErrorCode>(wrapper.errorCode), bstrToString(wrapper.errorDescription));
+	mmind::api::ErrorStatus status(static_cast<mmind::api::ErrorStatus::ErrorCode>(wrapper.errorCode), charArrToString(wrapper.errorDescription));
 	return status;
 }
 
@@ -102,11 +92,15 @@ extern "C" __declspec(dllexport) int GetMechEyeDeviceListSize()
 	return infoVec.size();
 }
 
-extern "C" __declspec(dllexport) void EnumerateMechEyeDeviceList(MechEyeDeviceInfo * list)
+extern "C" __declspec(dllexport) void EnumerateMechEyeDeviceList(MechEyeDeviceInfo ** ppArray, int* pSize)
 {
 	std::vector<mmind::api::MechEyeDeviceInfo> infoVec = mmind::api::MechEyeDevice::enumerateMechEyeDeviceList();
+	MechEyeDeviceInfo* newArr = (MechEyeDeviceInfo*)CoTaskMemAlloc(sizeof(MechEyeDeviceInfo) * infoVec.size());
 	for (int i = 0; i < infoVec.size(); ++i)
-		list[i] = infoToWrapper(infoVec[i]);
+		newArr[i] = infoToWrapper(infoVec[i]);
+	CoTaskMemFree(*ppArray);
+	*ppArray = newArr;
+	*pSize = infoVec.size();
 }
 
 extern "C" __declspec(dllexport) ErrorStatus Connect(mmind::api::MechEyeDevice * devicePtr, MechEyeDeviceInfo * info)
@@ -498,12 +492,12 @@ extern "C" __declspec(dllexport) ErrorStatus SetCurrentUserSet(mmind::api::MechE
 		return errorStatusToWrapper(mmind::api::ErrorStatus(mmind::api::ErrorStatus::ErrorCode::MMIND_STATUS_INVALID_DEVICE, "Invalid Device!"));
 }
 
-extern "C" __declspec(dllexport) ErrorStatus GetCurrentUserSet(mmind::api::MechEyeDevice * devicePtr, BSTR * value)
+extern "C" __declspec(dllexport) ErrorStatus GetCurrentUserSet(mmind::api::MechEyeDevice * devicePtr, char** value)
 {
 	if (devicePtr != nullptr) {
 		std::string name;
 		ErrorStatus status = errorStatusToWrapper(devicePtr->getCurrentUserSet(name));
-		*value = stringToBSTR(name);
+		*value = stringToCharArr(name);
 		return status;
 	}
 	else

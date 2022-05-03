@@ -20,29 +20,17 @@ namespace mmind
         public struct ErrorStatus
         {
             public ErrorCode errorCode;
-
-            [MarshalAs(UnmanagedType.BStr)]
             public string errorDescription;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MechEyeDeviceInfo
         {
-            [MarshalAs(UnmanagedType.BStr)]
             public string model;
-
-            [MarshalAs(UnmanagedType.BStr)]
             public string id;
-
-            [MarshalAs(UnmanagedType.BStr)]
             public string hardwareVersion;
-            
-            [MarshalAs(UnmanagedType.BStr)]
             public string firmwareVersion;
-
-            [MarshalAs(UnmanagedType.BStr)]
             public string ipAddress;
-
             public ushort port;
         }
 
