@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Emgu.CV;
-using Emgu.CV.CvEnum;
 using mmind.apiSharp;
 
 class captureResultToOpenCV
