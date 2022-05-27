@@ -97,9 +97,9 @@ class sample
                     device.disconnect();
                     return 0;
                 }
-                pointXYZMap.at(m, n).z = d;
-                pointXYZMap.at(m, n).x = ((float)n - (float)deviceIntri.cx) * d / (float)deviceIntri.fx;
-                pointXYZMap.at(m, n).y = ((float)m - (float)deviceIntri.cy) * d / (float)deviceIntri.fy;
+                pointXYZMap.at(m, n).z = 0.001 * d; // mm to m
+                pointXYZMap.at(m, n).x = ((float)n - (float)deviceIntri.cx) * 0.001 * d / (float)deviceIntri.fx; // mm to m
+                pointXYZMap.at(m, n).y = ((float)m - (float)deviceIntri.cy) * 0.001 * d / (float)deviceIntri.fy; // mm to m
             }
 
         string pointCloudPath = "PointCloudXYZ.ply";
