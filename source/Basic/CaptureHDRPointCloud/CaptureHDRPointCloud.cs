@@ -71,7 +71,20 @@ class sample
         showError(device.setScan3DExposure(new List<double> { 5, 10 }));
 
         ColorMap color = new ColorMap();
-        showError(device.captureColorMap(ref color));
+
+        PointXYZBGRMap xyzbgr = new PointXYZBGRMap();
+        showError(device.capturePointXYZBGRMap(ref xyzbgr));
+
+        color.resize(xyzbgr.width(), xyzbgr.height());
+
+        for (uint i = 0; i < xyzbgr.height(); i++)
+            for (uint j = 0; j < xyzbgr.width(); j++)
+            {
+                color.at(i, j).b = xyzbgr.at(i, j).b;
+                color.at(i, j).g = xyzbgr.at(i, j).g;
+                color.at(i, j).r = xyzbgr.at(i, j).r;
+            }
+
         Mat color8UC3 = new Mat(unchecked((int)color.height()), unchecked((int)color.width()), DepthType.Cv8U, 3, color.data(), unchecked((int)color.width()) * 3);
 
         PointXYZMap pointXYZMap = new PointXYZMap();

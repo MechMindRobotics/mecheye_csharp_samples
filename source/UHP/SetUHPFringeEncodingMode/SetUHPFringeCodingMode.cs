@@ -23,29 +23,6 @@ class sample
         Console.WriteLine("");
     }
 
-    static void printDeviceIntri(DeviceIntri intri)
-    {
-        Console.WriteLine("CameraMatrix: ");
-        Console.WriteLine("    [{0}, 0, {1}]", intri.depthCameraIntri.fx, intri.depthCameraIntri.cx);
-        Console.WriteLine("    [0, {0}, {1}]", intri.depthCameraIntri.fy, intri.depthCameraIntri.cy);
-        Console.WriteLine("    [0, 0, 1]");
-        Console.WriteLine("");
-        Console.WriteLine("CameraDistCoeffs: ");
-        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", 
-            intri.depthCameraIntri.k1, 
-            intri.depthCameraIntri.k2, 
-            intri.depthCameraIntri.p1, 
-            intri.depthCameraIntri.p2, 
-            intri.depthCameraIntri.k3);
-        Console.WriteLine("");
-    }
-
-    static void printDeviceResolution(DeviceResolution deviceResolution)
-    {
-        Console.WriteLine("Color map size: (width : {0}, height : {1}).", deviceResolution.colorMapWidth, deviceResolution.colorMapHeight);
-        Console.WriteLine("Depth map size: (width : {0}, height : {1}).", deviceResolution.depthMapWidth, deviceResolution.depthMapHeight);
-    }
-
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
@@ -90,13 +67,10 @@ class sample
 
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
-        MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo();
-        showError(device.getDeviceInfo(ref deviceInfo));
-        printDeviceInfo(deviceInfo);
-
-        DeviceResolution deviceResolution = new DeviceResolution();
-        showError(device.getDeviceResolution(ref deviceResolution));
-        printDeviceResolution(deviceResolution);
+        UhpFringeCodingMode mode = new UhpFringeCodingMode { };
+        showError(device.getUhpFringeCodingMode(ref mode));
+        mode = UhpFringeCodingMode.Fast;
+        showError(device.setUhpFringeCodingMode(mode));
 
         device.disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
@@ -104,4 +78,3 @@ class sample
         return 0;
     }
 }
-

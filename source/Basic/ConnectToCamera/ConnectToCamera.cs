@@ -50,7 +50,7 @@ class captureResultToOpenCV
             Console.WriteLine("Input invalid! Please enter the device index you wnat to connect: ");
         }
 
-        //MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo() { model = "", id = "", hardwareVersion = "", firmwareVersion = "1.5.0", ipAddress = "127.0.0.1", port = 5577 };
+       // MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo() { model = "", id = "", hardwareVersion = "", firmwareVersion = "1.6.0", ipAddress = "127.0.0.1", port = 5577 };
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
