@@ -65,7 +65,7 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
     Set the fringe coding mode for a Mech-Eye Laser camera.
   - [SetLaserPowerLevel](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/Laser/SetLaserPowerLevel)  
     Set the laser power level for a Mech-Eye Laser camera.
- **UHP**
+- **UHP**
   - [SetUHPCaptureMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/UHP/SetUHPCaptureMode)  
     set capture mode for the Mech-Eye Device(UHP camera).
   - [SetUHPFringeCodingMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/main/source/UHP/SetUHPFringeCodingMode)  
