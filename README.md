@@ -66,8 +66,8 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
   - [SetLaserPowerLevel](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/Laser/SetLaserPowerLevel)  
     Set the output power of the laser projector in percentage of max power. This affects the intensity of the laser light.
 - **UHP**
-  - [SetUHPCaptureMode](https://github.com/MechMindRobotics/mecheye_cpp_samples/tree/master/source/UHP/SetUHPCaptureMode)  
-    set the capture mode (capture images with camera 1, with camera 2, or with both 2D cameras and compose the outputs).
-  - [SetUHPFringeCodingMode](https://github.com/MechMindRobotics/mecheye_cpp_samples/tree/master/source/UHP/SetUHPFringeCodingMode)  
-    set the coding mode of the structured light pattern.
+  - [SetUHPCaptureMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/UHP/SetUHPCaptureMode)  
+    Set the capture mode (capture images with camera 1, with camera 2, or with both 2D cameras and compose the outputs).
+  - [SetUHPFringeCodingMode](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/source/UHP/SetUHPFringeCodingMode)  
+    Set the coding mode of the structured light pattern.
     
