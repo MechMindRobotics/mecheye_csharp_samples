@@ -16,7 +16,7 @@ Samples are divided into five categories, **Basic**, **Advanced**, **Util**, **L
 - **Basic**: camera connection and basic capturing functions.
 - **Advanced**: advanced capturing functions.
 - **Util**: obtain information from a camera and set camera parameters.
-- **Laser**: for Laser/LSR Series cameras only. 
+- **Laser**: for Laser/LSR series cameras only. 
 - **UHP**: for UHP series cameras only. 
 
 The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) to be installed via NuGet.
