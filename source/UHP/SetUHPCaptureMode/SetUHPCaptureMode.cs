@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using mmind.apiSharp;
 
-class captureResultToOpenCV
+class sample
 {
     static void showError(ErrorStatus status)
     {
@@ -22,6 +22,7 @@ class captureResultToOpenCV
         Console.WriteLine("............................");
         Console.WriteLine("");
     }
+
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
@@ -29,7 +30,7 @@ class captureResultToOpenCV
 
         if (deviceInfoList.Count == 0)
         {
-            Console.WriteLine("No Mech-Eye device found.");
+            Console.WriteLine("No Mech-Eye Device found.");
             return -1;
         }
 
@@ -50,7 +51,7 @@ class captureResultToOpenCV
             Console.WriteLine("Input invalid! Please enter the device index you wnat to connect: ");
         }
 
-       // MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo() { model = "", id = "", hardwareVersion = "", firmwareVersion = "1.6.0", ipAddress = "127.0.0.1", port = 5577 };
+        //MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo() { model = "", id = "", hardwareVersion = "", firmwareVersion = "1.5.0", ipAddress = "127.0.0.1", port = 5577 };
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
@@ -64,7 +65,12 @@ class captureResultToOpenCV
             return -1;
         }
 
-        Console.WriteLine("Connected from the Mech-Eye device successfully.");
+        Console.WriteLine("Connected to the Mech-Eye device successfully.");
+
+        UhpCaptureMode mode = new UhpCaptureMode { };
+        showError(device.getUhpCaptureMode(ref mode));
+        mode = UhpCaptureMode.Merge;
+        showError(device.setUhpCaptureMode(mode));
 
         device.disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");

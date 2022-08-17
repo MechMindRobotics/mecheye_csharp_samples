@@ -26,12 +26,17 @@ class sample
     static void printDeviceIntri(DeviceIntri intri)
     {
         Console.WriteLine("CameraMatrix: ");
-        Console.WriteLine("    [{0}, 0, {1}]", intri.fx, intri.cx);
-        Console.WriteLine("    [0, {0}, {1}]", intri.fy, intri.cy);
+        Console.WriteLine("    [{0}, 0, {1}]", intri.depthCameraIntri.fx, intri.depthCameraIntri.cx);
+        Console.WriteLine("    [0, {0}, {1}]", intri.depthCameraIntri.fy, intri.depthCameraIntri.cy);
         Console.WriteLine("    [0, 0, 1]");
         Console.WriteLine("");
         Console.WriteLine("CameraDistCoeffs: ");
-        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.k1, intri.k2, intri.p1, intri.p2, intri.k3);
+        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", 
+            intri.depthCameraIntri.k1, 
+            intri.depthCameraIntri.k2, 
+            intri.depthCameraIntri.p1, 
+            intri.depthCameraIntri.p2, 
+            intri.depthCameraIntri.k3);
         Console.WriteLine("");
     }
 
