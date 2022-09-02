@@ -129,7 +129,7 @@ class sample
         Console.WriteLine("Cloud smooth mode enum : {0}, cloud outlier filter mode enum : {1}", cloudSmoothMode, cloudOutlierFilterMode);
 
         showError(device.saveAllSettingsToUserSets());
-        Console.WriteLine("save all parammeters to current user set.");
+        Console.WriteLine("Save all Parameters to current user set.");
 
         device.disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
