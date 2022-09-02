@@ -87,7 +87,7 @@ class sample
         Console.WriteLine("");
 
         showError(device.saveAllSettingsToUserSets());
-        Console.WriteLine("save all parammeters to current user set.");
+        Console.WriteLine("Save all Parameters to current user set.");
 
         device.disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
