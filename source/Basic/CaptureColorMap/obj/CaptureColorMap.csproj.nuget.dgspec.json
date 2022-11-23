@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\mech-mind_lcl\\Desktop\\c#\\samples\\source\\Basic\\captureColorMap\\CaptureColorMap.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\mech-mind_lcl\\Desktop\\c#\\samples\\source\\Basic\\captureColorMap\\CaptureColorMap.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mech-mind_lcl\\Desktop\\c#\\samples\\source\\Basic\\captureColorMap\\CaptureColorMap.csproj",
+        "projectName": "CaptureColorMap",
+        "projectPath": "C:\\Users\\mech-mind_lcl\\Desktop\\c#\\samples\\source\\Basic\\captureColorMap\\CaptureColorMap.csproj",
+        "packagesPath": "C:\\Users\\mech-mind_lcl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mech-mind_lcl\\Desktop\\c#\\samples\\source\\Basic\\captureColorMap\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "D:\\VsC++some\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mech-mind_lcl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "Emgu.CV.runtime.windows": {
+              "target": "Package",
+              "version": "[4.5.5.4823, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

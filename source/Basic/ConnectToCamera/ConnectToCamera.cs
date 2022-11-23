@@ -25,7 +25,7 @@ class captureResultToOpenCV
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -54,9 +54,9 @@ class captureResultToOpenCV
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -66,7 +66,7 @@ class captureResultToOpenCV
 
         Console.WriteLine("Connected from the Mech-Eye device successfully.");
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

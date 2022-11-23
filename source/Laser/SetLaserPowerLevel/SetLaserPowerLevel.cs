@@ -26,7 +26,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -55,9 +55,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -68,15 +68,15 @@ class sample
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         LaserSettings laserSettings = new LaserSettings { };
-        showError(device.getLaserSettings(ref laserSettings));
-        Console.WriteLine("Old PowerLevel: {0}", laserSettings.PowerLevel);
-        laserSettings.PowerLevel = 40;
-        showError(device.setLaserSettings(laserSettings));
+        showError(device.GetLaserSettings(ref laserSettings));
+        Console.WriteLine("Old PowerLevel: {0}", laserSettings.powerLevel);
+        laserSettings.powerLevel = 40;
+        showError(device.SetLaserSettings(laserSettings));
 
-        showError(device.getLaserSettings(ref laserSettings));
-        Console.WriteLine("New PowerLevel: {0}", laserSettings.PowerLevel);
+        showError(device.GetLaserSettings(ref laserSettings));
+        Console.WriteLine("New PowerLevel: {0}", laserSettings.powerLevel);
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

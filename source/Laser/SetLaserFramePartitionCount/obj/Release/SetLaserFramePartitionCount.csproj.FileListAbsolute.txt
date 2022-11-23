@@ -1,0 +1,9 @@
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetFramePartitionCount.exe.config
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetFramePartitionCount.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetFramePartitionCount.pdb
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFramePartitionCount\obj\Release\SetLaserFramePartitionCount.csproj.AssemblyReference.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFramePartitionCount\obj\Release\SetLaserFramePartitionCount.csproj.SuggestedBindingRedirects.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFramePartitionCount\obj\Release\SetLaserFramePartitionCount.csproj.CoreCompileInputs.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFramePartitionCount\obj\Release\SetLaserFramePartitionCount.csproj.CopyComplete
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFramePartitionCount\obj\Release\SetFramePartitionCount.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFramePartitionCount\obj\Release\SetFramePartitionCount.pdb

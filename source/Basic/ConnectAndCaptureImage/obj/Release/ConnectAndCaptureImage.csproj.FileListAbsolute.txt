@@ -1,0 +1,9 @@
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\ConnectAndCaptureImage.exe.config
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\ConnectAndCaptureImage.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\ConnectAndCaptureImage.pdb
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectAndCaptureImage\obj\Release\ConnectAndCaptureImage.csproj.AssemblyReference.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectAndCaptureImage\obj\Release\ConnectAndCaptureImage.csproj.SuggestedBindingRedirects.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectAndCaptureImage\obj\Release\ConnectAndCaptureImage.csproj.CoreCompileInputs.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectAndCaptureImage\obj\Release\ConnectAndCaptureImage.csproj.CopyComplete
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectAndCaptureImage\obj\Release\ConnectAndCaptureImage.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectAndCaptureImage\obj\Release\ConnectAndCaptureImage.pdb

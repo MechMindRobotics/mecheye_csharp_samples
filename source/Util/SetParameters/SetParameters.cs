@@ -26,7 +26,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -55,9 +55,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -68,11 +68,11 @@ class sample
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo();
-        showError(device.getDeviceInfo(ref deviceInfo));
+        showError(device.GetDeviceInfo(ref deviceInfo));
         printDeviceInfo(deviceInfo);
 
         List<string> userSets = new List<string>();
-        showError(device.getAllUserSets(ref userSets));
+        showError(device.GetAllUserSets(ref userSets));
 
         Console.WriteLine("All user sets : ");
         for (int i = 0; i < userSets.Count; ++i)
@@ -83,55 +83,55 @@ class sample
         Console.WriteLine("");
 
         string currentUserSet = "";
-        showError(device.getCurrentUserSet(ref currentUserSet));
+        showError(device.GetCurrentUserSet(ref currentUserSet));
         Console.WriteLine("Current user set: {0}", currentUserSet);
 
-        showError(device.setCurrentUserSet(userSets[0]));
+        showError(device.SetCurrentUserSet(userSets[0]));
         Console.WriteLine("Set \"{0}\" as the current user set.", userSets[0]);
         Console.WriteLine("");
 
-        showError(device.setScan3DExposure(new List<double> { 59, 0.1, 99 }));
+        showError(device.SetScan3DExposure(new List<double> { 59, 0.1, 99 }));
 
         List<double> exposureSequence = new List<double>();
-        showError(device.getScan3DExposure(ref exposureSequence));
+        showError(device.GetScan3DExposure(ref exposureSequence));
 
         Console.WriteLine("The 3D scanning exposure multiplier : {0}.", exposureSequence.Count);
         for (int i = 0; i < exposureSequence.Count; ++i)
             Console.WriteLine("3D scanning exposure time {0} : {1} ms.", i + 1, exposureSequence[i]);
 
-        showError(device.setDepthRange(new DepthRange(100, 1000)));
+        showError(device.SetDepthRange(new DepthRange(100, 1000)));
         DepthRange depthRange = new DepthRange();
-        showError(device.getDepthRange(ref depthRange));
+        showError(device.GetDepthRange(ref depthRange));
         Console.WriteLine("3D Scanning depth lower limit : {0} mm, depth upper limit : {1} mm.", depthRange.lower, depthRange.upper);
 
-        showError(device.setScan3DROI(new ROI(0, 0, 500, 500)));
+        showError(device.SetScan3DROI(new ROI(0, 0, 500, 500)));
         ROI scan3dRoi = new ROI();
-        showError(device.getScan3DROI(ref scan3dRoi));
+        showError(device.GetScan3DROI(ref scan3dRoi));
         Console.WriteLine("3D Scanning ROI topLeftX : {0}, topLeftY : {1}, width : {2}, height : {3}", scan3dRoi.x, scan3dRoi.y, scan3dRoi.width, scan3dRoi.height);
 
-        showError(device.setScan2DExposureMode(Scan2DExposureMode.Timed));
-        showError(device.setScan2DExposureTime(999));
+        showError(device.SetScan2DExposureMode(Scan2DExposureMode.Timed));
+        showError(device.SetScan2DExposureTime(999));
 
         Scan2DExposureMode exposureMode2D = new Scan2DExposureMode();
         double scan2DExposureTime = new double();
-        showError(device.getScan2DExposureMode(ref exposureMode2D));
-        showError(device.getScan2DExposureTime(ref scan2DExposureTime));
+        showError(device.GetScan2DExposureMode(ref exposureMode2D));
+        showError(device.GetScan2DExposureTime(ref scan2DExposureTime));
         Console.WriteLine("2D scanning exposure mode enum : {0}, exposure time : {1} ms.", exposureMode2D, scan2DExposureTime);
 
-        showError(device.setCloudSmoothMode(CloudSmoothMode.Normal));
-        showError(device.setCloudOutlierFilterMode(CloudOutlierFilterMode.Normal));
+        showError(device.SetCloudSmoothMode(CloudSmoothMode.Normal));
+        showError(device.SetCloudOutlierFilterMode(CloudOutlierFilterMode.Normal));
 
         CloudSmoothMode cloudSmoothMode = new CloudSmoothMode();
         CloudOutlierFilterMode cloudOutlierFilterMode = new CloudOutlierFilterMode();
-        showError(device.getCloudSmoothMode(ref cloudSmoothMode));
-        showError(device.getCloudOutlierFilterMode(ref cloudOutlierFilterMode));
+        showError(device.GetCloudSmoothMode(ref cloudSmoothMode));
+        showError(device.GetCloudOutlierFilterMode(ref cloudOutlierFilterMode));
 
         Console.WriteLine("Cloud smooth mode enum : {0}, cloud outlier filter mode enum : {1}", cloudSmoothMode, cloudOutlierFilterMode);
 
-        showError(device.saveAllSettingsToUserSets());
+        showError(device.SaveAllSettingsToUserSets());
         Console.WriteLine("save all parammeters to current user set.");
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

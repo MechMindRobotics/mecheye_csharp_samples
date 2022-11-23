@@ -26,7 +26,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -55,9 +55,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -67,12 +67,12 @@ class sample
 
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
-        showError(device.setDepthRange(new DepthRange(100, 1000)));
+        showError(device.SetDepthRange(new DepthRange(100, 1000)));
         DepthRange depthRange = new DepthRange();
-        showError(device.getDepthRange(ref depthRange));
+        showError(device.GetDepthRange(ref depthRange));
         Console.WriteLine("3D Scanning depth lower limit : {0} mm, depth upper limit : {1} mm.", depthRange.lower, depthRange.upper);
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

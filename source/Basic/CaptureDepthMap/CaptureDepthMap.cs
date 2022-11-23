@@ -27,7 +27,7 @@ class captureResultToOpenCV
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -56,9 +56,9 @@ class captureResultToOpenCV
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -69,10 +69,10 @@ class captureResultToOpenCV
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         DepthMap depth = new DepthMap();
-        showError(device.captureDepthMap(ref depth));
+        showError(device.CaptureDepthMap(ref depth));
         string depthFile = "DepthMap.png";
         Mat depth8U = new Mat();
-        Mat depth32F = new Mat(unchecked((int)depth.height()), unchecked((int)depth.width()), DepthType.Cv32F, 1, depth.data(), unchecked((int)depth.width()) * 4);
+        Mat depth32F = new Mat(unchecked((int)depth.Height()), unchecked((int)depth.Width()), DepthType.Cv32F, 1, depth.Data(), unchecked((int)depth.Width()) * 4);
         double minDepth = 1, maxDepth = 1;
         System.Drawing.Point minLoc = new System.Drawing.Point(), maxLoc = new System.Drawing.Point();
         CvInvoke.MinMaxLoc(depth32F, ref minDepth, ref maxDepth, ref minLoc, ref maxLoc);
@@ -80,7 +80,7 @@ class captureResultToOpenCV
         CvInvoke.Imwrite(depthFile, depth8U);
         Console.WriteLine("Capture and save depth image: {0}", depthFile);
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

@@ -27,7 +27,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -56,9 +56,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -68,24 +68,37 @@ class sample
 
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
-        showError(device.setScan3DExposure(new List<double> { 5, 10 }));
+        showError(device.SetScan3DExposure(new List<double> { 5, 10 }));
 
         ColorMap color = new ColorMap();
-        showError(device.captureColorMap(ref color));
-        Mat color8UC3 = new Mat(unchecked((int)color.height()), unchecked((int)color.width()), DepthType.Cv8U, 3, color.data(), unchecked((int)color.width()) * 3);
+
+        PointXYZBGRMap xyzbgr = new PointXYZBGRMap();
+        showError(device.CapturePointXYZBGRMap(ref xyzbgr));
+
+        color.Resize(xyzbgr.Width(), xyzbgr.Height());
+
+        for (uint i = 0; i < xyzbgr.Height(); i++)
+            for (uint j = 0; j < xyzbgr.Width(); j++)
+            {
+                color.At(i, j).b = xyzbgr.At(i, j).b;
+                color.At(i, j).g = xyzbgr.At(i, j).g;
+                color.At(i, j).r = xyzbgr.At(i, j).r;
+            }
+
+        Mat color8UC3 = new Mat(unchecked((int)color.Height()), unchecked((int)color.Width()), DepthType.Cv8U, 3, color.Data(), unchecked((int)color.Width()) * 3);
 
         PointXYZMap pointXYZMap = new PointXYZMap();
-        showError(device.capturePointXYZMap(ref pointXYZMap));
+        showError(device.CapturePointXYZMap(ref pointXYZMap));
         string pointCloudPath = "PointCloudXYZ.ply";
         string pointCloudColorPath = "PointCloudXYZRGB.ply";
-        Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.height()), unchecked((int)pointXYZMap.width()), DepthType.Cv32F, 3, pointXYZMap.data(), unchecked((int)pointXYZMap.width()) * 12);
+        Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.Height()), unchecked((int)pointXYZMap.Width()), DepthType.Cv32F, 3, pointXYZMap.Data(), unchecked((int)pointXYZMap.Width()) * 12);
 
         CvInvoke.WriteCloud(pointCloudPath, depth32FC3);
         Console.WriteLine("PointCloudXYZ has : {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
         CvInvoke.WriteCloud(pointCloudColorPath, depth32FC3, color8UC3);
         Console.WriteLine("PointCloudXYZRGB has: {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;
