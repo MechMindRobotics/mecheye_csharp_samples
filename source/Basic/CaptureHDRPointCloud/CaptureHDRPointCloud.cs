@@ -84,7 +84,6 @@ class sample
                 color.At(i, j).g = xyzbgr.At(i, j).g;
                 color.At(i, j).r = xyzbgr.At(i, j).r;
             }
-
         Mat color8UC3 = new Mat(unchecked((int)color.Height()), unchecked((int)color.Width()), DepthType.Cv8U, 3, color.Data(), unchecked((int)color.Width()) * 3);
 
         PointXYZMap pointXYZMap = new PointXYZMap();
