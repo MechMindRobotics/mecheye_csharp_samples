@@ -1,0 +1,9 @@
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\CaptureTimedAndPeriodically.exe.config
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\CaptureTimedAndPeriodically.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\CaptureTimedAndPeriodically.pdb
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureTimedAndPeriodically\obj\Release\CaptureTimedAndPeriodically.csproj.AssemblyReference.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureTimedAndPeriodically\obj\Release\CaptureTimedAndPeriodically.csproj.SuggestedBindingRedirects.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureTimedAndPeriodically\obj\Release\CaptureTimedAndPeriodically.csproj.CoreCompileInputs.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureTimedAndPeriodically\obj\Release\CaptureTimedAndPeriodically.csproj.CopyComplete
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureTimedAndPeriodically\obj\Release\CaptureTimedAndPeriodically.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureTimedAndPeriodically\obj\Release\CaptureTimedAndPeriodically.pdb

@@ -27,20 +27,20 @@ class Sample
     private static async Task capture(MechEyeDevice device)
     {
         MechEyeDeviceInfo info = new MechEyeDeviceInfo();
-        showError(device.getDeviceInfo(ref info));
+        showError(device.GetDeviceInfo(ref info));
 
         ColorMap color = new ColorMap();
-        showError(device.captureColorMap(ref color));
+        showError(device.CaptureColorMap(ref color));
         string colorFile = "ColorMap_" + info.id + ".png";
-        Mat color8UC3 = new Mat(unchecked((int)color.height()), unchecked((int)color.width()), DepthType.Cv8U, 3, color.data(), unchecked((int)color.width()) * 3);
+        Mat color8UC3 = new Mat(unchecked((int)color.Height()), unchecked((int)color.Width()), DepthType.Cv8U, 3, color.Data(), unchecked((int)color.Width()) * 3);
         CvInvoke.Imwrite(colorFile, color8UC3);
         Console.WriteLine("Capture and save color image: {0}", colorFile);
 
         DepthMap depth = new DepthMap();
-        showError(device.captureDepthMap(ref depth));
+        showError(device.CaptureDepthMap(ref depth));
         string depthFile = "DepthMap_" + info.id + ".png";
         Mat depth8U = new Mat();
-        Mat depth32F = new Mat(unchecked((int)depth.height()), unchecked((int)depth.width()), DepthType.Cv32F, 1, depth.data(), unchecked((int)depth.width()) * 4);
+        Mat depth32F = new Mat(unchecked((int)depth.Height()), unchecked((int)depth.Width()), DepthType.Cv32F, 1, depth.Data(), unchecked((int)depth.Width()) * 4);
         double minDepth = 1, maxDepth = 1;
         System.Drawing.Point minLoc = new System.Drawing.Point(), maxLoc = new System.Drawing.Point();
         CvInvoke.MinMaxLoc(depth32F, ref minDepth, ref maxDepth, ref minLoc, ref maxLoc);
@@ -49,10 +49,10 @@ class Sample
         Console.WriteLine("Capture and save depth image: {0}", depthFile);
 
         PointXYZMap pointXYZMap = new PointXYZMap();
-        showError(device.capturePointXYZMap(ref pointXYZMap));
+        showError(device.CapturePointXYZMap(ref pointXYZMap));
         string pointCloudPath = "PointCloudXYZ_" + info.id + ".ply";
         string pointCloudColorPath = "PointCloudXYZRGB_" + info.id + ".ply";
-        Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.height()), unchecked((int)pointXYZMap.width()), DepthType.Cv32F, 3, pointXYZMap.data(), unchecked((int)pointXYZMap.width()) * 12);
+        Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.Height()), unchecked((int)pointXYZMap.Width()), DepthType.Cv32F, 3, pointXYZMap.Data(), unchecked((int)pointXYZMap.Width()) * 12);
 
         CvInvoke.WriteCloud(pointCloudPath, depth32FC3);
         Console.WriteLine("PointCloudXYZ has : {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
@@ -63,7 +63,7 @@ class Sample
     static async void captureSimultaneouslyMultiCamera()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -99,7 +99,7 @@ class Sample
         foreach (int index in indices)
         {
             MechEyeDevice device = new MechEyeDevice();
-            showError(device.connect(deviceInfoList[index]));
+            showError(device.Connect(deviceInfoList[index]));
             tasks.Add(capture(device));
             devices.Add(device);
         }
@@ -108,7 +108,7 @@ class Sample
 
         foreach (MechEyeDevice device in devices)
         {
-            device.disconnect();
+            device.Disconnect();
         }
     }
 

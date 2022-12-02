@@ -26,7 +26,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -55,9 +55,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -68,17 +68,17 @@ class sample
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         LaserSettings laserSettings = new LaserSettings { };
-        showError(device.getLaserSettings(ref laserSettings));
-        Console.WriteLine("FrameRangeStart: {0}, FrameRangeEnd: {1}", laserSettings.FrameRangeStart, laserSettings.FrameRangeEnd);
+        showError(device.GetLaserSettings(ref laserSettings));
+        Console.WriteLine("FrameRangeStart: {0}, FrameRangeEnd: {1}", laserSettings.frameRangeStart, laserSettings.frameRangeEnd);
 
-        laserSettings.FrameRangeStart = 51;
-        laserSettings.FrameRangeEnd = 90;
-        showError(device.setLaserSettings(laserSettings));
+        laserSettings.frameRangeStart = 51;
+        laserSettings.frameRangeEnd = 90;
+        showError(device.SetLaserSettings(laserSettings));
 
-        showError(device.getLaserSettings(ref laserSettings));
-        Console.WriteLine("FrameRangeStart: {0}, FrameRangeEnd: {1}", laserSettings.FrameRangeStart, laserSettings.FrameRangeEnd);
+        showError(device.GetLaserSettings(ref laserSettings));
+        Console.WriteLine("FrameRangeStart: {0}, FrameRangeEnd: {1}", laserSettings.frameRangeStart, laserSettings.frameRangeEnd);
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

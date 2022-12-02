@@ -1,0 +1,9 @@
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetDepthRange.exe.config
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetDepthRange.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetDepthRange.pdb
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setDepthRange\obj\Release\SetDepthRange.csproj.AssemblyReference.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setDepthRange\obj\Release\SetDepthRange.csproj.SuggestedBindingRedirects.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setDepthRange\obj\Release\SetDepthRange.csproj.CoreCompileInputs.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setDepthRange\obj\Release\SetDepthRange.csproj.CopyComplete
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setDepthRange\obj\Release\SetDepthRange.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setDepthRange\obj\Release\SetDepthRange.pdb

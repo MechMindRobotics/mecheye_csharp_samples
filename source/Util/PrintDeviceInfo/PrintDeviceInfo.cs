@@ -25,14 +25,28 @@ class sample
 
     static void printDeviceIntri(DeviceIntri intri)
     {
-        Console.WriteLine("CameraMatrix: ");
-        Console.WriteLine("    [{0}, 0, {1}]", intri.fx, intri.cx);
-        Console.WriteLine("    [0, {0}, {1}]", intri.fy, intri.cy);
+        Console.WriteLine("Texture Camera Matrix: ");
+        Console.WriteLine("    [{0}, 0, {1}]", intri.textureCameraIntri.fx, intri.textureCameraIntri.cx);
+        Console.WriteLine("    [0, {0}, {1}]", intri.textureCameraIntri.fy, intri.textureCameraIntri.cy);
         Console.WriteLine("    [0, 0, 1]");
         Console.WriteLine("");
-        Console.WriteLine("CameraDistCoeffs: ");
-        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.k1, intri.k2, intri.p1, intri.p2, intri.k3);
+        Console.WriteLine("Texture Camera Distortion Coefficients: ");
+        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.textureCameraIntri.k1, intri.textureCameraIntri.k2, intri.textureCameraIntri.p1, intri.textureCameraIntri.p2, intri.textureCameraIntri.k3);
         Console.WriteLine("");
+        Console.WriteLine("Depth Camera Matrix: ");
+        Console.WriteLine("    [{0}, 0, {1}]", intri.depthCameraIntri.fx, intri.depthCameraIntri.cx);
+        Console.WriteLine("    [0, {0}, {1}]", intri.depthCameraIntri.fy, intri.depthCameraIntri.cy);
+        Console.WriteLine("    [0, 0, 1]");
+        Console.WriteLine("");
+        Console.WriteLine("Depth Camera Distortion Coefficients: ");
+        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.depthCameraIntri.k1, intri.depthCameraIntri.k2, intri.depthCameraIntri.p1, intri.depthCameraIntri.p2, intri.depthCameraIntri.k3);
+        Console.WriteLine("");
+        Console.WriteLine("Rotation: from Depth Camera to Texture Camera: ");
+        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r1, intri.textureToDepth.r2, intri.textureToDepth.r3);
+        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r4, intri.textureToDepth.r5, intri.textureToDepth.r6);
+        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r7, intri.textureToDepth.r8, intri.textureToDepth.r9);
+        Console.WriteLine("Translation: from Depth Camera to Texture Camera: ");
+        Console.WriteLine("    X: {0}mm, Y: {1}mm, Z: {2}mm", intri.textureToDepth.x, intri.textureToDepth.y, intri.textureToDepth.z);
     }
 
     static void printDeviceResolution(DeviceResolution deviceResolution)
@@ -44,7 +58,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -73,9 +87,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -86,14 +100,14 @@ class sample
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo();
-        showError(device.getDeviceInfo(ref deviceInfo));
+        showError(device.GetDeviceInfo(ref deviceInfo));
         printDeviceInfo(deviceInfo);
 
         DeviceResolution deviceResolution = new DeviceResolution();
-        showError(device.getDeviceResolution(ref deviceResolution));
+        showError(device.GetDeviceResolution(ref deviceResolution));
         printDeviceResolution(deviceResolution);
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

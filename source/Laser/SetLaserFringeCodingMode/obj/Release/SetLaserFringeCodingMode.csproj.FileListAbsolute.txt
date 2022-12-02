@@ -1,0 +1,9 @@
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetLaserFringeCodingMode.exe.config
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetLaserFringeCodingMode.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetLaserFringeCodingMode.pdb
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFringeCodingMode\obj\Release\SetLaserFringeCodingMode.csproj.AssemblyReference.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFringeCodingMode\obj\Release\SetLaserFringeCodingMode.csproj.SuggestedBindingRedirects.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFringeCodingMode\obj\Release\SetLaserFringeCodingMode.csproj.CoreCompileInputs.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFringeCodingMode\obj\Release\SetLaserFringeCodingMode.csproj.CopyComplete
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFringeCodingMode\obj\Release\SetLaserFringeCodingMode.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFringeCodingMode\obj\Release\SetLaserFringeCodingMode.pdb

@@ -25,14 +25,28 @@ class sample
 
     static void printDeviceIntri(DeviceIntri intri)
     {
-        Console.WriteLine("CameraMatrix: ");
-        Console.WriteLine("    [{0}, 0, {1}]", intri.fx, intri.cx);
-        Console.WriteLine("    [0, {0}, {1}]", intri.fy, intri.cy);
+        Console.WriteLine("Texture Camera Matrix: ");
+        Console.WriteLine("    [{0}, 0, {1}]", intri.textureCameraIntri.fx, intri.textureCameraIntri.cx);
+        Console.WriteLine("    [0, {0}, {1}]", intri.textureCameraIntri.fy, intri.textureCameraIntri.cy);
         Console.WriteLine("    [0, 0, 1]");
         Console.WriteLine("");
-        Console.WriteLine("CameraDistCoeffs: ");
-        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.k1, intri.k2, intri.p1, intri.p2, intri.k3);
+        Console.WriteLine("Texture Camera Distortion Coefficients: ");
+        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.textureCameraIntri.k1, intri.textureCameraIntri.k2, intri.textureCameraIntri.p1, intri.textureCameraIntri.p2, intri.textureCameraIntri.k3);
         Console.WriteLine("");
+        Console.WriteLine("Depth Camera Matrix: ");
+        Console.WriteLine("    [{0}, 0, {1}]", intri.depthCameraIntri.fx, intri.depthCameraIntri.cx);
+        Console.WriteLine("    [0, {0}, {1}]", intri.depthCameraIntri.fy, intri.depthCameraIntri.cy);
+        Console.WriteLine("    [0, 0, 1]");
+        Console.WriteLine("");
+        Console.WriteLine("Depth Camera Distortion Coefficients: ");
+        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.depthCameraIntri.k1, intri.depthCameraIntri.k2, intri.depthCameraIntri.p1, intri.depthCameraIntri.p2, intri.depthCameraIntri.k3);
+        Console.WriteLine("");
+        Console.WriteLine("Rotation: from Depth Camera to Texture Camera: ");
+        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r1, intri.textureToDepth.r2, intri.textureToDepth.r3);
+        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r4, intri.textureToDepth.r5, intri.textureToDepth.r6);
+        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r7, intri.textureToDepth.r8, intri.textureToDepth.r9);
+        Console.WriteLine("Translation: from Depth Camera to Texture Camera: ");
+        Console.WriteLine("    X: {0}mm, Y: {1}mm, Z: {2}mm", intri.textureToDepth.x, intri.textureToDepth.y, intri.textureToDepth.z);
     }
 
     static void printDeviceResolution(DeviceResolution deviceResolution)
@@ -44,7 +58,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye device...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -73,9 +87,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -86,57 +100,57 @@ class sample
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         DeviceResolution deviceResolution = new DeviceResolution();
-        showError(device.getDeviceResolution(ref deviceResolution));
+        showError(device.GetDeviceResolution(ref deviceResolution));
         printDeviceResolution(deviceResolution);
 
         ColorMap color = new ColorMap();
-        showError(device.captureColorMap(ref color));
-        Console.WriteLine("Color map size is width: {0} height: {1}.", color.width(), color.height());
+        showError(device.CaptureColorMap(ref color));
+        Console.WriteLine("Color map size is width: {0} height: {1}.", color.Width(), color.Height());
         uint row = 0;
         uint col = 0;
         try
         {
-            ElementColor colorElem = color.at(row, col);
+            ElementColor colorElem = color.At(row, col);
             Console.WriteLine("Color map element at ({0},{1}) is R: {2} G: {3} B: {4}.", row, col, colorElem.r, colorElem.g, colorElem.b);
         }
         catch (Exception e)
         {
             Console.WriteLine("Exception: {0}", e);
-            device.disconnect();
+            device.Disconnect();
             return 0;
         }
 
         DepthMap depth = new DepthMap();
-        showError(device.captureDepthMap(ref depth));
-        Console.WriteLine("Depth map size is width: {0} height: {1}.", depth.width(), depth.height());
+        showError(device.CaptureDepthMap(ref depth));
+        Console.WriteLine("Depth map size is width: {0} height: {1}.", depth.Width(), depth.Height());
         try
         {
-            ElementDepth depthElem = depth.at(row, col);
+            ElementDepth depthElem = depth.At(row, col);
             Console.WriteLine("Depth map element at ({0},{1}) is depth: {2} mm.", row, col, depthElem.d);
         }
         catch (Exception e)
         {
             Console.WriteLine("Exception: {0}", e);
-            device.disconnect();
+            device.Disconnect();
             return 0;
         }
 
         PointXYZMap pointXYZMap = new PointXYZMap();
-        showError(device.capturePointXYZMap(ref pointXYZMap));
-        Console.WriteLine("Pointcloud Map size is width: {0} height: {1}.", pointXYZMap.width(), pointXYZMap.height());
+        showError(device.CapturePointXYZMap(ref pointXYZMap));
+        Console.WriteLine("Pointcloud Map size is width: {0} height: {1}.", pointXYZMap.Width(), pointXYZMap.Height());
         try
         {
-            ElementPointXYZ pointXYZElem = pointXYZMap.at(row, col);
+            ElementPointXYZ pointXYZElem = pointXYZMap.At(row, col);
             Console.WriteLine("PointXYZ map element at ({0},{1}) is X:  {2} mm Y:  {3} mm Z:  {4} mm.", row, col, pointXYZElem.x, pointXYZElem.y, pointXYZElem.z);
         }
         catch (Exception e)
         {
             Console.WriteLine("Exception: {0}", e);
-            device.disconnect();
+            device.Disconnect();
             return 0;
         }
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

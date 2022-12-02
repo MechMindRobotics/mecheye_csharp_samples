@@ -26,7 +26,7 @@ class sample
     static int Main()
     {
         Console.WriteLine("Find Mech-Eye devices...");
-        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.enumerateMechEyeDeviceList();
+        List<MechEyeDeviceInfo> deviceInfoList = MechEyeDevice.EnumerateMechEyeDeviceList();
 
         if (deviceInfoList.Count == 0)
         {
@@ -55,9 +55,9 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex]);
 
-        //status = device.connect(deviceInfo);
+        //status = device.Connect(deviceInfo);
 
         if (status.errorCode != (int)ErrorCode.MMIND_STATUS_SUCCESS)
         {
@@ -68,11 +68,11 @@ class sample
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
         LaserSettings laserSettings = new LaserSettings { };
-        showError(device.getLaserSettings(ref laserSettings));
-        laserSettings.FringeCodingMode = LaserFringeCodingMode.Fast;
-        showError(device.setLaserSettings(laserSettings));
+        showError(device.GetLaserSettings(ref laserSettings));
+        laserSettings.fringeCodingMode = LaserFringeCodingMode.Fast;
+        showError(device.SetLaserSettings(laserSettings));
 
-        device.disconnect();
+        device.Disconnect();
         Console.WriteLine("Disconnected from the Mech-Eye device successfully.");
 
         return 0;

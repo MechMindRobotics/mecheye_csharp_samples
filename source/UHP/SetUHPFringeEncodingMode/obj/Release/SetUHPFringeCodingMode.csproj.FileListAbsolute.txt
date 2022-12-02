@@ -1,0 +1,9 @@
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUHPFringeCodingMode.exe.config
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUHPFringeCodingMode.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUHPFringeCodingMode.pdb
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPFringeEncodingMode\obj\Release\SetUHPFringeCodingMode.csproj.AssemblyReference.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPFringeEncodingMode\obj\Release\SetUHPFringeCodingMode.csproj.SuggestedBindingRedirects.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPFringeEncodingMode\obj\Release\SetUHPFringeCodingMode.csproj.CoreCompileInputs.cache
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPFringeEncodingMode\obj\Release\SetUHPFringeCodingMode.csproj.CopyComplete
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPFringeEncodingMode\obj\Release\SetUHPFringeCodingMode.exe
+C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPFringeEncodingMode\obj\Release\SetUHPFringeCodingMode.pdb
