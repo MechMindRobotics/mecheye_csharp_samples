@@ -29,7 +29,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -112,11 +112,20 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApi.dll" "$(SolutionDir)Build"
-xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiNet.dll" "$(SolutionDir)Build"
-xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiWrapper.dll" "$(SolutionDir)Build"
-xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApid.dll" "$(SolutionDir)Build_debug"
-xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiNetd.dll" "$(SolutionDir)Build_debug"
-xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiWrapperd.dll" "$(SolutionDir)Build_debug"</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+    xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApid.dll" "$(SolutionDir)Build_debug\"
+    xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiNetd.dll" "$(SolutionDir)Build_debug\"
+    xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiWrapperd.dll" "$(SolutionDir)Build_debug\"
+    exit /B 0
+)
+if $(ConfigurationName) == Release (
+    xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApi.dll" "$(SolutionDir)Build\"
+    xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiNet.dll" "$(SolutionDir)Build\"
+    xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiWrapper.dll" "$(SolutionDir)Build\"
+    exit /B 0
+)
+
+echo Unsupported config
+exit /B 1</PostBuildEvent>
   </PropertyGroup>
 </Project>

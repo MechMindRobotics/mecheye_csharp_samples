@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetPowerLevel.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetPowerLevel.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetPowerLevel.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserPowerLevel\obj\Release\SetLaserPowerLevel.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserPowerLevel\obj\Release\SetLaserPowerLevel.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserPowerLevel\obj\Release\SetLaserPowerLevel.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserPowerLevel\obj\Release\SetLaserPowerLevel.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserPowerLevel\obj\Release\SetPowerLevel.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserPowerLevel\obj\Release\SetPowerLevel.pdb

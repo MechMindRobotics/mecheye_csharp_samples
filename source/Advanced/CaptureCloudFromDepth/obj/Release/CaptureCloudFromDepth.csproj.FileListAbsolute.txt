@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\CaptureCloudFromDepth.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\CaptureCloudFromDepth.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\CaptureCloudFromDepth.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureCloudFromDepth\obj\Release\CaptureCloudFromDepth.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureCloudFromDepth\obj\Release\CaptureCloudFromDepth.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureCloudFromDepth\obj\Release\CaptureCloudFromDepth.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureCloudFromDepth\obj\Release\CaptureCloudFromDepth.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureCloudFromDepth\obj\Release\CaptureCloudFromDepth.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Advanced\captureCloudFromDepth\obj\Release\CaptureCloudFromDepth.pdb

@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\GetCameraIntri.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\GetCameraIntri.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\GetCameraIntri.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\getCameraIntri\obj\Release\GetCameraIntri.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\getCameraIntri\obj\Release\GetCameraIntri.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\getCameraIntri\obj\Release\GetCameraIntri.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\getCameraIntri\obj\Release\GetCameraIntri.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\getCameraIntri\obj\Release\GetCameraIntri.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\getCameraIntri\obj\Release\GetCameraIntri.pdb

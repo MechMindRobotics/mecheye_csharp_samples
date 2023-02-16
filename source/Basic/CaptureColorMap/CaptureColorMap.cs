@@ -56,7 +56,7 @@ class captureResultToOpenCV
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.Connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex], 10000);
 
         //status = device.Connect(deviceInfo);
 
