@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUserSets.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUserSets.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUserSets.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setUserSets\obj\Release\SetUserSets.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setUserSets\obj\Release\SetUserSets.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setUserSets\obj\Release\SetUserSets.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setUserSets\obj\Release\SetUserSets.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setUserSets\obj\Release\SetUserSets.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\setUserSets\obj\Release\SetUserSets.pdb

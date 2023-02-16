@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB53944D-78C5-4E0B-BB78-B59C4CB07732}</ProjectGuid>
+    <ProjectGuid>{59524077-7806-4FAF-B799-A9C3DE5AD65D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GetCameraIntri</RootNamespace>
-    <AssemblyName>GetCameraIntri</AssemblyName>
+    <RootNamespace>CapturePointCloudFromTextureMask</RootNamespace>
+    <AssemblyName>CapturePointCloudFromTextureMask</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,10 +82,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetCameraIntri.cs" />
+    <Compile Include="CapturePointCloudFromTextureMask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV.runtime.windows">
+      <Version>4.5.5.4823</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

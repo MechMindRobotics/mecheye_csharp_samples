@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUHPCaptureMode.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUHPCaptureMode.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetUHPCaptureMode.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPCaptureMode\obj\Release\SetUHPCaptureMode.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPCaptureMode\obj\Release\SetUHPCaptureMode.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPCaptureMode\obj\Release\SetUHPCaptureMode.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPCaptureMode\obj\Release\SetUHPCaptureMode.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPCaptureMode\obj\Release\SetUHPCaptureMode.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\UHP\SetUHPCaptureMode\obj\Release\SetUHPCaptureMode.pdb

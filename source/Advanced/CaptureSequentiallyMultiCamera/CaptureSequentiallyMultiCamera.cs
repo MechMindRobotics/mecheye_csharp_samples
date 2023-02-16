@@ -61,7 +61,7 @@ class sample
         foreach (int index in indices)
         {
             MechEyeDevice device = new MechEyeDevice();
-            showError(device.Connect(deviceInfoList[index]));
+            showError(device.Connect(deviceInfoList[index], 10000));
 
             MechEyeDeviceInfo info = new MechEyeDeviceInfo();
             showError(device.GetDeviceInfo(ref info));
@@ -88,13 +88,10 @@ class sample
             PointXYZMap pointXYZMap = new PointXYZMap();
             showError(device.CapturePointXYZMap(ref pointXYZMap));
             string pointCloudPath = "PointCloudXYZ_" + info.id + ".ply";
-            string pointCloudColorPath = "PointCloudXYZRGB_" + info.id + ".ply";
             Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.Height()), unchecked((int)pointXYZMap.Width()), DepthType.Cv32F, 3, pointXYZMap.Data(), unchecked((int)pointXYZMap.Width()) * 12);
 
             CvInvoke.WriteCloud(pointCloudPath, depth32FC3);
             Console.WriteLine("PointCloudXYZ has : {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
-            CvInvoke.WriteCloud(pointCloudColorPath, depth32FC3, color8UC3);
-            Console.WriteLine("PointCloudXYZRGB has: {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
 
             device.Disconnect();
         }

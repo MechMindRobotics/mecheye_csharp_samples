@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetFrameRange.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetFrameRange.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetFrameRange.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFrameRange\obj\Release\SetLaserFrameRange.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFrameRange\obj\Release\SetLaserFrameRange.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFrameRange\obj\Release\SetLaserFrameRange.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFrameRange\obj\Release\SetLaserFrameRange.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFrameRange\obj\Release\SetFrameRange.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Laser\SetLaserFrameRange\obj\Release\SetFrameRange.pdb

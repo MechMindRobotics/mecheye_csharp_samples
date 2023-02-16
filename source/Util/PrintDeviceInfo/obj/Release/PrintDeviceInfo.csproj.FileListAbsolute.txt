@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\PrintDeviceInfo.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\PrintDeviceInfo.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\PrintDeviceInfo.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\printDeviceInfo\obj\Release\PrintDeviceInfo.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\printDeviceInfo\obj\Release\PrintDeviceInfo.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\printDeviceInfo\obj\Release\PrintDeviceInfo.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\printDeviceInfo\obj\Release\PrintDeviceInfo.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\printDeviceInfo\obj\Release\PrintDeviceInfo.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\printDeviceInfo\obj\Release\PrintDeviceInfo.pdb

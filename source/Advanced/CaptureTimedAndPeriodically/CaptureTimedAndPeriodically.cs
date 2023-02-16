@@ -59,7 +59,7 @@ class sample
 
         ErrorStatus status = new ErrorStatus();
         MechEyeDevice device = new MechEyeDevice();
-        status = device.Connect(deviceInfoList[inputIndex]);
+        status = device.Connect(deviceInfoList[inputIndex], 10000);
 
         //status = device.Connect(deviceInfo);
 
@@ -106,13 +106,10 @@ class sample
             PointXYZMap pointXYZMap = new PointXYZMap();
             showError(device.CapturePointXYZMap(ref pointXYZMap));
             string pointCloudPath = "PointCloudXYZ_" + time.ToString() + ".ply";
-            string pointCloudColorPath = "PointCloudXYZRGB_" + time.ToString() + ".ply";
             Mat depth32FC3 = new Mat(unchecked((int)pointXYZMap.Height()), unchecked((int)pointXYZMap.Width()), DepthType.Cv32F, 3, pointXYZMap.Data(), unchecked((int)pointXYZMap.Width()) * 12);
 
             CvInvoke.WriteCloud(pointCloudPath, depth32FC3);
             Console.WriteLine("PointCloudXYZ has : {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
-            CvInvoke.WriteCloud(pointCloudColorPath, depth32FC3, color8UC3);
-            Console.WriteLine("PointCloudXYZRGB has: {0} data points.", depth32FC3.Rows * depth32FC3.Cols);
 
             DateTime after = DateTime.Now;
             TimeSpan timeUsed = after - before;

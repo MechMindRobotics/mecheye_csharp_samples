@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetParameters.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetParameters.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\SetParameters.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\SetParameters\obj\Release\SetParameters.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\SetParameters\obj\Release\SetParameters.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\SetParameters\obj\Release\SetParameters.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\SetParameters\obj\Release\SetParameters.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\SetParameters\obj\Release\SetParameters.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Util\SetParameters\obj\Release\SetParameters.pdb

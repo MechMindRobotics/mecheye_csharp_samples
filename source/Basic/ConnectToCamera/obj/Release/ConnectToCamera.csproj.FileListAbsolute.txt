@@ -1,9 +1,0 @@
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\ConnectToCamera.exe.config
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\ConnectToCamera.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Build\ConnectToCamera.pdb
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectToCamera\obj\Release\ConnectToCamera.csproj.AssemblyReference.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectToCamera\obj\Release\ConnectToCamera.csproj.SuggestedBindingRedirects.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectToCamera\obj\Release\ConnectToCamera.csproj.CoreCompileInputs.cache
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectToCamera\obj\Release\ConnectToCamera.csproj.CopyComplete
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectToCamera\obj\Release\ConnectToCamera.exe
-C:\Users\mech-mind_lcl\Desktop\c#\samples\source\Basic\connectToCamera\obj\Release\ConnectToCamera.pdb
