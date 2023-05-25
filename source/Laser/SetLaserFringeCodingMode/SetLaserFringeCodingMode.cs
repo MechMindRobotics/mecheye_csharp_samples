@@ -1,3 +1,7 @@
+/*
+With this sample program, you can set the coding mode of the structured light pattern.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

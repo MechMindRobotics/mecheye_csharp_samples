@@ -2,9 +2,11 @@
 
 This repository contains C# samples for Mech-Eye SDK.
 
+If you have any questions or have anything to share, feel free to post on the [Mech-Mind Online Community](https://community.mech-mind.com/). The community also contains a [specific category for development with Mech-Eye SDK](https://community.mech-mind.com/c/mech-eye-sdk-development/19).
+
 ## Installation
 
-1. Download and install [Mech-Eye SDK](https://www.mech-mind.com/download/softwaredownloading.html).
+1. Download and install [Mech-Eye SDK](https://community.mech-mind.com/c/latest-product-downloads/10).
 2. Clone this repository to a specific folder.
 3. Open MechEyeCSharpSamples.sln file in Visual Studio (2019 recommended), build it, and run it.
      For software requirements, please refer to [Mech-Eye API User Manual](https://docs.mech-mind.net/latest/en-GB/MechEye/MechEyeAPI/Samples/Samples.html)

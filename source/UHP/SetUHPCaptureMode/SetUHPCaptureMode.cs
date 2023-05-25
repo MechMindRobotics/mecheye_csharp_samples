@@ -1,3 +1,8 @@
+/*
+With this sample program, you can set the capture mode (capture images with 2D camera 1, with 2D
+camera 2, or with both 2D cameras and compose the outputs).
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

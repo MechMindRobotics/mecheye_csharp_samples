@@ -1,3 +1,7 @@
+/*
+With this sample program, you can set the range of depth values to be retained by a camera.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

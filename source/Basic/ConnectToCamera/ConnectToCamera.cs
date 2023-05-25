@@ -1,3 +1,7 @@
+/*
+With this sample program, you can connect to a Mech-Eye Industrial 3D Camera.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

@@ -1,3 +1,8 @@
+/*
+With this sample program, you can set the output power of the laser projector in percentage of max
+power. This affects the intensity of the laser light.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;
@@ -70,7 +75,7 @@ class sample
         LaserSettings laserSettings = new LaserSettings { };
         showError(device.GetLaserSettings(ref laserSettings));
         Console.WriteLine("Old PowerLevel: {0}", laserSettings.powerLevel);
-        laserSettings.powerLevel = 40;
+        laserSettings.powerLevel = 80;
         showError(device.SetLaserSettings(laserSettings));
 
         showError(device.GetLaserSettings(ref laserSettings));

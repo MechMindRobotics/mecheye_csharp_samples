@@ -1,3 +1,7 @@
+/*
+With this sample program, you can obtain and save the 2D image in OpenCV format from a camera.
+*/
+
 using System;
 using System.Collections.Generic;
 using Emgu.CV;

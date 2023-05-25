@@ -1,3 +1,8 @@
+/*
+With this sample program, you can obtain and save untextured and textured point clouds (PCL format)
+of the objects in the ROI from a camera.
+*/
+
 using System;
 using System.Collections.Generic;
 using Emgu.CV;
@@ -68,6 +73,7 @@ class sample
 
         Console.WriteLine("Connected to the Mech-Eye device successfully.");
 
+        //MechEye UHP serials in capture mode 'Merge' does not support this parameter.
         showError(device.SetScan3DROI(new ROI(0, 0, 500, 500)));
 
         ColorMap color = new ColorMap();

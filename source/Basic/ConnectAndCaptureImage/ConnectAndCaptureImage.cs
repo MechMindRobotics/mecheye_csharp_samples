@@ -1,3 +1,8 @@
+/*
+With this sample program, you can connect to a camera and obtain the 2D image, depth map and point
+cloud data.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

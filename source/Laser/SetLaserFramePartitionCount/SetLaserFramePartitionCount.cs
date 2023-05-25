@@ -1,3 +1,9 @@
+/*
+With this sample program, you can divide the projector FOV into partitions and project structured
+light in one partition at a time. The output of the entire FOV is composed from images of all
+partitions.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

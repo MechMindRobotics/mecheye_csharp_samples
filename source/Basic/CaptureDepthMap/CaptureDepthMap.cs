@@ -1,3 +1,7 @@
+/*
+With this sample program, you can obtain and save the depth map in OpenCV format from a camera.
+*/
+
 using System;
 using System.Collections.Generic;
 using Emgu.CV;

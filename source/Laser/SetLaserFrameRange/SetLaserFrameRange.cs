@@ -1,3 +1,8 @@
+/*
+With this sample program, you can set the projection range of the structured light. The entire
+projector FOV is from 0 to 100.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;
