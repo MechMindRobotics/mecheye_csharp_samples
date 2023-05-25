@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+With this sample program, you can construct and save point clouds (PCL format) from the depth map
+and 2D image obtained from a camera.
+*/
+
+using System;
 using System.Collections.Generic;
 using Emgu.CV;
 using Emgu.CV.CvEnum;

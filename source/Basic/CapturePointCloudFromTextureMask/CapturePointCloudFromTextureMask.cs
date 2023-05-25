@@ -1,3 +1,8 @@
+/*
+With this sample program, you can construct and save untextured and textured point clouds (PCL
+format) generated from a depth map and masked 2D image.
+*/
+
 using System;
 using System.Collections.Generic;
 using Emgu.CV;

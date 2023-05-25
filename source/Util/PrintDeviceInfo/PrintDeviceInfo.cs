@@ -1,3 +1,8 @@
+/*
+With this sample program, you can get and print a camera's information such as model, serial number
+and firmware version.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;
@@ -23,30 +28,13 @@ class sample
         Console.WriteLine("");
     }
 
-    static void printDeviceIntri(DeviceIntri intri)
+    static void printDeviceTemperature(DeviceTemperature temperature)
     {
-        Console.WriteLine("Texture Camera Matrix: ");
-        Console.WriteLine("    [{0}, 0, {1}]", intri.textureCameraIntri.fx, intri.textureCameraIntri.cx);
-        Console.WriteLine("    [0, {0}, {1}]", intri.textureCameraIntri.fy, intri.textureCameraIntri.cy);
-        Console.WriteLine("    [0, 0, 1]");
+        Console.WriteLine(".........Device Temperature.................");
+        Console.WriteLine("CPU :                 {0}°C", temperature.cpu);
+        Console.WriteLine("Projector Module:     {0}°C", temperature.projectorModule);
+        Console.WriteLine("............................................");
         Console.WriteLine("");
-        Console.WriteLine("Texture Camera Distortion Coefficients: ");
-        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.textureCameraIntri.k1, intri.textureCameraIntri.k2, intri.textureCameraIntri.p1, intri.textureCameraIntri.p2, intri.textureCameraIntri.k3);
-        Console.WriteLine("");
-        Console.WriteLine("Depth Camera Matrix: ");
-        Console.WriteLine("    [{0}, 0, {1}]", intri.depthCameraIntri.fx, intri.depthCameraIntri.cx);
-        Console.WriteLine("    [0, {0}, {1}]", intri.depthCameraIntri.fy, intri.depthCameraIntri.cy);
-        Console.WriteLine("    [0, 0, 1]");
-        Console.WriteLine("");
-        Console.WriteLine("Depth Camera Distortion Coefficients: ");
-        Console.WriteLine("    k1: {0}, k2: {1}, p1: {2}, p2: {3}, k3: {4}", intri.depthCameraIntri.k1, intri.depthCameraIntri.k2, intri.depthCameraIntri.p1, intri.depthCameraIntri.p2, intri.depthCameraIntri.k3);
-        Console.WriteLine("");
-        Console.WriteLine("Rotation: from Depth Camera to Texture Camera: ");
-        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r1, intri.textureToDepth.r2, intri.textureToDepth.r3);
-        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r4, intri.textureToDepth.r5, intri.textureToDepth.r6);
-        Console.WriteLine("    [{0}, {1}, {2}]", intri.textureToDepth.r7, intri.textureToDepth.r8, intri.textureToDepth.r9);
-        Console.WriteLine("Translation: from Depth Camera to Texture Camera: ");
-        Console.WriteLine("    X: {0}mm, Y: {1}mm, Z: {2}mm", intri.textureToDepth.x, intri.textureToDepth.y, intri.textureToDepth.z);
     }
 
     static void printDeviceResolution(DeviceResolution deviceResolution)
@@ -102,6 +90,10 @@ class sample
         MechEyeDeviceInfo deviceInfo = new MechEyeDeviceInfo();
         showError(device.GetDeviceInfo(ref deviceInfo));
         printDeviceInfo(deviceInfo);
+
+        DeviceTemperature temperature = new DeviceTemperature();
+        showError(device.GetDeviceTemperature(ref temperature));
+        printDeviceTemperature(temperature);
 
         DeviceResolution deviceResolution = new DeviceResolution();
         showError(device.GetDeviceResolution(ref deviceResolution));

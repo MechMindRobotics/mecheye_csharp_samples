@@ -1,3 +1,7 @@
+/*
+With this sample program, you can get and print a camera's intrinsic parameters.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;

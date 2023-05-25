@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+With this sample program, you can obtain and save 2D images, depth maps and point clouds
+periodically for the specified duration from a camera.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Emgu.CV;

@@ -1,3 +1,7 @@
+/*
+With this sample program, you can set specified parameters to a camera.
+*/
+
 using System;
 using System.Collections.Generic;
 using mmind.apiSharp;
@@ -118,15 +122,22 @@ class sample
         showError(device.GetScan2DExposureTime(ref scan2DExposureTime));
         Console.WriteLine("2D scanning exposure mode enum : {0}, exposure time : {1} ms.", exposureMode2D, scan2DExposureTime);
 
-        showError(device.SetCloudSmoothMode(CloudSmoothMode.Normal));
-        showError(device.SetCloudOutlierFilterMode(CloudOutlierFilterMode.Normal));
+        showError(device.SetCloudSurfaceSmoothingMode(PointCloudSurfaceSmoothing.Normal));
+        showError(device.SetCloudNoiseRemovalMode(PointCloudNoiseRemoval.Normal));
+        showError(device.SetCloudOutlierRemovalMode(PointCloudOutlierRemoval.Normal));
+        showError(device.SetCloudEdgePreservationMode(PointCloudEdgePreservation.Normal));
 
-        CloudSmoothMode cloudSmoothMode = new CloudSmoothMode();
-        CloudOutlierFilterMode cloudOutlierFilterMode = new CloudOutlierFilterMode();
-        showError(device.GetCloudSmoothMode(ref cloudSmoothMode));
-        showError(device.GetCloudOutlierFilterMode(ref cloudOutlierFilterMode));
+        PointCloudSurfaceSmoothing surfaceSmoothingMode = new PointCloudSurfaceSmoothing();
+        PointCloudNoiseRemoval noiseRemovalMode = new PointCloudNoiseRemoval();
+        PointCloudOutlierRemoval outlierRemovalMode = new PointCloudOutlierRemoval();
+        PointCloudEdgePreservation edgePreservationMode = new PointCloudEdgePreservation();
+        showError(device.GetCloudSurfaceSmoothingMode(ref surfaceSmoothingMode));
+        showError(device.GetCloudNoiseRemovalMode(ref noiseRemovalMode));
+        showError(device.GetCloudOutlierRemovalMode(ref outlierRemovalMode));
+        showError(device.GetCloudEdgePreservationMode(ref edgePreservationMode));
 
-        Console.WriteLine("Cloud smooth mode enum : {0}, cloud outlier filter mode enum : {1}", cloudSmoothMode, cloudOutlierFilterMode);
+        Console.WriteLine("Cloud surface smoothing mode enum : {0}, cloud edge preservation mode enum : {1}.", surfaceSmoothingMode, edgePreservationMode);
+        Console.WriteLine("Cloud noise removal mode enum : {0}, cloud outlier removal mode enum : {1}.", noiseRemovalMode, outlierRemovalMode);
 
         showError(device.SaveAllSettingsToUserSets());
         Console.WriteLine("save all parammeters to current user set.");

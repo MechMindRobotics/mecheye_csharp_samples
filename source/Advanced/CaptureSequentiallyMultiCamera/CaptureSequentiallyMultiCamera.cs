@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+With this sample program, you can obtain and save 2D images, depth maps and point clouds
+sequentially from multiple cameras.
+*/
+
+using System;
 using System.Collections.Generic;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
