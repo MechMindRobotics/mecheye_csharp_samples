@@ -133,14 +133,14 @@ class AcquirePointCloud
             return -1;
         }
 
-        Console.WriteLine("Please enter the number of lines that you want to scan (min: 1, max: 60000): ");
+        Console.WriteLine("Please enter the number of lines that you want to scan (min: 16, max: 60000): ");
         int captureLineCnt;
         while (true)
         {
             string str = Console.ReadLine();
-            if (int.TryParse(str, out captureLineCnt) && captureLineCnt >= 1 && captureLineCnt <= 60000)
+            if (int.TryParse(str, out captureLineCnt) && captureLineCnt >= 16 && captureLineCnt <= 60000)
                 break;
-            Console.WriteLine("Input invalid! Please enter the number of lines that you want to scan (min:1, max: 60000): ");
+            Console.WriteLine("Input invalid! Please enter the number of lines that you want to scan (min: 16, max: 60000): ");
         }
 
         // Prompt to enter the desired encoder resolution, which is the travel distance corresponding to
