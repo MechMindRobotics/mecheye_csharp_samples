@@ -19,9 +19,9 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
     Connect to a camera.
   * [ConnectAndCaptureImages](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/ConnectAndCaptureImages)  
     Connect to a camera and obtain the 2D image, depth map, and point cloud data.
-  * [Capture2DImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/Capture2DImage)  
+  * [Capture2DImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/Capture2DImage) `(OpenCV)`  
     Obtain and save the 2D image.
-  * [CaptureDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/CaptureDepthMap) `(EmguCV)`  
+  * [CaptureDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/CaptureDepthMap) `(OpenCV)`  
     Obtain and save the depth map.
   * [CapturePointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/CapturePointCloud)  
     Obtain and save the untextured and textured point clouds.
@@ -32,11 +32,11 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
 * **Advanced**
   * [ConvertDepthMapToPointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/ConvertDepthMapToPointCloud)  
     Generate a point cloud from the depth map and save the point cloud.
-  * [MultipleCamerasCaptureSequentially](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/MultipleCamerasCaptureSequentially)  
+  * [MultipleCamerasCaptureSequentially](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/MultipleCamerasCaptureSequentially)`(OpenCV)`  
     Obtain and save 2D images, depth maps, and point clouds sequentially from multiple cameras.
-  * [MultipleCamerasCaptureSimultaneously](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/MultipleCamerasCaptureSimultaneously)  
+  * [MultipleCamerasCaptureSimultaneously](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/MultipleCamerasCaptureSimultaneously)`(OpenCV)`  
     Obtain and save 2D images, depth maps, and point clouds simultaneously from multiple cameras.
-  * [CapturePeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/CapturePeriodically)  
+  * [CapturePeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/CapturePeriodically)`(OpenCV)`  
     Obtain and save 2D images, depth maps, and point clouds periodically for the specified duration from a camera.
   * [Mapping2DImageToDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/Mapping2DImageToDepthMap)  
     Generate untextured and textured point clouds from a masked 2D image and a depth map.
@@ -46,6 +46,9 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
     Set the parameters specific to the UHP series.
   * [RegisterCameraEvent](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/RegisterCameraEvent)  
     Define and register the callback function for monitoring the camera connection status.
+  * [CaptureStereo2DImages](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/CaptureStereo2DImages)  
+    Obtain and save the 2D images from both 2D cameras.
+    > Note: This sample is only applicable to the following models: Deep, Laser L Enhanced, PRO XS, LSR L, LSR S, and DEEP.
 * **Util**
   * [GetCameraIntrinsics](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Util/GetCameraIntrinsics)  
     Obtain and print the camera intrinsic parameters.
@@ -58,9 +61,9 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
   * [SetPointCloudProcessingParameters](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Util/SetPointCloudProcessingParameters)  
     Set the **Point Cloud Processing** parameters.
   * [ManageUserSets](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Util/ManageUserSets)  
-    Manage user sets, such as obtaining the names of all user sets, adding a user set, switching the user set, and saving parameter settings to the user set.
+    Manage parameter groups, such as obtaining the names of all parameter groups, adding a parameter group, switching the parameter group, and saving parameter settings to the parameter group.
   * [SaveAndLoadUserSet](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Util/SaveAndLoadUserSet)  
-    Import and replace all user sets from a JSON file, and save all user sets to a JSON file.
+    Import and replace all parameter groups from a JSON file, and save all parameter groups to a JSON file.
 
 ## Build the Samples
 
@@ -80,9 +83,10 @@ Please download and install the required software listed below.
   >   * **Universal Windows Platform development**
   >
   >* Individual component: **.NET Framework 4.8 targeting pack**
+
   > Caution: C# Mech-Eye API is developed based on .NET Framework 4.8. If .NET Framework 4.8 is not installed, the samples cannot be built.
 
-* Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the EmguCV software libraries. Therefore, Emgu CV (the .NET wrapper for EmguCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
+* Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
 
 ### Instructions
 
