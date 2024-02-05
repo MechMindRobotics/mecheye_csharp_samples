@@ -11,6 +11,13 @@ class MultipleCamerasCaptureSequentially
     {
         var cameraList = Utils.FindAndConnectMultiCamera();
 
+        if (cameraList.Count == 0)
+        {
+            Console.WriteLine("No cameras connected.");
+            Console.ReadKey();
+            return 0;
+        }
+
         if (!Utils.ConfirmCapture3D())
         {
             foreach (var camera in cameraList)

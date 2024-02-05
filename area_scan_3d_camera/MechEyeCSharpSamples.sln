@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetParametersOfUHPCameras",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterCameraEvent", "Advanced\RegisterCameraEvent\RegisterCameraEvent.csproj", "{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptureStereo2DImages", "Advanced\CaptureStereo2DImages\CaptureStereo2DImages.csproj", "{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -237,6 +239,14 @@ Global
 		{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE}.Release|x64.ActiveCfg = Release|x64
 		{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE}.Release|x64.Build.0 = Release|x64
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Debug|x64.ActiveCfg = Debug|x64
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Debug|x64.Build.0 = Debug|x64
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Release|x64.ActiveCfg = Release|x64
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,6 +274,7 @@ Global
 		{55C61DEB-43A6-4C69-B824-D55FF1950A42} = {209A38F1-163D-4173-9ED2-BD59CD3BA1DA}
 		{BE73DF44-A58A-4429-B04B-5B1BF1C8DC2C} = {209A38F1-163D-4173-9ED2-BD59CD3BA1DA}
 		{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE} = {209A38F1-163D-4173-9ED2-BD59CD3BA1DA}
+		{E7E40A64-22ED-4DEB-90F0-CB1DFDDF2CEC} = {209A38F1-163D-4173-9ED2-BD59CD3BA1DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6166224C-BBD6-4A66-8C7F-23013FA47362}
