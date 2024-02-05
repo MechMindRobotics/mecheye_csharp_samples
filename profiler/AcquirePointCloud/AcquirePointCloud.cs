@@ -13,7 +13,7 @@ class AcquirePointCloud
 {
     private static readonly double kPitch = 1e-3;
 
-    private static int ShiftEncoderValsAroundZero(uint oriVal, int initValue = 0x0FFFFFFF)
+    private static int ShiftEncoderValsAroundZero(uint oriVal, long initValue = 0x0FFFFFFF)
     {
         return (int)(oriVal - initValue);
     }
@@ -25,7 +25,7 @@ class AcquirePointCloud
     }
 
 
-    private static void SaveDepthDataToCSV(ProfileDepthMap depth, int[] encoderValues, double xUnit, int yUnit, string fileName, bool isOrganized)
+    private static void SaveDepthDataToCSV(ProfileDepthMap depth, int[] encoderValues, double xUnit, double yUnit, string fileName, bool isOrganized, bool useEncoderValues = true)
     {
         Console.WriteLine("Saving the point cloud to file: {0}", fileName);
         if (File.Exists(fileName))
@@ -39,15 +39,15 @@ class AcquirePointCloud
                 for (ulong x = 0; x < w; ++x)
                 {
                     if (!Single.IsNaN(depth.At(y, x)))
-                        AddText(fs, String.Format("{0} {1} {2} \n", (int)x * xUnit * kPitch, encoderValues[y] * yUnit * kPitch, depth.At(y, x)));
+                        AddText(fs, String.Format("{0},{1},{2} \n", (int)x * xUnit * kPitch, useEncoderValues ? encoderValues[y] * yUnit * kPitch : y * yUnit * kPitch, depth.At(y, x)));
                     else if (isOrganized)
-                        AddText(fs, "nan nan nan\n");
+                        AddText(fs, "nan,nan,nan\n");
                 }
             }
         }
     }
 
-    private static void SaveDepthDataToPly(ProfileDepthMap depth, int[] encoderValues, double xUnit, int yUnit, string fileName, bool isOrganized)
+    private static void SaveDepthDataToPly(ProfileDepthMap depth, int[] encoderValues, double xUnit, double yUnit, string fileName, bool isOrganized, bool useEncoderValues = true)
     {
         Console.WriteLine("Saving the point cloud to file: {0}", fileName);
         if (File.Exists(fileName))
@@ -86,7 +86,7 @@ class AcquirePointCloud
                     if (Single.IsNaN(depth.At(y, x)))
                         AddText(fs, "nan nan nan\n");
                     else
-                        AddText(fs, String.Format("{0} {1} {2} \n", (int)x * xUnit * kPitch, encoderValues[y] * yUnit * kPitch, depth.At(y, x)));
+                        AddText(fs, String.Format("{0} {1} {2} \n", (int)x * xUnit * kPitch, useEncoderValues ? encoderValues[y] * yUnit * kPitch : y * yUnit * kPitch, depth.At(y, x)));
                 }
             }
         }
@@ -133,32 +133,20 @@ class AcquirePointCloud
             return -1;
         }
 
-        Console.WriteLine("Please enter the number of lines that you want to scan (min: 1, max: 60000): ");
-        int captureLineCnt;
-        while (true)
-        {
-            string str = Console.ReadLine();
-            if (int.TryParse(str, out captureLineCnt) && captureLineCnt >= 1 && captureLineCnt <= 60000)
-                break;
-            Console.WriteLine("Input invalid! Please enter the number of lines that you want to scan (min:1, max: 60000): ");
-        }
-
-        // Prompt to enter the desired encoder resolution, which is the travel distance corresponding to
-        // one quadrature signal.
-        Console.WriteLine("Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
-        int yUnit;
-        while (true)
-        {
-            string str = Console.ReadLine();
-            if (int.TryParse(str, out yUnit) && yUnit >= 1 && yUnit <= 65535)
-                break;
-            Console.WriteLine("Input invalid! Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
-        }
-
         if (!Utils.ConfirmCapture())
         {
             profiler.Disconnect();
             return 0;
+        }
+
+        Console.WriteLine("Please enter the number of lines that you want to scan (min: 16, max: 60000): ");
+        int captureLineCnt;
+        while (true)
+        {
+            string str = Console.ReadLine();
+            if (int.TryParse(str, out captureLineCnt) && captureLineCnt >= 16 && captureLineCnt <= 60000)
+                break;
+            Console.WriteLine("Input invalid! Please enter the number of lines that you want to scan (min: 16, max: 60000): ");
         }
 
         var currentUserSet = profiler.CurrentUserSet();
@@ -177,6 +165,10 @@ class AcquirePointCloud
         Utils.ShowError(currentUserSet.SetEnumValue(
         MMind.Eye.TriggerSettings.LineScanTriggerSource.Name,
         (int)(MMind.Eye.TriggerSettings.LineScanTriggerSource.Value.Encoder)));
+        // // Set the "Line Scan Trigger Source" parameter to "FixedRate"
+        // Utils.ShowError(currentUserSet.SetEnumValue(
+        // MMind.Eye.TriggerSettings.LineScanTriggerSource.Name,
+        // (int)(MMind.Eye.TriggerSettings.LineScanTriggerSource.Value.FixedRate)));
 
         // Set the "Scan Line Count" parameter (the number of lines to be scanned) to captureLineCnt
         Utils.ShowError(
@@ -193,6 +185,19 @@ class AcquirePointCloud
         double xUnit = 0;
         Utils.ShowError(currentUserSet.GetFloatValue(MMind.Eye.PointCloudResolutions.XAxisResolution.Name, ref xUnit));
 
+        double yUnit = 0;
+        Utils.ShowError(currentUserSet.GetFloatValue(MMind.Eye.PointCloudResolutions.YResolution.Name, ref yUnit));
+        // Uncomment the following lines for custom Y Unit
+        // // Prompt to enter the desired encoder resolution, which is the travel distance corresponding to
+        // // one quadrature signal.
+        // Console.WriteLine("Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
+        // while (true)
+        // {
+        //     string str = Console.ReadLine();
+        //     if (double.TryParse(str, out yUnit) && yUnit >= 1 && yUnit <= 65535)
+        //         break;
+        //     Console.WriteLine("Input invalid! Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
+        // }
 
         var totalBatch = new ProfileBatch((ulong)dataPoints);
         var encoderVals = new List<int>();
@@ -201,6 +206,11 @@ class AcquirePointCloud
         {
             SaveDepthDataToCSV(totalBatch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.csv", true);
             SaveDepthDataToPly(totalBatch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.ply", true);
+
+            // Uncomment the following lines and comment the lines above if you set "Line Scan Trigger
+            // Source" to "FixedRate".
+            // SaveDepthDataToCSV(totalBatch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.csv", true, false);
+            // SaveDepthDataToPly(totalBatch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.ply", true, false);
         }
 
         // Disconnect from the camera
