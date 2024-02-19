@@ -137,7 +137,7 @@ class AcquirePointCloud
         {
             profiler.Disconnect();
             return 0;
-        }
+
 
         Console.WriteLine("Please enter the number of lines that you want to scan (min: 16, max: 60000): ");
         int captureLineCnt;
