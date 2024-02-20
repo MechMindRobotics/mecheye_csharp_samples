@@ -20,6 +20,8 @@ The samples marked with `(OpenCV)` require [OpenCV](https://opencv.org/releases/
   Manage parameter groups, such as obtaining the names of all parameter groups, adding a parameter group, switching the parameter group, and saving parameter settings to the parameter group.
 * [RegisterProfilerEvent](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/RegisterProfilerEvent)  
 Define and register the callback function for monitoring the laser profiler connection status.
+* [UseVirtualDevice](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/UseVirtualDevice) `(OpenCV)`  
+Acquire the profile data stored in a virtual device, generate the intensity image and depth map, and save the images.
 
 ## Build the Samples
 
