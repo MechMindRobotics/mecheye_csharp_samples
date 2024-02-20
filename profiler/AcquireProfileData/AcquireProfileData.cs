@@ -14,7 +14,7 @@ class AcquireProfileData
     {
         if (batch.IsEmpty())
         {
-            Console.WriteLine("No profile data is available for saving.");
+            Console.WriteLine("The depth map cannot be saved because the batch does not contain any profile data.");
             return;
         }
         var depth = batch.GetDepthMap();
@@ -118,24 +118,10 @@ class AcquireProfileData
         // Set the "Laser Power" parameter to 100
         Utils.ShowError(currentUserSet.SetIntValue(MMind.Eye.BrightnessSettings.LaserPower.Name, 100));
 
-        MMind.Eye.ProfilerInfo profilerInfo = new ProfilerInfo();
-        if (profiler.GetProfilerInfo(ref profilerInfo).IsOK())
-        {
-            if (profilerInfo.Model == "Mech-Eye LNX 8030")
-            {
-                // Set the "Analog Gain" parameter for LNX-8030 to "1.3×"
-                Utils.ShowError(currentUserSet.SetEnumValue(
-                    MMind.Eye.BrightnessSettings.AnalogGainFor8030.Name,
-                    (int)(MMind.Eye.BrightnessSettings.AnalogGainFor8030.Value.Gain_1_3)));
-            }
-            else
-            {
-                // Set the "Analog Gain" parameter for other models to "1.3×"
-                Utils.ShowError(currentUserSet.SetEnumValue(
-                    MMind.Eye.BrightnessSettings.AnalogGain.Name,
-                    (int)(MMind.Eye.BrightnessSettings.AnalogGain.Value.Gain_1_3)));
-            }
-        }
+        // Set the "Analog Gain" parameter models to "Gain_2"
+        Utils.ShowError(currentUserSet.SetEnumValue(
+            MMind.Eye.BrightnessSettings.AnalogGain.Name,
+            (int)(MMind.Eye.BrightnessSettings.AnalogGain.Value.Gain_2)));
 
         // Set the "Digital Gain" parameter to 0
         Utils.ShowError(currentUserSet.SetIntValue(MMind.Eye.BrightnessSettings.DigitalGain.Name, 0));
@@ -153,10 +139,14 @@ class AcquireProfileData
         Utils.ShowError(
             currentUserSet.SetIntValue(MMind.Eye.ProfileExtraction.MaxLaserLineWidth.Name, 20));
 
+        // This parameter is only effective for firmware 2.2.1 and below. For firmware 2.3.0 and above,
+        // adjustment of this parameter does not take effect.
         // Set the "Minimum Spot Intensity" parameter to 51
         Utils.ShowError(
             currentUserSet.SetIntValue(MMind.Eye.ProfileExtraction.MinSpotIntensity.Name, 51));
 
+        // This parameter is only effective for firmware 2.2.1 and below. For firmware 2.3.0 and above,
+        // adjustment of this parameter does not take effect.
         // Set the "Maximum Spot Intensity" parameter to 205
         Utils.ShowError(
             currentUserSet.SetIntValue(MMind.Eye.ProfileExtraction.MaxSpotIntensity.Name, 205));
@@ -227,6 +217,10 @@ class AcquireProfileData
         SaveMap(totalBatch, "Depth.tiff");
         // totalBatch.GetDepthMap().Save("Depth.tiff"); // Using member function to save the depth map as 4-channels of 8 bits per pixel image.
         totalBatch.GetIntensityImage().Save("Intensity.tiff");
+
+        // Uncomment the following line to save a virtual device file using the ProfileBatch totalBatch
+        // acquired.
+        // Utils.ShowError(profiler.SaveVirtualDeviceFile(ref totalBatch, "test.mraw"));
 
         // Disconnect from the laser profiler
         profiler.Disconnect();
