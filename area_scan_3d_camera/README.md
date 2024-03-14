@@ -83,7 +83,7 @@ Please download and install the required software listed below.
   >   * **Universal Windows Platform development**
   >
   >* Individual component: **.NET Framework 4.8 targeting pack**
-
+  >
   > Caution: C# Mech-Eye API is developed based on .NET Framework 4.8. If .NET Framework 4.8 is not installed, the samples cannot be built.
 
 * Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).

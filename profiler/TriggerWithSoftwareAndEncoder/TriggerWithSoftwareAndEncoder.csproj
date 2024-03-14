@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9CC4C645-E989-422B-8719-148EA7B3557B}</ProjectGuid>
+    <ProjectGuid>{B804B4A0-ADEE-4C58-B277-BE51E6E4406D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AcquirePointCloud</RootNamespace>
-    <AssemblyName>AcquirePointCloud</AssemblyName>
+    <RootNamespace>TriggerWithSoftwareAndEncoder</RootNamespace>
+    <AssemblyName>TriggerWithSoftwareAndEncoder</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,10 +82,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcquirePointCloud.cs" />
+    <Compile Include="TriggerWithSoftwareAndEncoder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV.runtime.windows">
+      <Version>4.7.0.5276</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

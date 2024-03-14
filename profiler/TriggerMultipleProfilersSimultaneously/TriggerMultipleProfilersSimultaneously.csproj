@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7DC2F6B7-EF58-41E3-BA9C-5B176D6CD951}</ProjectGuid>
+    <ProjectGuid>{68ABC9C2-74AD-4508-8152-88B088BE2AC3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AcquireProfileData</RootNamespace>
-    <AssemblyName>AcquireProfileData</AssemblyName>
+    <RootNamespace>TriggerMultipleProfilersSimultaneously</RootNamespace>
+    <AssemblyName>TriggerMultipleProfilersSimultaneously</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,7 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcquireProfileData.cs" />
+    <Compile Include="TriggerMultipleProfilersSimultaneously.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
