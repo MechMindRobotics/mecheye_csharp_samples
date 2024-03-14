@@ -10,12 +10,17 @@ Currently, the following samples are provided.
 
 The samples marked with `(OpenCV)` require [OpenCV](https://opencv.org/releases/) to be installed.  
 
-* [AcquireProfileData](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/AcquireProfileData) `(OpenCV)`  
-  Acquire the profile data, generate the intensity image and depth map, and save the images.
-* [AcquireProfileDataUsingCallback](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/AcquireProfileDataUsingCallback)  `(OpenCV)`  
-  Acquire the profile data using a callback function, generate the intensity image and depth map, and save the images.
-* [AcquirePointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/AcquirePointCloud)  
-  Acquire the profile data, generate the point cloud, and save the point cloud in the CSV and PLY formats.
+* [TriggerWithSoftwareAndFixedRate](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerWithSoftwareAndFixedRate) `(OpenCV)`  
+  Trigger data acquisition with signals input from software, trigger line scans at a fixed rate, and then retrieve and save the acquired data.
+* [TriggerWithExternalDeviceAndFixedRate](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerWithExternalDeviceAndFixedRate) `(OpenCV)`  
+  Trigger data acquisition with signals input from the external device, trigger line scans at a fixed rate, and then retrieve and save the acquired data.
+
+* [TriggerWithSoftwareAndEncoder](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerWithSoftwareAndEncoder) `(OpenCV)`  
+  Trigger data acquisition with signals input from software, trigger line scans with signals input from the encoder, and then retrieve and save the acquired data.
+* [TriggerWithExternalDeviceAndEncoder](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerWithExternalDeviceAndEncoder) `(OpenCV)`  
+  Trigger data acquisition with signals input from the external device, trigger line scans with signals input from the encoder, and then retrieve and save the acquired data.
+* [TriggerMultipleProfilersSimultaneously](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerMultipleProfilersSimultaneously) `(OpenCV)`  
+  Trigger multiple laser profilers to acquire data asynchronously and retrieve the acquired data.
 * [ManageUserSets](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/ManageUserSets)  
   Manage parameter groups, such as obtaining the names of all parameter groups, adding a parameter group, switching the parameter group, and saving parameter settings to the parameter group.
 * [RegisterProfilerEvent](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/RegisterProfilerEvent)  
@@ -41,7 +46,7 @@ Please download and install the required software listed below.
   >   * **Universal Windows Platform development**
   >
   >* Individual component: **.NET Framework 4.8 targeting pack**
-
+  >
   > Caution: C# Mech-Eye API is developed based on .NET Framework 4.8. If .NET Framework 4.8 is not installed, the samples cannot be built.
 
 * Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).

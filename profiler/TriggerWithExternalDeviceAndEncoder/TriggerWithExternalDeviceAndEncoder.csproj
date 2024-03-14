@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{446AEDDA-D424-4E1F-A11E-EB89F88AF059}</ProjectGuid>
+    <ProjectGuid>{7DC2F6B7-EF58-41E3-BA9C-5B176D6CD951}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AcquireProfileDataUsingCallback</RootNamespace>
-    <AssemblyName>AcquireProfileDataUsingCallback</AssemblyName>
+    <RootNamespace>TriggerWithExternalDeviceAndEncoder</RootNamespace>
+    <AssemblyName>TriggerWithExternalDeviceAndEncoder</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,7 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcquireProfileDataUsingCallback.cs" />
+    <Compile Include="TriggerWithExternalDeviceAndEncoder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
