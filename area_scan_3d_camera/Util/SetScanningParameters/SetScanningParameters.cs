@@ -28,7 +28,8 @@ class SetScanningParameters
 
         // Set the exposure times for acquiring depth information.
         var exposure3DName = MMind.Eye.Scanning3DSetting.ExposureSequence.Name;
-        Utils.ShowError(currentUserSet.SetFloatArrayValue(exposure3DName, new List<double> { 5, 10 }));
+        Utils.ShowError(currentUserSet.SetFloatArrayValue(exposure3DName, new List<double> { 5 }));
+        //Utils.ShowError(currentUserSet.SetFloatArrayValue(exposure3DName, new List<double> { 5, 10 }));
 
         // Obtain the current exposure times for acquiring depth information for checking.
         var exposureSequence = new List<double>();

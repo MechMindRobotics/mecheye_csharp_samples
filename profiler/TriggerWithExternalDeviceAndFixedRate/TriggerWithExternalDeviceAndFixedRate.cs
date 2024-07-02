@@ -337,7 +337,11 @@ class TriggerWithExternalDeviceAndFixedRate
 
         // Uncomment the following line to save a virtual device file using the ProfileBatch profileBatch
         // acquired.
-        // Utils.ShowError(profiler.SaveVirtualDeviceFile(ref profileBatch, "test.mraw"));
+        // var filePath = "test.mraw";
+        // byte[] utf16Bytes = Encoding.Unicode.GetBytes(filePath);
+        // byte[] utf8Bytes = Encoding.Convert(Encoding.Unicode, Encoding.UTF8, utf16Bytes);
+        // var utf8Path = Encoding.Default.GetString(utf8Bytes);
+        // Utils.ShowError(profiler.SaveVirtualDeviceFile(ref profileBatch, utf8Path));
 
         // Disconnect from the laser profiler
         profiler.Disconnect();

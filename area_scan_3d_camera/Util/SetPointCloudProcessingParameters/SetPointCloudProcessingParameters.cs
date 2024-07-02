@@ -31,34 +31,24 @@ class SetPointCloudProcessingParameters
         var noiseRemovalName = MMind.Eye.PointCloudProcessingSetting.NoiseRemoval.Name;
         var outlierRemovalName = MMind.Eye.PointCloudProcessingSetting.OutlierRemoval.Name;
         var edgePreservationName = MMind.Eye.PointCloudProcessingSetting.EdgePreservation.Name;
-        var enableDistortionCorrectionName = MMind.Eye.PointCloudProcessingSetting.EnableDistortionCorrection.Name;
-        var distortionCorrectionName = MMind.Eye.PointCloudProcessingSetting.DistortionCorrection.Name;
         Utils.ShowError(currentUserSet.SetEnumValue(surfaceSmoothingName, (int)MMind.Eye.PointCloudProcessingSetting.SurfaceSmoothing.Value.Normal));
         Utils.ShowError(currentUserSet.SetEnumValue(noiseRemovalName, (int)MMind.Eye.PointCloudProcessingSetting.NoiseRemoval.Value.Normal));
         Utils.ShowError(currentUserSet.SetEnumValue(outlierRemovalName, (int)MMind.Eye.PointCloudProcessingSetting.OutlierRemoval.Value.Normal));
         Utils.ShowError(currentUserSet.SetEnumValue(edgePreservationName, (int)MMind.Eye.PointCloudProcessingSetting.EdgePreservation.Value.Normal));
-        Utils.ShowError(currentUserSet.SetBoolValue(enableDistortionCorrectionName, true));
-        Utils.ShowError(currentUserSet.SetIntValue(distortionCorrectionName, 3));
 
         var surfaceSmoothingMode = new int();
         var noiseRemovalMode = new int();
         var outlierRemovalMode = new int();
         var edgePreservationMode = new int();
-        var distortionCorrectionEnabled = new bool();
-        var distortionCorrection = new int();
         Utils.ShowError(currentUserSet.GetEnumValue(surfaceSmoothingName, ref surfaceSmoothingMode));
         Utils.ShowError(currentUserSet.GetEnumValue(noiseRemovalName, ref noiseRemovalMode));
         Utils.ShowError(currentUserSet.GetEnumValue(outlierRemovalName, ref outlierRemovalMode));
         Utils.ShowError(currentUserSet.GetEnumValue(edgePreservationName, ref edgePreservationMode));
-        Utils.ShowError(currentUserSet.GetBoolValue(enableDistortionCorrectionName, ref distortionCorrectionEnabled));
-        Utils.ShowError(currentUserSet.GetIntValue(distortionCorrectionName, ref distortionCorrection));
 
         Console.WriteLine("Point Cloud Surface Smoothing: {0}.", surfaceSmoothingMode);
         Console.WriteLine("Point Cloud Noise Removal: {0}.", noiseRemovalMode);
         Console.WriteLine("Point Cloud Outlier Removal: {0}.", outlierRemovalMode);
         Console.WriteLine("Point Cloud Edge Preservation: {0}.", edgePreservationMode);
-        Console.WriteLine("Distortion Correction Enabled: {0}.", distortionCorrectionEnabled);
-        Console.WriteLine("Distortion Correction: {0}.", distortionCorrection);
 
         // Save all the parameter settings to the currently selected user set.
         Utils.ShowError(currentUserSet.SaveAllParametersToDevice());
