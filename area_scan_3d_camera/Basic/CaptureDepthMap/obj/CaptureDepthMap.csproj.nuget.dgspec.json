@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\projects\\Mech_Eye\\src\\api\\samples\\csharp\\area_scan_3d_camera\\Basic\\CaptureDepthMap\\CaptureDepthMap.csproj": {}
+  },
+  "projects": {
+    "D:\\projects\\Mech_Eye\\src\\api\\samples\\csharp\\area_scan_3d_camera\\Basic\\CaptureDepthMap\\CaptureDepthMap.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\projects\\Mech_Eye\\src\\api\\samples\\csharp\\area_scan_3d_camera\\Basic\\CaptureDepthMap\\CaptureDepthMap.csproj",
+        "projectName": "CaptureDepthMap",
+        "projectPath": "D:\\projects\\Mech_Eye\\src\\api\\samples\\csharp\\area_scan_3d_camera\\Basic\\CaptureDepthMap\\CaptureDepthMap.csproj",
+        "packagesPath": "C:\\Users\\mech-mind\\.nuget\\packages\\",
+        "outputPath": "D:\\projects\\Mech_Eye\\src\\api\\samples\\csharp\\area_scan_3d_camera\\Basic\\CaptureDepthMap\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\mech-mind\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "Emgu.CV.runtime.windows": {
+              "target": "Package",
+              "version": "[4.8.0.5324, )"
+            },
+            "OpenCvSharp4": {
+              "target": "Package",
+              "version": "[4.10.0.20240616, )"
+            },
+            "OpenCvSharp4.runtime.win": {
+              "target": "Package",
+              "version": "[4.10.0.20240616, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

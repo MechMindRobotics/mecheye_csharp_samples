@@ -1,0 +1,8 @@
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\Build_debug\TriggerWithSoftwareAndFixedRate.exe.config
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\Build_debug\TriggerWithSoftwareAndFixedRate.exe
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\Build_debug\TriggerWithSoftwareAndFixedRate.pdb
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\TriggerWithSoftwareAndFixedRate\obj\Debug\TriggerWithSoftwareAndFixedRate.csproj.AssemblyReference.cache
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\TriggerWithSoftwareAndFixedRate\obj\Debug\TriggerWithSoftwareAndFixedRate.csproj.CoreCompileInputs.cache
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\TriggerWithSoftwareAndFixedRate\obj\Debug\TriggerWithSoftwareAndFixedRate.csproj.CopyComplete
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\TriggerWithSoftwareAndFixedRate\obj\Debug\TriggerWithSoftwareAndFixedRate.exe
+D:\projects\Mech_Eye\src\api\samples\csharp\profiler\TriggerWithSoftwareAndFixedRate\obj\Debug\TriggerWithSoftwareAndFixedRate.pdb

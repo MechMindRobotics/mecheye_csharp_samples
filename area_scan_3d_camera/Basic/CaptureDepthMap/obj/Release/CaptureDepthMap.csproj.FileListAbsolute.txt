@@ -1,0 +1,13 @@
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\CaptureDepthMap.exe.config
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\CaptureDepthMap.exe
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\CaptureDepthMap.pdb
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Basic\CaptureDepthMap\obj\Release\CaptureDepthMap.csproj.AssemblyReference.cache
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Basic\CaptureDepthMap\obj\Release\CaptureDepthMap.exe.config
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Basic\CaptureDepthMap\obj\Release\CaptureDepthMap.csproj.CoreCompileInputs.cache
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Basic\CaptureDepthMap\obj\Release\CaptureDepthMap.csproj.CopyComplete
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Basic\CaptureDepthMap\obj\Release\CaptureDepthMap.exe
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Basic\CaptureDepthMap\obj\Release\CaptureDepthMap.pdb
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\dll\x86\OpenCvSharpExtern.dll
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\dll\x86\opencv_videoio_ffmpeg4100.dll
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\dll\x64\OpenCvSharpExtern.dll
+D:\projects\Mech_Eye\src\api\samples\csharp\area_scan_3d_camera\Build\dll\x64\opencv_videoio_ffmpeg4100_64.dll
