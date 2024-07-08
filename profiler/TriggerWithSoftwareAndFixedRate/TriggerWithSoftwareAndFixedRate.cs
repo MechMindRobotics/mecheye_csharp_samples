@@ -370,10 +370,20 @@ class TriggerWithSoftwareAndFixedRate
 
         // Get the X-axis resolution
         double xUnit = 0;
-        Utils.ShowError(userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.XAxisResolution.Name, ref xUnit));
+        var status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.XAxisResolution.Name, ref xUnit);
+        if (!status.IsOK())
+        {
+            Utils.ShowError(status);
+            return;
+        }
 
         double yUnit = 0;
-        Utils.ShowError(userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.YResolution.Name, ref yUnit));
+        status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.YResolution.Name, ref yUnit);
+        if (!status.IsOK())
+        {
+            Utils.ShowError(status);
+            return;
+        }
         // Uncomment the following lines for custom Y Unit
         // // Prompt to enter the desired encoder resolution, which is the travel distance corresponding to
         // // one quadrature signal.
@@ -387,14 +397,27 @@ class TriggerWithSoftwareAndFixedRate
         // }
 
         int lineScanTriggerSource = 0;
-        Utils.ShowError(userSet.GetEnumValue(MMind.Eye.TriggerSettings.LineScanTriggerSource.Name, ref lineScanTriggerSource));
+        status = userSet.GetEnumValue(MMind.Eye.TriggerSettings.LineScanTriggerSource.Name, ref lineScanTriggerSource);
+        if (!status.IsOK())
+        {
+            Utils.ShowError(status);
+            return;
+        }
         bool useEncoderValues = lineScanTriggerSource == (int)MMind.Eye.TriggerSettings.LineScanTriggerSource.Value.Encoder;
+
+        int triggerInterval = 0;
+        status = userSet.GetIntValue(MMind.Eye.TriggerSettings.EncoderTriggerInterval.Name, ref triggerInterval);
+        if (!status.IsOK())
+        {
+            Utils.ShowError(status);
+            return;
+        }
 
         // Shift the encoder values around zero
         var encoderVals = new List<int>();
         var encoder = batch.GetEncoderArray();
         for (ulong r = 0; r < batch.Height(); ++r)
-            encoderVals.Add(useEncoderValues ? ShiftEncoderValsAroundZero(encoder[r], (int)encoder[0]) : (int)r);
+            encoderVals.Add(useEncoderValues ? ShiftEncoderValsAroundZero(encoder[r], (int)encoder[0]) / triggerInterval : (int)r);
 
         Console.WriteLine("Save the point cloud.");
         if (saveCSV)
@@ -455,7 +478,11 @@ class TriggerWithSoftwareAndFixedRate
 
         // Uncomment the following line to save a virtual device file using the ProfileBatch profileBatch
         // acquired.
-        // Utils.ShowError(profiler.SaveVirtualDeviceFile(ref profileBatch, "test.mraw"));
+        // var filePath = "test.mraw";
+        // byte[] utf16Bytes = Encoding.Unicode.GetBytes(filePath);
+        // byte[] utf8Bytes = Encoding.Convert(Encoding.Unicode, Encoding.UTF8, utf16Bytes);
+        // var utf8Path = Encoding.Default.GetString(utf8Bytes);
+        // Utils.ShowError(profiler.SaveVirtualDeviceFile(ref profileBatch, utf8Path));
 
         // Disconnect from the laser profiler
         profiler.Disconnect();
