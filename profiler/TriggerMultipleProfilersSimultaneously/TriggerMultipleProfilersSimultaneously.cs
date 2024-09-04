@@ -309,6 +309,9 @@ class TriggerMultipleProfilersSimultaneously
         if (!AcquireProfileData(profiler, profileBatch, captureLineCount, dataWidth, isSoftwareTrigger))
             return;
 
+        if (profileBatch.CheckFlag(ProfileBatch.BatchFlag.Incomplete))
+            Console.WriteLine("Part of the batch's data is lost, the number of valid profiles is: {0}", profileBatch.ValidHeight());
+
         Console.WriteLine("Save the depth map and the intensity image.");
         SaveMap(profileBatch, "Depth_" + id + ".tiff");
         // profileBatch.GetDepthMap().Save("Depth_" + id + ".tiff"); // Using member function to save the depth map as 4-channels of 8 bits per pixel image.

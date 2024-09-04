@@ -8,16 +8,11 @@ using MMind.Eye;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using System.Threading;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 class TriggerWithSoftwareAndFixedRate
 {
-
-    private static readonly double kPitch = 1e-3;
-
     private static readonly Mutex mut = new Mutex();
 
     private static void SetTimedExposure(UserSet userSet, int exposureTime)
@@ -216,7 +211,7 @@ class TriggerWithSoftwareAndFixedRate
     {
         profileBatch.Clear();
 
-        // Set a large CallbackRetrievalTimeout
+        // Set a large value for CallbackRetrievalTimeout
         Utils.ShowError(profiler.CurrentUserSet().SetIntValue(MMind.Eye.ScanSettings.CallbackRetrievalTimeout.Name, 60000));
 
         // Register the callback function
@@ -285,147 +280,6 @@ class TriggerWithSoftwareAndFixedRate
         CvInvoke.Imwrite(path, depth32F);
     }
 
-    private static int ShiftEncoderValsAroundZero(uint oriVal, long initValue = 0x0FFFFFFF)
-    {
-        return (int)(oriVal - initValue);
-    }
-
-    private static void AddText(FileStream fs, string value)
-    {
-        byte[] info = new UTF8Encoding(true).GetBytes(value);
-        fs.Write(info, 0, info.Length);
-    }
-
-    private static void SaveDepthDataToCSV(ProfileDepthMap depth, int[] yValues, double xUnit, double yUnit, string fileName, bool isOrganized)
-    {
-        Console.WriteLine("Saving the point cloud to file: {0}", fileName);
-        if (File.Exists(fileName))
-            File.Delete(fileName);
-        var w = depth.Width();
-        var h = depth.Height();
-        using (FileStream fs = File.Create(fileName))
-        {
-            for (ulong y = 0; y < h; ++y)
-            {
-                for (ulong x = 0; x < w; ++x)
-                {
-                    if (!Single.IsNaN(depth.At(y, x)))
-                        AddText(fs, String.Format("{0},{1},{2} \n", (int)x * xUnit * kPitch, yValues[y] * yUnit * kPitch, depth.At(y, x)));
-                    else if (isOrganized)
-                        AddText(fs, "nan,nan,nan\n");
-                }
-            }
-        }
-    }
-
-    private static void SaveDepthDataToPly(ProfileDepthMap depth, int[] yValues, double xUnit, double yUnit, string fileName, bool isOrganized)
-    {
-        Console.WriteLine("Saving the point cloud to file: {0}", fileName);
-        if (File.Exists(fileName))
-            File.Delete(fileName);
-        uint validPointCount = 0;
-        var w = depth.Width();
-        var h = depth.Height();
-        if (!isOrganized)
-        {
-            for (ulong y = 0; y < h; ++y)
-            {
-                for (ulong x = 0; x < w; ++x)
-                {
-                    if (!Single.IsNaN(depth.At(y, x)))
-                        validPointCount++;
-                }
-            }
-        }
-
-        using (FileStream fs = File.Create(fileName))
-        {
-            AddText(fs, "ply\n");
-            AddText(fs, "format ascii 1.0\n");
-            AddText(fs, "comment File generated\n");
-            AddText(fs, "comment x y z data unit in mm\n");
-            AddText(fs, String.Format("element vertex {0}\n", isOrganized ? (uint)w * h : validPointCount));
-            AddText(fs, "property float x\n");
-            AddText(fs, "property float y\n");
-            AddText(fs, "property float z\n");
-            AddText(fs, "end_header\n");
-
-            for (ulong y = 0; y < h; ++y)
-            {
-                for (ulong x = 0; x < w; ++x)
-                {
-                    if (Single.IsNaN(depth.At(y, x)))
-                        AddText(fs, "nan nan nan\n");
-                    else
-                        AddText(fs, String.Format("{0} {1} {2} \n", (int)x * xUnit * kPitch, yValues[y] * yUnit * kPitch, depth.At(y, x)));
-                }
-            }
-        }
-    }
-
-    private static void SavePointCloud(ProfileBatch batch, UserSet userSet, bool savePLY = true, bool saveCSV = true, bool isOrganized = true)
-    {
-        if (batch.IsEmpty())
-            return;
-
-        // Get the X-axis resolution
-        double xUnit = 0;
-        var status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.XAxisResolution.Name, ref xUnit);
-        if (!status.IsOK())
-        {
-            Utils.ShowError(status);
-            return;
-        }
-
-        double yUnit = 0;
-        status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.YResolution.Name, ref yUnit);
-        if (!status.IsOK())
-        {
-            Utils.ShowError(status);
-            return;
-        }
-        // Uncomment the following lines for custom Y Unit
-        // // Prompt to enter the desired encoder resolution, which is the travel distance corresponding to
-        // // one quadrature signal.
-        // Console.WriteLine("Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
-        // while (true)
-        // {
-        //     string str = Console.ReadLine();
-        //     if (double.TryParse(str, out yUnit) && yUnit >= 1 && yUnit <= 65535)
-        //         break;
-        //     Console.WriteLine("Input invalid! Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
-        // }
-
-        int lineScanTriggerSource = 0;
-        status = userSet.GetEnumValue(MMind.Eye.TriggerSettings.LineScanTriggerSource.Name, ref lineScanTriggerSource);
-        if (!status.IsOK())
-        {
-            Utils.ShowError(status);
-            return;
-        }
-        bool useEncoderValues = lineScanTriggerSource == (int)MMind.Eye.TriggerSettings.LineScanTriggerSource.Value.Encoder;
-
-        int triggerInterval = 0;
-        status = userSet.GetIntValue(MMind.Eye.TriggerSettings.EncoderTriggerInterval.Name, ref triggerInterval);
-        if (!status.IsOK())
-        {
-            Utils.ShowError(status);
-            return;
-        }
-
-        // Shift the encoder values around zero
-        var encoderVals = new List<int>();
-        var encoder = batch.GetEncoderArray();
-        for (ulong r = 0; r < batch.Height(); ++r)
-            encoderVals.Add(useEncoderValues ? ShiftEncoderValsAroundZero(encoder[r], (int)encoder[0]) / triggerInterval : (int)r);
-
-        Console.WriteLine("Save the point cloud.");
-        if (saveCSV)
-            SaveDepthDataToCSV(batch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.csv", true);
-        if (savePLY)
-            SaveDepthDataToPly(batch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.ply", true);
-    }
-
     static int Main()
     {
         var profiler = new Profiler();
@@ -466,15 +320,18 @@ class TriggerWithSoftwareAndFixedRate
         if (!AcquireProfileData(profiler, profileBatch, captureLineCount, dataWidth, isSoftwareTrigger))
             return -1;
 
-        // // Acquire profile data using callback
+        // // Acquire the profile data using the callback function
         //if (!AcquireProfileDataUsingCallback(profiler, ref profileBatch, isSoftwareTrigger))
         //return -1;
+
+        if (profileBatch.CheckFlag(ProfileBatch.BatchFlag.Incomplete))
+            Console.WriteLine("Part of the batch's data is lost, the number of valid profiles is: {0}", profileBatch.ValidHeight());
 
         Console.WriteLine("Save the depth map and the intensity image.");
         SaveMap(profileBatch, "Depth.tiff");
         // profileBatch.GetDepthMap().Save("Depth.tiff"); // Using member function to save the depth map as 4-channels of 8 bits per pixel image.
         profileBatch.GetIntensityImage().Save("Intensity.png");
-        SavePointCloud(profileBatch, userSet, isOrganized: true);
+        Utils.SavePointCloud(profileBatch, userSet, isOrganized: true);
 
         // Uncomment the following line to save a virtual device file using the ProfileBatch profileBatch
         // acquired.

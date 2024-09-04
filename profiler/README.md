@@ -21,12 +21,22 @@ The samples marked with `(OpenCV)` require [OpenCV](https://opencv.org/releases/
   Trigger data acquisition with signals input from the external device, trigger line scans with signals input from the encoder, and then retrieve and save the acquired data.
 * [TriggerMultipleProfilersSimultaneously](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerMultipleProfilersSimultaneously) `(OpenCV)`  
   Trigger multiple laser profilers to acquire data asynchronously and retrieve the acquired data.
+* [BlindSpotFiltering](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/BlindSpotFiltering) `(OpenCV)`  
+  Detect and remove the false data caused by blind spots and obtain the filtered profile data.
+* [NoiseRemoval](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/NoiseRemoval) `(OpenCV)`  
+  Remove the noise in the depth data and obtain the filtered profile data.
+* [ProfileAlignment](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/ProfileAlignment) `(OpenCV)`  
+  Correct the X-axis and Z-axis vibrations in the profiles (aligning the profiles) and obtain the corrected profile data.
+* [RenderDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/RenderDepthMap) `(OpenCV)`  
+    Obtain and save the depth map rendered with the jet color scheme.
+* [TransformPointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TransformPointCloud)  
+  Obtain and save the point clouds in the custom reference frame.
 * [ManageUserSets](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/ManageUserSets)  
   Manage parameter groups, such as obtaining the names of all parameter groups, adding a parameter group, switching the parameter group, and saving parameter settings to the parameter group.
 * [PrintProfilerStatus](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/PrintProfilerStatus)  
   Obtain and print the laser profiler's information, such as model, serial number, firmware version, and temperatures.
 * [RegisterProfilerEvent](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/RegisterProfilerEvent)  
-  Define and register the callback function for monitoring the laser profiler connection status.
+  Define and register the callback function for monitoring laser profiler events.
 * [UseVirtualDevice](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/UseVirtualDevice) `(OpenCV)`  
   Acquire the profile data stored in a virtual device, generate the intensity image and depth map, and save the images.
 
@@ -48,7 +58,7 @@ Please download and install the required software listed below.
   >   * **Universal Windows Platform development**
   >
   >* Individual component: **.NET Framework 4.8 targeting pack**
-  >
+
   > Caution: C# Mech-Eye API is developed based on .NET Framework 4.8. If .NET Framework 4.8 is not installed, the samples cannot be built.
 
 * Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
