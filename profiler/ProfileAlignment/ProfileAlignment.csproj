@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE}</ProjectGuid>
+    <ProjectGuid>{EEFAD287-0355-4841-963F-4781086E1A1D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RegisterCameraEvent</RootNamespace>
-    <AssemblyName>RegisterCameraEvent</AssemblyName>
+    <RootNamespace>ProfileAlignment</RootNamespace>
+    <AssemblyName>ProfileAlignment</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,17 +82,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProfileAlignment.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="RegisterCameraEvent.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Emgu.CV.runtime.windows">
-      <Version>4.8.0.5324</Version>
+      <Version>4.7.0.5276</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD6FA5A3-D654-4328-AEB3-7E7E934D56CE}</ProjectGuid>
+    <ProjectGuid>{5F336A6D-F64C-455C-A49C-A4EF74309CC2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RegisterCameraEvent</RootNamespace>
-    <AssemblyName>RegisterCameraEvent</AssemblyName>
+    <RootNamespace>CaptureRenderedDepth</RootNamespace>
+    <AssemblyName>CaptureRenderedDepth</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -85,15 +85,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="RegisterCameraEvent.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Emgu.CV.runtime.windows">
-      <Version>4.8.0.5324</Version>
+      <Version>4.7.0.5276</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="RenderDepthMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

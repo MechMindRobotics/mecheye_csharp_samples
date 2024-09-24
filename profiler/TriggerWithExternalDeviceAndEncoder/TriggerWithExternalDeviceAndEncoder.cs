@@ -237,7 +237,7 @@ class TriggerWithExternalDeviceAndEncoder
     {
         profileBatch.Clear();
 
-        // Set a large CallbackRetrievalTimeout
+        // Set a large value for CallbackRetrievalTimeout
         Utils.ShowError(profiler.CurrentUserSet().SetIntValue(MMind.Eye.ScanSettings.CallbackRetrievalTimeout.Name, 60000));
 
         // Register the callback function
@@ -346,9 +346,12 @@ class TriggerWithExternalDeviceAndEncoder
         //if (!AcquireProfileData(profiler, profileBatch, captureLineCount, dataWidth, isSoftwareTrigger))
         //return -1;
 
-        // Acquire profile data using callback
+        // Acquire the profile data using the callback function
         if (!AcquireProfileDataUsingCallback(profiler, ref profileBatch, isSoftwareTrigger))
             return -1;
+
+        if (profileBatch.CheckFlag(ProfileBatch.BatchFlag.Incomplete))
+            Console.WriteLine("Part of the batch's data is lost, the number of valid profiles is: {0}", profileBatch.ValidHeight());
 
         Console.WriteLine("Save the depth map and the intensity image.");
         SaveMap(profileBatch, "Depth.tiff");

@@ -51,7 +51,41 @@ class SetScanningParameters
         var exposureModeName = MMind.Eye.Scanning2DSetting.ExposureMode.Name;
         var exposureTime2DName = MMind.Eye.Scanning2DSetting.ExposureTime.Name;
         Utils.ShowError(currentUserSet.SetEnumValue(exposureModeName, (int)MMind.Eye.Scanning2DSetting.ExposureMode.Value.Timed));
-        Utils.ShowError(currentUserSet.SetFloatValue(exposureTime2DName, 0.1));
+        Utils.ShowError(currentUserSet.SetFloatValue(exposureTime2DName, 100));
+
+        // The DEEP and LSR series also provide a "Scan2DPatternRoleExposureMode" parameter for
+        // adjusting the exposure mode for acquring the 2D images (depth source). Uncomment the
+        // following lines to set this parameter to "Timed".
+        //var depthSourceExposureModeName = MMind.Eye.Scanning2DSetting.DepthSourceExposureMode.Name;
+        //Utils.ShowError(currentUserSet.SetEnumValue(depthSourceExposureModeName, (int)MMind.Eye.Scanning2DSetting.DepthSourceExposureMode.Value.Timed));
+
+        // You can also use the projector for supplemental light when acquiring the 2D image / 2D images
+        // (depth source).
+        // Models other than the DEEP and LSR series: Uncomment the following lines to set the exposure
+        // mode to "Flash" for supplemental light.
+        //Utils.ShowError(currentUserSet.SetEnumValue(exposureModeName, (int)MMind.Eye.Scanning2DSetting.ExposureMode.Value.Flash));
+
+        // DEEP and LSR series: Uncomment the following lines to set the exposure mode to "Flash" for
+        // supplemental light.
+        //Utils.ShowError(currentUserSet.SetEnumValue(depthSourceExposureModeName, (int)MMind.Eye.Scanning2DSetting.DepthSourceExposureMode.Value.Flash));
+
+        // The following models also provide a "FlashAcquisitionMode" when using the flash exposure
+        // mode: DEEP, LSR S/L/XL, PRO XS/S/M, NANO, NANO ULTRA. Uncomment the following lines to set
+        // the "FlashAcquisitionMode" parameter to "Responsive".
+        //var flashAcquisitionModeName = MMind.Eye.Scanning2DSetting.FlashAcquisitionMode.Name;
+        //Utils.ShowError(currentUserSet.SetEnumValue(flashAcquisitionModeName, (int)MMind.Eye.Scanning2DSetting.FlashAcquisitionMode.Value.Responsive));
+
+        // When using the responsive acquisition mode, you can adjust the exposure time for the flash
+        // exposure mode. Uncomment the following lines to set the exposure time to 20 ms.
+        //var flashExposureTimeName = MMind.Eye.Scanning2DSetting.FlashExposureTime.Name;
+        //Utils.ShowError(currentUserSet.SetFloatValue(flashExposureTimeName, 20));
+
+        //Uncomment the following lines to check the values of the "FlashAcquisitionMode" and "FlashExposureTime" parameters.
+        //var flashAcquisitionMode = new int();
+        //double flashExposureTime = new double();
+        //Utils.ShowError(currentUserSet.GetEnumValue(flashAcquisitionModeName, ref flashAcquisitionMode));
+        //Utils.ShowError(currentUserSet.GetFloatValue(flashExposureTimeName, ref flashExposureTime));
+        //Console.WriteLine("2D scanning flash acquisition mode : {0}, flash exposure time : {1} ms.", flashAcquisitionMode, flashExposureTime);
 
         var exposureMode2D = new int();
         double scan2DExposureTime = new double();
