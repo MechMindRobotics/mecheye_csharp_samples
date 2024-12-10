@@ -128,7 +128,7 @@ class BlindSpotFilter
         userSet.GetIntValue(MMind.Eye.ScanSettings.ScanLineCount.Name,
                                    ref captureLineCount);
 
-        // Enbale the blind spot filtering function
+        // Enable the blind spot filtering function
         userSet.SetBoolValue(MMind.Eye.Filters.EnableBlindSpotFiltering.Name, true);
 
         // Define a ProfileBatch object to store the profile data
