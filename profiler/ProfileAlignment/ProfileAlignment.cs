@@ -128,9 +128,9 @@ class ProfileAlignment
         userSet.GetIntValue(MMind.Eye.ScanSettings.ScanLineCount.Name,
                                    ref captureLineCount);
 
-        // Enbale the Z-axis profile alignment function
+        // Enable the Z-axis profile alignment function
         userSet.SetBoolValue(MMind.Eye.ProfileAlignment.EnableXAxisAlignment.Name, true);
-        // Enbale the X-axis profile alignment function
+        // Enable the X-axis profile alignment function
         userSet.SetBoolValue(MMind.Eye.ProfileAlignment.EnableZAxisAlignment.Name, true);
 
         // Define a ProfileBatch object to store the profile data

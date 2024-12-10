@@ -34,7 +34,7 @@ class ConnectToCamera
             string input = Console.ReadLine();
             if (int.TryParse(input, out inputIndex) && inputIndex >= 0 && inputIndex < cameraInfoList.Count)
                 break;
-            Console.WriteLine("Input invalid! Please enter the camera index you wnat to connect: ");
+            Console.WriteLine("Input invalid! Please enter the camera index you want to connect: ");
         }
 
         var camera = new Camera();

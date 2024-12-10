@@ -127,7 +127,7 @@ class NoiseRemoval
         userSet.GetIntValue(MMind.Eye.ScanSettings.ScanLineCount.Name,
                                    ref captureLineCount);
 
-        // Enbale the noise removal function
+        // Enable the noise removal function
         userSet.SetBoolValue(MMind.Eye.Filters.EnableNoiseRemoval.Name, true);
         // Set the "NoiseRemovalIntensity" parameter to "Medium"
         userSet.SetEnumValue(MMind.Eye.Filters.NoiseRemovalIntensity.Name, (int)(MMind.Eye.Filters.NoiseRemovalIntensity.Value.Medium));

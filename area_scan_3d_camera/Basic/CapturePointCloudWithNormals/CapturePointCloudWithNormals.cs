@@ -25,7 +25,7 @@ class CapturePointCloudWithNormals
         {
             Utils.ShowError(frame2DAnd3D.Frame3D().SaveUntexturedPointCloudWithNormals(FileFormat.PLY, "PointCloud_1.ply"));
             Utils.ShowError(frame2DAnd3D.SaveTexturedPointCloudWithNormals(FileFormat.PLY,
-                                                                 "TexutredPointCloud_1.ply"));
+                                                                 "TexturedPointCloud_1.ply"));
         }
         else
         {
@@ -39,7 +39,7 @@ class CapturePointCloudWithNormals
         {
             Utils.ShowError(frame2DAnd3D.Frame3D().SaveUntexturedPointCloudWithNormals(FileFormat.PLY, "PointCloud_2.ply"));
             Utils.ShowError(frame2DAnd3D.SaveTexturedPointCloudWithNormals(FileFormat.PLY,
-                                                                 "TexutredPointCloud_2.ply"));
+                                                                 "TexturedPointCloud_2.ply"));
         }
         else
         {

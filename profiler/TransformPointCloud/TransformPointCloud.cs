@@ -65,7 +65,7 @@ class TransformPointCloud
         return status.IsOK();
     }
 
-   
+
     private static void SetParameters(UserSet userSet)
     {
         // Set the "Data Acquisition Trigger Source" parameter to "Software"
@@ -85,7 +85,7 @@ class TransformPointCloud
 
     /// Calculate the initial coordinates of each point, apply the rigid body transformations to the
     /// initial coordinates, and then write the transformed coordinates to the PLY file.
-    private static void TransformAndSaveDepthDataToPly(ProfileDepthMap depth, int[] yValues, double xUnit, double yUnit, string fileName, bool isOrganized,FrameTransformation coordTransformaition)
+    private static void TransformAndSaveDepthDataToPly(ProfileDepthMap depth, int[] yValues, double xUnit, double yUnit, string fileName, bool isOrganized, FrameTransformation coordTransformaition)
     {
         if (File.Exists(fileName))
             File.Delete(fileName);
@@ -117,7 +117,7 @@ class TransformPointCloud
             Utils.AddText(fs, "end_header\n");
 
 
-            var rotation = coordTransformaition.Rotation; 
+            var rotation = coordTransformaition.Rotation;
             var translation = coordTransformaition.Translation;
             for (ulong y = 0; y < h; ++y)
             {
@@ -133,14 +133,14 @@ class TransformPointCloud
                                               yPos * rotation.R2 +
                                               zPos * rotation.R3 +
                                               translation.X;
-                     double transformedY = xPos * rotation.R4 +
-                                              yPos * rotation.R5 +
-                                              zPos * rotation.R6 +
-                                              translation.Y;
-                     double transformedZ = xPos * rotation.R7 +
-                                              yPos * rotation.R8 +
-                                              zPos * rotation.R9 +
-                                              translation.Z;
+                    double transformedY = xPos * rotation.R4 +
+                                             yPos * rotation.R5 +
+                                             zPos * rotation.R6 +
+                                             translation.Y;
+                    double transformedZ = xPos * rotation.R7 +
+                                             yPos * rotation.R8 +
+                                             zPos * rotation.R9 +
+                                             translation.Z;
                     if (Single.IsNaN(depth.At(y, x)))
                         Utils.AddText(fs, "nan nan nan\n");
                     else
@@ -152,7 +152,7 @@ class TransformPointCloud
 
     /// Convert the profile data to an untextured point cloud in the custom reference frame and save it
     /// to a PLY file.
-    private static void ConvertBatchToPointCloudWithTransformation(ProfileBatch batch, UserSet userSet,FrameTransformation coordTransformaition)
+    private static void ConvertBatchToPointCloudWithTransformation(ProfileBatch batch, UserSet userSet, FrameTransformation coordTransformation)
     {
         if (batch.IsEmpty())
             return;
@@ -210,7 +210,7 @@ class TransformPointCloud
 
         Console.WriteLine("Save the transformed point cloud.");
 
-        TransformAndSaveDepthDataToPly(batch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.ply", true,coordTransformaition);
+        TransformAndSaveDepthDataToPly(batch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.ply", true, coordTransformation);
     }
 
 

@@ -54,7 +54,7 @@ class SetScanningParameters
         Utils.ShowError(currentUserSet.SetFloatValue(exposureTime2DName, 100));
 
         // The DEEP and LSR series also provide a "Scan2DPatternRoleExposureMode" parameter for
-        // adjusting the exposure mode for acquring the 2D images (depth source). Uncomment the
+        // adjusting the exposure mode for acquiring the 2D images (depth source). Uncomment the
         // following lines to set this parameter to "Timed".
         //var depthSourceExposureModeName = MMind.Eye.Scanning2DSetting.DepthSourceExposureMode.Name;
         //Utils.ShowError(currentUserSet.SetEnumValue(depthSourceExposureModeName, (int)MMind.Eye.Scanning2DSetting.DepthSourceExposureMode.Value.Timed));
@@ -70,7 +70,7 @@ class SetScanningParameters
         //Utils.ShowError(currentUserSet.SetEnumValue(depthSourceExposureModeName, (int)MMind.Eye.Scanning2DSetting.DepthSourceExposureMode.Value.Flash));
 
         // The following models also provide a "FlashAcquisitionMode" when using the flash exposure
-        // mode: DEEP, LSR S/L/XL, PRO XS/S/M, NANO, NANO ULTRA. Uncomment the following lines to set
+        // mode: DEEP, DEEP-GL, LSR S/L/XL, LSR S-GL/L-GL/XL-GL, PRO XS/S/M, PRO XS-GL/S-GL/M-GL, NANO, NANO-GL, NANO ULTRA, NANO ULTRA-GL. Uncomment the following lines to set
         // the "FlashAcquisitionMode" parameter to "Responsive".
         //var flashAcquisitionModeName = MMind.Eye.Scanning2DSetting.FlashAcquisitionMode.Name;
         //Utils.ShowError(currentUserSet.SetEnumValue(flashAcquisitionModeName, (int)MMind.Eye.Scanning2DSetting.FlashAcquisitionMode.Value.Responsive));
