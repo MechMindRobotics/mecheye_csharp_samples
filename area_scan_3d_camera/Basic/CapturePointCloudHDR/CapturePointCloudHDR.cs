@@ -28,8 +28,8 @@ class CapturePointCloudHDR
         Utils.ShowError(camera.Capture3D(ref frame));
 
         var pointCloudFile = "PointCloud.ply";
-        Utils.ShowError(frame.SaveUntexturedPointCloud(FileFormat.PLY, pointCloudFile));
-        Console.WriteLine("Capture and save the point cloud {0}", pointCloudFile);
+        var successMessage = "Capture and save the point cloud " + pointCloudFile;
+        Utils.ShowError(frame.SaveUntexturedPointCloud(FileFormat.PLY, pointCloudFile), successMessage);
 
         camera.Disconnect();
         Console.WriteLine("Disconnected from the camera successfully.");

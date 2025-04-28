@@ -1,5 +1,5 @@
 /*
-With this sample, you can connect to a camera and obtain the 2D image and point cloud data.
+With this sample, you can connect to a camera and obtain the 2D image, depth map, and point cloud data.
 */
 
 using System;

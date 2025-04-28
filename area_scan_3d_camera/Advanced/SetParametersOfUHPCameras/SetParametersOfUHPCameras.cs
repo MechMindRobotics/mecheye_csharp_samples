@@ -17,8 +17,8 @@ class SetParametersOfUHPCameras
         // Set the capture mode to "Merge"
         int mode = (int)MMind.Eye.UhpSetting.CaptureMode.Value.Merge;
 
-        Utils.ShowError(currentUserSet.SetEnumValue(MMind.Eye.UhpSetting.CaptureMode.Name, mode));
         Console.WriteLine("Set the UHP capture mode to 'Merge'.");
+        Utils.ShowError(currentUserSet.SetEnumValue(MMind.Eye.UhpSetting.CaptureMode.Name, mode));
 
         camera.Disconnect();
         Console.WriteLine("Disconnected from the camera successfully.");

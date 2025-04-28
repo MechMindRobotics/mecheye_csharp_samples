@@ -1,5 +1,5 @@
 /*
-With this sample, you can obtain and save the depth map.
+With this sample, you can obtain and save the depth map rendered with the jet color scheme.
 */
 
 using System;

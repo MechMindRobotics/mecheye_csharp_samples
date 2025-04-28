@@ -8,7 +8,7 @@ If you have any questions or have anything to share, feel free to post on the [M
 
 Currently, the following samples are provided.
 
-The samples marked with `(OpenCV)` require [OpenCV](https://opencv.org/releases/) to be installed.  
+The samples marked with `(OpenCV)` require [Emgu.CV.runtime.windows](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) to be installed via NuGet.
 
 * [TriggerWithSoftwareAndFixedRate](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerWithSoftwareAndFixedRate) `(OpenCV)`  
   Trigger data acquisition with signals input from software, trigger line scans at a fixed rate, and then retrieve and save the acquired data.
@@ -21,6 +21,8 @@ The samples marked with `(OpenCV)` require [OpenCV](https://opencv.org/releases/
   Trigger data acquisition with signals input from the external device, trigger line scans with signals input from the encoder, and then retrieve and save the acquired data.
 * [TriggerMultipleProfilersSimultaneously](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerMultipleProfilersSimultaneously) `(OpenCV)`  
   Trigger multiple laser profilers to acquire data asynchronously and retrieve the acquired data.
+* [TriggerNonStopAcquisition](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/TriggerNonStopAcquisition) `(OpenCV)`  
+  Trigger non-stop acquisition, and then retrieve and save the acquired data.
 * [BlindSpotFiltering](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/BlindSpotFiltering) `(OpenCV)`  
   Detect and remove the false data caused by blind spots and obtain the filtered profile data.
 * [NoiseRemoval](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/profiler/NoiseRemoval) `(OpenCV)`  
@@ -57,11 +59,10 @@ Please download and install the required software listed below.
   >   * **Desktop development with C++**
   >   * **Universal Windows Platform development**
   >
-  >* Individual component: **.NET Framework 4.8 targeting pack**
-
+  >* Individual component: **.NET Framework 4.8 targeting pack**  
   > Caution: C# Mech-Eye API is developed based on .NET Framework 4.8. If .NET Framework 4.8 is not installed, the samples cannot be built.
 
-* Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
+* Emgu CV: The samples marked with `(OpenCV)` contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
 
 ### Instructions
 

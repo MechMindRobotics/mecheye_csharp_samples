@@ -1,6 +1,5 @@
 ﻿/*
-With this sample, you can acquire the profile data triggered with software in a fixed rate, generate
-and save the profile intensity image, depth map, color depth map ,and point cloud.
+With this sample, you can obtain and save the depth map rendered with the jet color scheme.
 */
 
 using System;
@@ -21,6 +20,11 @@ class RenderDepthMap
     private static void CallbackFunc(ref ProfileBatch batch, IntPtr pUser)
     {
         mut.WaitOne();
+        if (!batch.GetErrorStatus().IsOK())
+        {
+            Console.WriteLine("Error occurred during data acquisition");
+            Utils.ShowError(batch.GetErrorStatus());
+        }
         GCHandle handle = GCHandle.FromIntPtr(pUser);
         var outputBatch = (handle.Target as ProfileBatch);
         outputBatch.Append(batch);

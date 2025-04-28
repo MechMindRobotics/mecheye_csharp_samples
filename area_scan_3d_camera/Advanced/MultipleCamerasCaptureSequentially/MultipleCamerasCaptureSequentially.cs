@@ -52,11 +52,11 @@ class MultipleCamerasCaptureSequentially
         color.Save(colorFile);
         Console.WriteLine("Capture and save the 2D image: {0}", colorFile);
 
-        Utils.ShowError(frame.Frame3D().SaveUntexturedPointCloud(FileFormat.PLY, pointCloudPath));
-        Console.WriteLine("Capture and save the untextured point cloud: {0}", pointCloudPath);
+        var successMessage = "Capture and save the untextured point cloud: {0}" + pointCloudPath;
+        Utils.ShowError(frame.Frame3D().SaveUntexturedPointCloud(FileFormat.PLY, pointCloudPath), successMessage);
 
-        Utils.ShowError(frame.SaveTexturedPointCloudWithNormals(FileFormat.PLY, colorPointCloudPath));
-        Console.WriteLine("Capture and save the textured point cloud: {0}", colorPointCloudPath);
+        successMessage = "Capture and save the textured point cloud: " + colorPointCloudPath;
+        Utils.ShowError(frame.SaveTexturedPointCloudWithNormals(FileFormat.PLY, colorPointCloudPath), successMessage);
     }
 }
 
