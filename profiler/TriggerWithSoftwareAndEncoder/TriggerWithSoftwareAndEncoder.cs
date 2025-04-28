@@ -104,6 +104,14 @@ class TriggerWithSoftwareAndEncoder
         // // second exposure phase is completed.
         // SetHDRExposure(userSet, 100, 40, 80, 10, 60);
 
+        // // Enable outlier removal and adjust the outlier removal intensity.
+        // // Set the "EnableOutlierRemoval" parameter to true
+        // Utils.ShowError(
+        //   userSet.SetBoolValue(MMind.Eye.ProfileProcessing.EnableOutlierRemoval.name, true));
+        // // Set the "OutlierRemovalIntensity" parameter to "VeryLow"
+        // Utils.ShowError(userSet.SetEnumValue(MMind.Eye.ProfileProcessing.OutlierRemovalIntensity.name,
+        //    (int)MMind.Eye.ProfileProcessing.OutlierRemovalIntensity.Value.VeryLow));
+
         // Set the "Data Acquisition Trigger Source" parameter to "Software"
         Utils.ShowError(userSet.SetEnumValue(
             MMind.Eye.TriggerSettings.DataAcquisitionTriggerSource.Name,
@@ -225,6 +233,11 @@ class TriggerWithSoftwareAndEncoder
     private static void CallbackFunc(ref ProfileBatch batch, IntPtr pUser)
     {
         mut.WaitOne();
+        if (!batch.GetErrorStatus().IsOK())
+        {
+            Console.WriteLine("Error occurred during data acquisition");
+            Utils.ShowError(batch.GetErrorStatus());
+        }
         GCHandle handle = GCHandle.FromIntPtr(pUser);
         var outputBatch = (handle.Target as ProfileBatch);
         outputBatch.Append(batch);

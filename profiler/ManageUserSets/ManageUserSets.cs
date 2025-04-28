@@ -34,18 +34,18 @@ class ManageUserSets
 
         // Add a new user set.
         string newSetting = "NewSetting";
-        Utils.ShowError(userSetManager.AddUserSet(newSetting));
-        Console.WriteLine("Add a new user set with the name of \"{0}\".", newSetting);
+        var successMessage = "Add a new user set with the name of \"" + newSetting+ "\".";
+        Utils.ShowError(userSetManager.AddUserSet(newSetting), successMessage);
         Console.WriteLine("");
 
         // Select a user set by its name.
-        Utils.ShowError(userSetManager.SelectUserSet(newSetting));
-        Console.WriteLine("Select the \"{0}\" user set.", newSetting);
+        successMessage = "Select the \""+ newSetting +"\" user set.";
+        Utils.ShowError(userSetManager.SelectUserSet(newSetting), successMessage);
         Console.WriteLine("");
 
         // Save all the parameter settings to the currently selected user set.
-        Utils.ShowError(curSettings.SaveAllParametersToDevice());
-        Console.WriteLine("Save the current parameter settings to the selected user set.");
+        successMessage = "Save the current parameter settings to the selected user set.";
+        Utils.ShowError(curSettings.SaveAllParametersToDevice(), successMessage);
 
         profiler.Disconnect();
         Console.WriteLine("Disconnected from the profiler successfully.");

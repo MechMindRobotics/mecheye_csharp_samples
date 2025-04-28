@@ -13,8 +13,6 @@ using System.Text;
 
 class TransformPointCloud
 {
-    private static readonly Mutex mut = new Mutex();
-    private static readonly double kPitch = 1e-3;
 
     private static bool AcquireProfileData(Profiler profiler, ProfileBatch totalBatch, int captureLineCount, int dataWidth, bool isSoftwareTrigger)
     {
@@ -83,73 +81,6 @@ class TransformPointCloud
             userSet.SetIntValue(MMind.Eye.ScanSettings.ScanLineCount.Name, 1600));
     }
 
-    /// Calculate the initial coordinates of each point, apply the rigid body transformations to the
-    /// initial coordinates, and then write the transformed coordinates to the PLY file.
-    private static void TransformAndSaveDepthDataToPly(ProfileDepthMap depth, int[] yValues, double xUnit, double yUnit, string fileName, bool isOrganized, FrameTransformation coordTransformaition)
-    {
-        if (File.Exists(fileName))
-            File.Delete(fileName);
-        uint validPointCount = 0;
-        var w = depth.Width();
-        var h = depth.Height();
-        if (!isOrganized)
-        {
-            for (ulong y = 0; y < h; ++y)
-            {
-                for (ulong x = 0; x < w; ++x)
-                {
-                    if (!Single.IsNaN(depth.At(y, x)))
-                        validPointCount++;
-                }
-            }
-        }
-
-        using (FileStream fs = File.Create(fileName))
-        {
-            Utils.AddText(fs, "ply\n");
-            Utils.AddText(fs, "format ascii 1.0\n");
-            Utils.AddText(fs, "comment File generated\n");
-            Utils.AddText(fs, "comment x y z data unit in mm\n");
-            Utils.AddText(fs, String.Format("element vertex {0}\n", isOrganized ? (uint)w * h : validPointCount));
-            Utils.AddText(fs, "property float x\n");
-            Utils.AddText(fs, "property float y\n");
-            Utils.AddText(fs, "property float z\n");
-            Utils.AddText(fs, "end_header\n");
-
-
-            var rotation = coordTransformaition.Rotation;
-            var translation = coordTransformaition.Translation;
-            for (ulong y = 0; y < h; ++y)
-            {
-                for (ulong x = 0; x < w; ++x)
-                {
-                    // Calculate the initial coordinates of each point from the original profile data.
-                    double xPos = x * xUnit * kPitch;
-                    double yPos = yValues[y] * yUnit * kPitch;
-                    double zPos = depth.At(y, x);
-                    // Apply the rigid body transformations to the initial coordinates to obtain the
-                    // coordinates in the custom reference frame.
-                    double transformedX = xPos * rotation.R1 +
-                                              yPos * rotation.R2 +
-                                              zPos * rotation.R3 +
-                                              translation.X;
-                    double transformedY = xPos * rotation.R4 +
-                                             yPos * rotation.R5 +
-                                             zPos * rotation.R6 +
-                                             translation.Y;
-                    double transformedZ = xPos * rotation.R7 +
-                                             yPos * rotation.R8 +
-                                             zPos * rotation.R9 +
-                                             translation.Z;
-                    if (Single.IsNaN(depth.At(y, x)))
-                        Utils.AddText(fs, "nan nan nan\n");
-                    else
-                        Utils.AddText(fs, String.Format("{0} {1} {2} \n", transformedX, transformedY, transformedZ));
-                }
-            }
-        }
-    }
-
     /// Convert the profile data to an untextured point cloud in the custom reference frame and save it
     /// to a PLY file.
     private static void ConvertBatchToPointCloudWithTransformation(ProfileBatch batch, UserSet userSet, FrameTransformation coordTransformation)
@@ -158,16 +89,16 @@ class TransformPointCloud
             return;
 
         // Get the X-axis resolution
-        double xUnit = 0;
-        var status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.XAxisResolution.Name, ref xUnit);
+        double xResolution = 0;
+        var status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.XAxisResolution.Name, ref xResolution);
         if (!status.IsOK())
         {
             Utils.ShowError(status);
             return;
         }
 
-        double yUnit = 0;
-        status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.YResolution.Name, ref yUnit);
+        double yResolution = 0;
+        status = userSet.GetFloatValue(MMind.Eye.PointCloudResolutions.YResolution.Name, ref yResolution);
         if (!status.IsOK())
         {
             Utils.ShowError(status);
@@ -180,7 +111,7 @@ class TransformPointCloud
         // while (true)
         // {
         //     string str = Console.ReadLine();
-        //     if (double.TryParse(str, out yUnit) && yUnit >= 1 && yUnit <= 65535)
+        //     if (double.TryParse(str, out yResolution) && yResolution >= 1 && yResolution <= 65535)
         //         break;
         //     Console.WriteLine("Input invalid! Please enter the desired encoder resolution (integer, unit: μm, min: 1, max: 65535): ");
         // }
@@ -202,15 +133,9 @@ class TransformPointCloud
             return;
         }
 
-        // Shift the encoder values around zero
-        var encoderVals = new List<int>();
-        var encoder = batch.GetEncoderArray();
-        for (ulong r = 0; r < batch.Height(); ++r)
-            encoderVals.Add(useEncoderValues ? Utils.ShiftEncoderValsAroundZero(encoder[r], (int)encoder[0]) / triggerInterval : (int)r);
-
         Console.WriteLine("Save the transformed point cloud.");
-
-        TransformAndSaveDepthDataToPly(batch.GetDepthMap(), encoderVals.ToArray(), xUnit, yUnit, "PointCloud.ply", true, coordTransformation);
+        var transformedPointCloud = PointCloudTransformationForProfiler.TransformPointCloud(coordTransformation, batch.GetUntexturedPointCloud(xResolution, yResolution, useEncoderValues, triggerInterval));
+        Utils.ShowError(ProfileBatch.SaveUntexturedPointCloud(ref transformedPointCloud, FileFormat.PLY, "PointCloud.ply"));
     }
 
 

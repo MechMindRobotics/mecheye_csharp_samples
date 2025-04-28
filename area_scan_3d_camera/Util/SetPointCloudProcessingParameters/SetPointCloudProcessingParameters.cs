@@ -51,8 +51,8 @@ class SetPointCloudProcessingParameters
         Console.WriteLine("Point Cloud Edge Preservation: {0}.", edgePreservationMode);
 
         // Save all the parameter settings to the currently selected user set.
-        Utils.ShowError(currentUserSet.SaveAllParametersToDevice());
-        Console.WriteLine("Save the current parameter settings to the selected user set.");
+        var successMessage = "Save the current parameter settings to the selected user set.";
+        Utils.ShowError(currentUserSet.SaveAllParametersToDevice(), successMessage);
 
         camera.Disconnect();
         Console.WriteLine("Disconnected from the camera successfully.");

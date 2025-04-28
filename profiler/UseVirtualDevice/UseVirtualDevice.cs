@@ -30,6 +30,11 @@ class UseVirtualDevice
     private static void CallbackFunc(ref ProfileBatch batch, IntPtr pUser)
     {
         mut.WaitOne();
+        if (!batch.GetErrorStatus().IsOK())
+        {
+            Console.WriteLine("Error occurred during data acquisition");
+            Utils.ShowError(batch.GetErrorStatus());
+        }
         GCHandle handle = GCHandle.FromIntPtr(pUser);
         var outputBatch = (handle.Target as ProfileBatch);
         outputBatch.Append(batch);
@@ -155,17 +160,28 @@ class UseVirtualDevice
     {
         try
         {
+            // Please ensure that the file name is encoded in UTF-8 format. 
             var profiler = new VirtualProfiler("test.mraw");
             if (!AcquireProfileDataWithoutCallback(ref profiler))
+            {
+                Console.WriteLine("Failed to acquire profile data. Press any key to exit ...");
+                Console.ReadKey();
                 return -1;
-            if (!AcquireProfileDataWithCallback(ref profiler))
-                return -1;
+            }
+            // if (!AcquireProfileDataWithCallback(ref profiler))
+            // {
+            //     Console.WriteLine("Failed to acquire profile data. Press any key to exit ...");
+            //     Console.ReadKey();
+            //     return -1;
+            // }
             Console.WriteLine("Press any key to exit ...");
             Console.ReadKey();
             return 0;
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            Console.WriteLine(e.Message);
+            Console.ReadKey();
             return -1;
         }
     }

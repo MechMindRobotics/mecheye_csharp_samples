@@ -87,6 +87,22 @@ class SetScanningParameters
         //Utils.ShowError(currentUserSet.GetFloatValue(flashExposureTimeName, ref flashExposureTime));
         //Console.WriteLine("2D scanning flash acquisition mode : {0}, flash exposure time : {1} ms.", flashAcquisitionMode, flashExposureTime);
 
+        //Uncomment the following line to set the camera gain when capturing 2D images.
+
+        //For DEEP and LSR series cameras, the camera gain for capturing 2D images(texture) can be
+        //adjusted by setting the "Scan2DGain" parameter.
+
+        //For other camera series, the camera gain for capturing 2D images can be adjusted by
+        //setting the "Scan2DGain" parameter when the exposure mode is set to fixed exposure, auto
+        //exposure, HDR, or flash mode, and the flash acquisition mode is set to
+        //responsive.
+
+        //var scan2dGainName = MMind.Eye.Scanning2DSetting.Gain.Name;
+        //Utils.ShowError(currentUserSet.SetFloatValue(scan2dGainName, 2.0));
+        //double scan2dGain = new double();
+        //Utils.ShowError(currentUserSet.GetFloatValue(scan2dGainName,ref scan2dGain));
+        //Console.WriteLine("2D image gain: {0} dB.", scan2dGain);
+
         var exposureMode2D = new int();
         double scan2DExposureTime = new double();
         Utils.ShowError(currentUserSet.GetEnumValue(exposureModeName, ref exposureMode2D));
@@ -94,8 +110,8 @@ class SetScanningParameters
         Console.WriteLine("2D scanning exposure mode enum : {0}, exposure time : {1} ms.", exposureMode2D, scan2DExposureTime);
 
         // Save all the parameter settings to the currently selected user set.
-        Utils.ShowError(currentUserSet.SaveAllParametersToDevice());
-        Console.WriteLine("save the current parameter settings to the selected user set.");
+        var successMessage = "save the current parameter settings to the selected user set.";
+        Utils.ShowError(currentUserSet.SaveAllParametersToDevice(), successMessage);
 
         camera.Disconnect();
         Console.WriteLine("Disconnected from the camera successfully.");

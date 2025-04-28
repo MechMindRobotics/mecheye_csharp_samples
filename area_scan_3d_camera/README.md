@@ -12,7 +12,7 @@ Samples are divided into the following categories: **Basic**, **Advanced**, and 
 * **Advanced** samples: Acquire data in more complicated manners and set model-specific parameters.
 * **Util** samples: Obtain camera information and set common parameters.
 
-The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) to be installed via NuGet.
+The samples marked with `(OpenCV)` require [Emgu.CV.runtime.windows](https://www.nuget.org/packages/Emgu.CV.runtime.windows/) to be installed via NuGet.
 
 * **Basic**
   * [ConnectToCamera](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/ConnectToCamera)  
@@ -68,6 +68,9 @@ The samples marked with `(EmguCV)` require [Emgu.CV.runtime.windows](https://www
     Manage parameter groups, such as obtaining the names of all parameter groups, adding a parameter group, switching the parameter group, and saving parameter settings to the parameter group.
   * [SaveAndLoadUserSet](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Util/SaveAndLoadUserSet)  
     Import and replace all parameter groups from a JSON file, and save all parameter groups to a JSON file.
+* **Calibration**
+  * [HandEyeCalibration](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Calibration/HandEyeCalibration)`(OpenCV)`  
+    Perform hand-eye calibration.
 
 ## Build the Samples
 
@@ -86,11 +89,10 @@ Please download and install the required software listed below.
   >   * **Desktop development with C++**
   >   * **Universal Windows Platform development**
   >
-  >* Individual component: **.NET Framework 4.8 targeting pack**
-
+  >* Individual component: **.NET Framework 4.8 targeting pack**  
   > Caution: C# Mech-Eye API is developed based on .NET Framework 4.8. If .NET Framework 4.8 is not installed, the samples cannot be built.
 
-* Emgu CV: The **CaptureDepthMap** sample contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
+* Emgu CV: The samples marked with `(OpenCV)` contains functions that depend on the OpenCV software libraries. Therefore, Emgu CV (the .NET wrapper for OpenCV) must be installed through NuGet Package Manager in Visual Studio. For detailed instructions, refer to [the guide provided by Microsoft](https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio).
 
 ### Instructions
 

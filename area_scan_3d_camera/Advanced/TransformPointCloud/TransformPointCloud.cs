@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+With this sample, you can retrieve point clouds in the custom reference frame.
+*/
+
+using System;
 using MMind.Eye;
 
 class TransformPointCloud
@@ -39,26 +43,26 @@ class TransformPointCloud
         // Transform the reference frame of the untextured point cloud and save the point cloud
         var transformedPointCloud = PointCloudTransformationForCamera.TransformPointCloud(transformation, frame3d.GetUntexturedPointCloud());
         var pointCloudFile = "PointCloud.ply";
-        Utils.ShowError(Frame3D.SaveUntexturedPointCloud(ref transformedPointCloud, FileFormat.PLY, pointCloudFile));
-        Console.WriteLine("save the untextured point cloud: {0}", pointCloudFile);
+        var successMessage = "save the untextured point cloud: " + pointCloudFile;
+        Utils.ShowError(Frame3D.SaveUntexturedPointCloud(ref transformedPointCloud, FileFormat.PLY, pointCloudFile), successMessage);
 
-        // Transform the reference frame of the untextured point cloud with normals and save the point cloud 
+        // Transform the reference frame of the untextured point cloud with normals and save the point cloud
         var transformedPointCloudWithNormals = PointCloudTransformationForCamera.TransformPointCloudWithNormals(transformation, frame3d.GetUntexturedPointCloud());
         var pointCloudWithNormalsFile = "PointCloudWithNormals.ply";
-        Utils.ShowError(Frame3D.SaveUntexturedPointCloudWithNormals(ref transformedPointCloudWithNormals, FileFormat.PLY, pointCloudWithNormalsFile));
-        Console.WriteLine("save the untextured point cloud with normals: {0}", pointCloudWithNormalsFile);
+        successMessage = "save the untextured point cloud with normals: " + pointCloudWithNormalsFile;
+        Utils.ShowError(Frame3D.SaveUntexturedPointCloudWithNormals(ref transformedPointCloudWithNormals, FileFormat.PLY, pointCloudWithNormalsFile), successMessage);
 
         // Transform the reference frame of the textured point cloud and save the point cloud
         var transformedTexturedPointCloud = PointCloudTransformationForCamera.TransformTexturedPointCloud(transformation, frame.GetTexturedPointCloud());
         var texturedPointCloudFile = "TexturedPointCloud.ply";
-        Utils.ShowError(Frame2DAnd3D.SaveTexturedPointCloud(ref transformedTexturedPointCloud, FileFormat.PLY, texturedPointCloudFile));
-        Console.WriteLine("save the textured point cloud: {0}", texturedPointCloudFile);
+        successMessage = "save the textured point cloud: " + texturedPointCloudFile;
+        Utils.ShowError(Frame2DAnd3D.SaveTexturedPointCloud(ref transformedTexturedPointCloud, FileFormat.PLY, texturedPointCloudFile), successMessage);
 
         // Transform the reference frame of the textured point cloud with normals and save point cloud
-        var transformedTexturedPointCloudWithNormals = PointCloudTransformationForCamera.TransformTexturedPointCloudWithNormals(transformation,frame.GetTexturedPointCloud());
+        var transformedTexturedPointCloudWithNormals = PointCloudTransformationForCamera.TransformTexturedPointCloudWithNormals(transformation, frame.GetTexturedPointCloud());
         var texturedPointCloudWithNormalsFile = "TexturedPointCloudWithNormals.ply";
-        Utils.ShowError(Frame2DAnd3D.SaveTexturedPointCloudWithNormals(ref transformedTexturedPointCloudWithNormals, FileFormat.PLY, texturedPointCloudWithNormalsFile));
-        Console.WriteLine("save the textured point cloud with normals: {0}", texturedPointCloudWithNormalsFile);
+        successMessage = "save the textured point cloud with normals: " + texturedPointCloudWithNormalsFile;
+        Utils.ShowError(Frame2DAnd3D.SaveTexturedPointCloudWithNormals(ref transformedTexturedPointCloudWithNormals, FileFormat.PLY, texturedPointCloudWithNormalsFile), successMessage);
 
         camera.Disconnect();
         Console.WriteLine("Disconnected from the camera successfully.");

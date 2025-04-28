@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -54,9 +55,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Reference Include="MechEyeApiNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+    <Reference
+      Include="MechEyeApiNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(MECHEYE_DIR)\API\dll\MechEyeApiNet.dll</HintPath>
+      <HintPath>$(MECHEYE_DIR)\API\dll\net48\MechEyeApiNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,9 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <Reference Include="MechEyeApiNetd, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+    <Reference
+      Include="MechEyeApiNetd, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(MECHEYE_DIR)\API\dll_debug\MechEyeApiNetd.dll</HintPath>
+      <HintPath>$(MECHEYE_DIR)\API\dll_debug\net48\MechEyeApiNetd.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -90,18 +93,23 @@
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+    <Reference
+      Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>
+        ..\..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    <Reference
+      Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>
+        ..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -112,19 +120,21 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Debug (
-    xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApid.dll" "$(SolutionDir)Build_debug\"
-    xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiNetd.dll" "$(SolutionDir)Build_debug\"
-    xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiWrapperd.dll" "$(SolutionDir)Build_debug\"
-    exit /B 0
-)
-if $(ConfigurationName) == Release (
-    xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApi.dll" "$(SolutionDir)Build\"
-    xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiNet.dll" "$(SolutionDir)Build\"
-    xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiWrapper.dll" "$(SolutionDir)Build\"
-    exit /B 0
-)
+      xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApid.dll" "$(SolutionDir)Build_debug\"
+      xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\net48\MechEyeApiNetd.dll"
+      "$(SolutionDir)Build_debug\"
+      xcopy /y /d "$(MECHEYE_DIR)\API\dll_debug\MechEyeApiWrapperd.dll"
+      "$(SolutionDir)Build_debug\"
+      exit /B 0
+      )
+      if $(ConfigurationName) == Release (
+      xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApi.dll" "$(SolutionDir)Build\"
+      xcopy /y /d "$(MECHEYE_DIR)\API\dll\net48\MechEyeApiNet.dll" "$(SolutionDir)Build\"
+      xcopy /y /d "$(MECHEYE_DIR)\API\dll\MechEyeApiWrapper.dll" "$(SolutionDir)Build\"
+      exit /B 0
+      )
 
-echo Unsupported config
-exit /B 1</PostBuildEvent>
+      echo Unsupported config
+      exit /B 1</PostBuildEvent>
   </PropertyGroup>
 </Project>

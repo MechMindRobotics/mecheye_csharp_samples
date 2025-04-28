@@ -23,12 +23,12 @@ class CapturePointCloud
         Utils.ShowError(camera.Capture2DAnd3D(ref frame));
 
         var pointCloudFile = "PointCloud.ply";
-        Utils.ShowError(frame.Frame3D().SaveUntexturedPointCloud(FileFormat.PLY, pointCloudFile));
-        Console.WriteLine("Capture and save the untextured point cloud: {0}", pointCloudFile);
+        var successMessage = "Capture and save the untextured point cloud: " + pointCloudFile;
+        Utils.ShowError(frame.Frame3D().SaveUntexturedPointCloud(FileFormat.PLY, pointCloudFile), successMessage);
 
         var colorPointCloudFile = "TexturedPointCloud.ply";
+        successMessage = "Capture and save the textured point cloud: " + colorPointCloudFile;
         Utils.ShowError(frame.SaveTexturedPointCloud(FileFormat.PLY, colorPointCloudFile));
-        Console.WriteLine("Capture and save the textured point cloud: {0}", colorPointCloudFile);
 
         camera.Disconnect();
         Console.WriteLine("Disconnected from the camera successfully.");
