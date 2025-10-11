@@ -1,6 +1,6 @@
 ﻿/*
-With this sample, you can obtain and save 2D images and point clouds
-periodically for the specified duration from a camera.
+With this sample, you can warm up a Mech-Eye camera by periodically performing image acquisition
+over a specified duration to help the device reach stable operating conditions before use.
 */
 
 using System;
@@ -65,7 +65,10 @@ class CapturePeriodically
         var colorPointCloudPath = suffix.Length == 0 ? "TexturedPointCloud.ply" : "TexturedPointCloud_" + suffix + ".ply";
 
         var frame = new Frame2DAnd3D();
-        Utils.ShowError(camera.Capture2DAnd3D(ref frame));
+        var status = camera.Capture2DAnd3D(ref frame);
+        Utils.ShowError(status);
+        if (!status.IsOK())
+            return;
 
         // Save the obtained data with the set filenames
         var color = frame.Frame2D().GetColorImage();

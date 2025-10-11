@@ -3,35 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithExternalDeviceAndEncoder", "TriggerWithExternalDeviceAndEncoder\TriggerWithExternalDeviceAndEncoder.csproj", "{7DC2F6B7-EF58-41E3-BA9C-5B176D6CD951}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithExternalDeviceAndEncoder", "Basic\TriggerWithExternalDeviceAndEncoder\TriggerWithExternalDeviceAndEncoder.csproj", "{7DC2F6B7-EF58-41E3-BA9C-5B176D6CD951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithExternalDeviceAndFixedRate", "TriggerWithExternalDeviceAndFixedRate\TriggerWithExternalDeviceAndFixedRate.csproj", "{076307BF-BAD5-408E-A6D7-CF5D5D25AC43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithExternalDeviceAndFixedRate", "Basic\TriggerWithExternalDeviceAndFixedRate\TriggerWithExternalDeviceAndFixedRate.csproj", "{076307BF-BAD5-408E-A6D7-CF5D5D25AC43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithSoftwareAndEncoder", "TriggerWithSoftwareAndEncoder\TriggerWithSoftwareAndEncoder.csproj", "{B804B4A0-ADEE-4C58-B277-BE51E6E4406D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithSoftwareAndEncoder", "Basic\TriggerWithSoftwareAndEncoder\TriggerWithSoftwareAndEncoder.csproj", "{B804B4A0-ADEE-4C58-B277-BE51E6E4406D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithSoftwareAndFixedRate", "TriggerWithSoftwareAndFixedRate\TriggerWithSoftwareAndFixedRate.csproj", "{4DE04729-26CF-4F17-9904-C93BE461EFF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerWithSoftwareAndFixedRate", "Basic\TriggerWithSoftwareAndFixedRate\TriggerWithSoftwareAndFixedRate.csproj", "{4DE04729-26CF-4F17-9904-C93BE461EFF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerMultipleProfilersSimultaneously", "TriggerMultipleProfilersSimultaneously\TriggerMultipleProfilersSimultaneously.csproj", "{68ABC9C2-74AD-4508-8152-88B088BE2AC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerMultipleProfilersSimultaneously", "Advanced\TriggerMultipleProfilersSimultaneously\TriggerMultipleProfilersSimultaneously.csproj", "{68ABC9C2-74AD-4508-8152-88B088BE2AC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageUserSets", "ManageUserSets\ManageUserSets.csproj", "{46AFE042-2AF4-4FCB-9B44-4A24E54B6961}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageUserSets", "Util\ManageUserSets\ManageUserSets.csproj", "{46AFE042-2AF4-4FCB-9B44-4A24E54B6961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterProfilerEvent", "RegisterProfilerEvent\RegisterProfilerEvent.csproj", "{76457DAC-C4B1-40E4-8F84-25895DFE4F83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterProfilerEvent", "Advanced\RegisterProfilerEvent\RegisterProfilerEvent.csproj", "{76457DAC-C4B1-40E4-8F84-25895DFE4F83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseVirtualDevice", "UseVirtualDevice\UseVirtualDevice.csproj", "{34F49467-9E47-457C-B7D3-362B2596D353}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseVirtualDevice", "Advanced\UseVirtualDevice\UseVirtualDevice.csproj", "{34F49467-9E47-457C-B7D3-362B2596D353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintProfilerStatus", "PrintProfilerStatus\PrintProfilerStatus.csproj", "{6BE8D07B-6DFD-4AB8-A129-7930FB230107}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintProfilerStatus", "Util\PrintProfilerStatus\PrintProfilerStatus.csproj", "{6BE8D07B-6DFD-4AB8-A129-7930FB230107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileAlignment", "ProfileAlignment\ProfileAlignment.csproj", "{EEFAD287-0355-4841-963F-4781086E1A1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileAlignment", "Advanced\ProfileAlignment\ProfileAlignment.csproj", "{EEFAD287-0355-4841-963F-4781086E1A1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderDepthMap", "RenderDepthMap\RenderDepthMap.csproj", "{5F336A6D-F64C-455C-A49C-A4EF74309CC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderDepthMap", "Util\RenderDepthMap\RenderDepthMap.csproj", "{5F336A6D-F64C-455C-A49C-A4EF74309CC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoiseRemoval", "NoiseRemoval\NoiseRemoval.csproj", "{D884D799-828F-46B8-9A51-2C89BEE30A9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoiseRemoval", "Advanced\NoiseRemoval\NoiseRemoval.csproj", "{D884D799-828F-46B8-9A51-2C89BEE30A9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSpotFiltering", "BlindSpotFiltering\BlindSpotFiltering.csproj", "{1CA7163F-2AAB-4553-94FE-27D1B28E084C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSpotFiltering", "Advanced\BlindSpotFiltering\BlindSpotFiltering.csproj", "{1CA7163F-2AAB-4553-94FE-27D1B28E084C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformPointCloud", "TransformPointCloud\TransformPointCloud.csproj", "{124ED95D-AB06-4C4A-B3EF-9C5FA37EF8D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformPointCloud", "Advanced\TransformPointCloud\TransformPointCloud.csproj", "{124ED95D-AB06-4C4A-B3EF-9C5FA37EF8D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerNonStopAcquisition", "TriggerNonStopAcquisition\TriggerNonStopAcquisition.csproj", "{3206EB63-7B50-40E0-8E3C-8B19EAFB389B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerNonStopAcquisition", "Basic\TriggerNonStopAcquisition\TriggerNonStopAcquisition.csproj", "{3206EB63-7B50-40E0-8E3C-8B19EAFB389B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleNanAndNegativeInDepth", "Util\HandleNanAndNegativeInDepth\HandleNanAndNegativeInDepth.csproj", "{2BC71D4E-C450-489C-9568-61D6EAD44B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUp", "Advanced\WarmUp\WarmUp.csproj", "{662F4FFE-C994-4737-980B-8B55E8FA2000}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipleProfilersCalibration", "Calibration\MultipleProfilersCalibration\MultipleProfilersCalibration.csproj", "{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -161,6 +167,30 @@ Global
 		{3206EB63-7B50-40E0-8E3C-8B19EAFB389B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3206EB63-7B50-40E0-8E3C-8B19EAFB389B}.Release|x64.ActiveCfg = Release|x64
 		{3206EB63-7B50-40E0-8E3C-8B19EAFB389B}.Release|x64.Build.0 = Release|x64
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Debug|x64.ActiveCfg = Debug|x64
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Debug|x64.Build.0 = Debug|x64
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Release|x64.ActiveCfg = Release|x64
+		{2BC71D4E-C450-489C-9568-61D6EAD44B8E}.Release|x64.Build.0 = Release|x64
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Debug|x64.ActiveCfg = Debug|x64
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Debug|x64.Build.0 = Debug|x64
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Release|x64.ActiveCfg = Release|x64
+		{662F4FFE-C994-4737-980B-8B55E8FA2000}.Release|x64.Build.0 = Release|x64
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Debug|x64.ActiveCfg = Debug|x64
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Debug|x64.Build.0 = Debug|x64
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Release|x64.ActiveCfg = Release|x64
+		{A85A01FB-FCBF-41F1-8CD7-8B28A3CEE16C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -52,7 +52,7 @@ class MultipleCamerasCaptureSequentially
         color.Save(colorFile);
         Console.WriteLine("Capture and save the 2D image: {0}", colorFile);
 
-        var successMessage = "Capture and save the untextured point cloud: {0}" + pointCloudPath;
+        var successMessage = "Capture and save the untextured point cloud: " + pointCloudPath;
         Utils.ShowError(frame.Frame3D().SaveUntexturedPointCloud(FileFormat.PLY, pointCloudPath), successMessage);
 
         successMessage = "Capture and save the textured point cloud: " + colorPointCloudPath;
