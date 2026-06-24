@@ -105,6 +105,10 @@ class TriggerWithExternalDeviceAndFixedRate
         // Set the "Scan Line Count" parameter (the number of lines to be scanned) to 1600
         Utils.ShowError(
             userSet.SetIntValue(MMind.Eye.ScanSettings.ScanLineCount.Name, 1600));
+        // Set the "Travel Speed" parameter to 100 mm/s. This value is used to calculate the
+        // Y-axis resolution and scan distance when line scan is triggered at a fixed rate.
+        Utils.ShowError(
+            userSet.SetFloatValue(MMind.Eye.TriggerSettings.TravelSpeed.Name, 100.0));
 
         // Set the "Laser Power" parameter to 100
         Utils.ShowError(userSet.SetIntValue(MMind.Eye.BrightnessSettings.LaserPower.Name, 100));

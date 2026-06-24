@@ -79,6 +79,10 @@ class TransformPointCloud
         // Set the "Scan Line Count" parameter (the number of lines to be scanned) to 1600
         Utils.ShowError(
             userSet.SetIntValue(MMind.Eye.ScanSettings.ScanLineCount.Name, 1600));
+        // Set the "Travel Speed" parameter to 100 mm/s. This value is used to calculate the
+        // Y-axis resolution and scan distance when line scan is triggered at a fixed rate.
+        Utils.ShowError(
+            userSet.SetFloatValue(MMind.Eye.TriggerSettings.TravelSpeed.Name, 100.0));
     }
 
     /// Convert the profile data to an untextured point cloud in the custom reference frame and save it
@@ -104,6 +108,14 @@ class TransformPointCloud
             Utils.ShowError(status);
             return;
         }
+        double scanDistance = 0;
+        status = userSet.GetFloatValue(MMind.Eye.ScanSettings.ScanDistance.Name, ref scanDistance);
+        if (!status.IsOK())
+        {
+            Utils.ShowError(status);
+            return;
+        }
+        Console.WriteLine($"Current Y-axis resolution: {yResolution} um, scan distance: {scanDistance} um.");
         // Uncomment the following lines for custom Y Unit
         // // Prompt to enter the desired encoder resolution, which is the travel distance corresponding to
         // // one quadrature signal.

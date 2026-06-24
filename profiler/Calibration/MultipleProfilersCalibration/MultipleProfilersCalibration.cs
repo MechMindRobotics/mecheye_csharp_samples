@@ -1,4 +1,4 @@
-﻿/*
+/*
 With this sample, perform multi profiler calibration through.
 */
 
@@ -346,8 +346,8 @@ class MultiProfilerCalibration
 
     Console.WriteLine("Please confirm the following device settings:");
     Console.WriteLine("--------------------------------------------");
-    Console.WriteLine($"1. X-Axis Resolution (um): {xResolution / 1000:F3}");
-    Console.WriteLine($"2. Y-Axis Resolution (um): {yResolution / 1000:F3}");
+    Console.WriteLine($"1. X-Axis Resolution (mm): {xResolution / 1000:F3}");
+    Console.WriteLine($"2. Y-Axis Resolution (mm): {yResolution / 1000:F3}");
     Console.WriteLine($"3. Downsampling Factor (X): {downsampleX}");
     Console.WriteLine($"4. Downsampling Factor (Y): {downsampleY}");
     Console.WriteLine($"5. Motion Direction Sign:  {directionPositive}");
@@ -401,23 +401,29 @@ class MultiProfilerCalibration
     if (profileBatch.CheckFlag(ProfileBatch.BatchFlag.Incomplete))
       Console.WriteLine($"Part of the batch's data is lost, the number of valid profiles is: {profileBatch.ValidHeight()}.");
 
+    var depthMap = profileBatch.GetDepthMap();
+    var intensityImage = profileBatch.GetIntensityImage();
+
     ProfilerImage result = new ProfilerImage();
     ImageWrapper imgDepth = new ImageWrapper
     {
-      Data = profileBatch.GetDepthMap().Data(),
+      Data = depthMap.Data(),
       Rows = captureLineCount,
       Cols = dataWidth,
       Type = 5
     };
     ImageWrapper imgIntensity = new ImageWrapper
     {
-      Data = profileBatch.GetIntensityImage().Data(),
+      Data = intensityImage.Data(),
       Rows = captureLineCount,
       Cols = dataWidth,
       Type = 0
     };
     result.Depth = imgDepth.Clone();
     result.Intensity = imgIntensity.Clone();
+
+    GC.KeepAlive(depthMap);
+    GC.KeepAlive(intensityImage);
     return result;
   }
 

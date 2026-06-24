@@ -29,7 +29,12 @@ The samples marked with `(OpenCV)` require [Emgu.CV.runtime.windows](https://www
     Set multiple exposure times, and then obtain and save the untextured and textured point clouds.
   * [CapturePointCloudWithNormals](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/CapturePointCloudWithNormals)  
     Calculate normals and save the untextured and textured point clouds with normals.
+  * [SaveVirtualDevice](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Basic/SaveVirtualDevice)  
+    Save the data acquired by the camera as a virtual device file.
 * **Advanced**
+  * [CaptureDepthSource2DImage](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/CaptureDepthSource2DImage) `(OpenCV)`
+    Obtain and save the 2D image from the depth source camera.
+    > Note: This sample is only applicable to camera models that provide the depth-source 2D image, such as Mech-Eye ULTRA M.
   * [ConvertDepthMapToPointCloud](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/ConvertDepthMapToPointCloud)  
     Generate a point cloud from the depth map and save the point cloud.
   * [MultipleCamerasCaptureSequentially](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/MultipleCamerasCaptureSequentially)`(OpenCV)`  
@@ -38,6 +43,8 @@ The samples marked with `(OpenCV)` require [Emgu.CV.runtime.windows](https://www
     Obtain and save 2D images, depth maps, and point clouds simultaneously from multiple cameras.
   * [CapturePeriodically](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/CapturePeriodically)`(OpenCV)`  
     Obtain and save 2D images, depth maps, and point clouds periodically for the specified duration from a camera.
+  * [WarmUp](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/WarmUp)  
+    Warm up the device.
   * [Mapping2DImageToDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/Mapping2DImageToDepthMap)  
     Generate untextured and textured point clouds from a masked 2D image and a depth map.
   * [RenderDepthMap](https://github.com/MechMindRobotics/mecheye_csharp_samples/tree/master/area_scan_3d_camera/Advanced/RenderDepthMap) `(OpenCV)`  

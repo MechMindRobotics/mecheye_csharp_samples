@@ -217,6 +217,14 @@ public class HandEyeCalibrationSample
                         SaveExtrinsicParameters(cameraToBase.ToString());
                     }
                     break;
+                case "F":
+                    var corner = new PointXYZ();
+                    var status = calibration.ExtractCurrentImageFirstCorner(ref camera, ref corner);
+                    Utils.ShowError(status);
+
+                    if (status.IsOK())
+                        Console.WriteLine("The first corner is: {0}, {1}, {2}", corner.X, corner.Y, corner.Z);
+                    break;
                 default:
                     Console.WriteLine("Unknown command.");
                     break;
@@ -231,6 +239,7 @@ public class HandEyeCalibrationSample
         Console.WriteLine("T: Obtain the 2D image with feature recognition result");
         Console.WriteLine("A: Enter the current robot pose");
         Console.WriteLine("C: Calculate extrinsic parameters");
+        Console.WriteLine("F: Obtain the first corner of current image");
         return Console.ReadLine();
     }
 

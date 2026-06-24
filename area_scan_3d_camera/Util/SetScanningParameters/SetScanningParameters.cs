@@ -25,8 +25,17 @@ class SetScanningParameters
         // Obtain the name of the currently selected user set.
         var currentUserSet = userSetManager.CurrentUserSet();
         Console.WriteLine("Current user set: {0}", currentUserSet.GetName());
+        var availableParams = new List<string>();
+        Utils.ShowError(currentUserSet.GetAvailableParameterNames(ref availableParams));
 
         // Set the exposure times for acquiring depth information.
+        if (availableParams.Contains(MMind.Eye.Scanning3DSetting.ExposureCount.Name))
+        {
+            Utils.ShowError(currentUserSet.SetIntValue(MMind.Eye.Scanning3DSetting.ExposureCount.Name, 1));
+            var exposureCount = new int();
+            Utils.ShowError(currentUserSet.GetIntValue(MMind.Eye.Scanning3DSetting.ExposureCount.Name, ref exposureCount));
+            Console.WriteLine("3D scanning exposure count : {0}.", exposureCount);
+        }
         var exposure3DName = MMind.Eye.Scanning3DSetting.ExposureSequence.Name;
         Utils.ShowError(currentUserSet.SetFloatArrayValue(exposure3DName, new List<double> { 5 }));
         //Utils.ShowError(currentUserSet.SetFloatArrayValue(exposure3DName, new List<double> { 5, 10 }));
@@ -37,6 +46,48 @@ class SetScanningParameters
         Console.WriteLine("The 3D scanning exposure multiplier : {0}.", exposureSequence.Count);
         for (int i = 0; i < exposureSequence.Count; ++i)
             Console.WriteLine("3D scanning exposure time {0} : {1} ms.", i + 1, exposureSequence[i]);
+
+        // Some models provide exposure group parameters. Use "GroupExposureSelector" to select the
+        // target group, and then set the group exposure time, gain, and power level.
+        if (availableParams.Contains(MMind.Eye.Scanning3DSetting.GroupExposureSelector.Name) &&
+            availableParams.Contains(MMind.Eye.Scanning3DSetting.GroupExposureTime.Name) &&
+            availableParams.Contains(MMind.Eye.Scanning3DSetting.GroupGain.Name) &&
+            availableParams.Contains(MMind.Eye.Scanning3DSetting.GroupDlpPowerLevel.Name))
+        {
+            var groupExposureSelectorName = MMind.Eye.Scanning3DSetting.GroupExposureSelector.Name;
+            var groupExposureTimeName = MMind.Eye.Scanning3DSetting.GroupExposureTime.Name;
+            var groupGainName = MMind.Eye.Scanning3DSetting.GroupGain.Name;
+            var groupDlpPowerLevelName = MMind.Eye.Scanning3DSetting.GroupDlpPowerLevel.Name;
+
+            Utils.ShowError(currentUserSet.SetEnumValue(
+                groupExposureSelectorName,
+                (int)MMind.Eye.Scanning3DSetting.GroupExposureSelector.Value.Exposure1));
+            Utils.ShowError(currentUserSet.SetFloatValue(groupExposureTimeName, 10));
+            Utils.ShowError(currentUserSet.SetFloatValue(groupGainName, 2.0));
+            Utils.ShowError(currentUserSet.SetIntValue(groupDlpPowerLevelName, 80));
+
+            var groupExposureTime = new double();
+            var groupGain = new double();
+            var groupDlpPowerLevel = new int();
+            Utils.ShowError(currentUserSet.GetFloatValue(groupExposureTimeName, ref groupExposureTime));
+            Utils.ShowError(currentUserSet.GetFloatValue(groupGainName, ref groupGain));
+            Utils.ShowError(currentUserSet.GetIntValue(groupDlpPowerLevelName, ref groupDlpPowerLevel));
+            Console.WriteLine("Group Exposure1: exposure time {0} ms, gain {1} dB, DLP power level {2}.",
+                groupExposureTime, groupGain, groupDlpPowerLevel);
+
+            Utils.ShowError(currentUserSet.SetEnumValue(
+                groupExposureSelectorName,
+                (int)MMind.Eye.Scanning3DSetting.GroupExposureSelector.Value.Exposure2));
+            Utils.ShowError(currentUserSet.SetFloatValue(groupExposureTimeName, 5));
+            Utils.ShowError(currentUserSet.SetFloatValue(groupGainName, 0.0));
+            Utils.ShowError(currentUserSet.SetIntValue(groupDlpPowerLevelName, 60));
+
+            Utils.ShowError(currentUserSet.GetFloatValue(groupExposureTimeName, ref groupExposureTime));
+            Utils.ShowError(currentUserSet.GetFloatValue(groupGainName, ref groupGain));
+            Utils.ShowError(currentUserSet.GetIntValue(groupDlpPowerLevelName, ref groupDlpPowerLevel));
+            Console.WriteLine("Group Exposure2: exposure time {0} ms, gain {1} dB, DLP power level {2}.",
+                groupExposureTime, groupGain, groupDlpPowerLevel);
+        }
 
         // Set the ROI for the depth map and point cloud, and then obtain the parameter values for
         // checking.
@@ -103,6 +154,26 @@ class SetScanningParameters
         //Utils.ShowError(currentUserSet.GetFloatValue(scan2dGainName,ref scan2dGain));
         //Console.WriteLine("2D image gain: {0} dB.", scan2dGain);
 
+
+        // The following parameters are only available on some models. Uncomment to set and read values.
+        //var patternRoleGainName = MMind.Eye.Scanning2DSetting.PatternRoleGain.Name;
+        //Utils.ShowError(currentUserSet.SetFloatValue(patternRoleGainName, 2.0));
+        //double patternRoleGain = new double();
+        //Utils.ShowError(currentUserSet.GetFloatValue(patternRoleGainName, ref patternRoleGain));
+        //Console.WriteLine("2D pattern role gain: {0} dB.", patternRoleGain);
+        //
+        //var flashGainName = MMind.Eye.Scanning2DSetting.FlashGain.Name;
+        //Utils.ShowError(currentUserSet.SetFloatValue(flashGainName, 2.0));
+        //double flashGain = new double();
+        //Utils.ShowError(currentUserSet.GetFloatValue(flashGainName, ref flashGain));
+        //Console.WriteLine("2D flash gain: {0} dB.", flashGain);
+        //
+        //var flashPowerLevelName = MMind.Eye.Scanning2DSetting.FlashPowerLevel.Name;
+        //Utils.ShowError(currentUserSet.SetIntValue(flashPowerLevelName, 80));
+        //int flashPowerLevel = new int();
+        //Utils.ShowError(currentUserSet.GetIntValue(flashPowerLevelName, ref flashPowerLevel));
+        //Console.WriteLine("2D flash power level: {0} %.", flashPowerLevel);
+        
         var exposureMode2D = new int();
         double scan2DExposureTime = new double();
         Utils.ShowError(currentUserSet.GetEnumValue(exposureModeName, ref exposureMode2D));

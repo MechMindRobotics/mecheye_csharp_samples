@@ -60,7 +60,7 @@ class TriggerWithExternalDeviceAndEncoder
         secondThreshold));
     }
 
-    private static void SetEncoderTrigger(UserSet userSet, MMind.Eye.TriggerSettings.EncoderTriggerDirection.Value triggerDirection, MMind.Eye.TriggerSettings.EncoderTriggerSignalCountingMode.Value triggerSignalCountingMode, int triggerInterval)
+    private static void SetEncoderTrigger(UserSet userSet, MMind.Eye.TriggerSettings.EncoderTriggerDirection.Value triggerDirection, MMind.Eye.TriggerSettings.EncoderTriggerSignalCountingMode.Value triggerSignalCountingMode, int triggerInterval, double encoderResolution)
     {
         // Set the "Line Scan Trigger Source" parameter to "Encoder"
         Utils.ShowError(userSet.SetEnumValue(
@@ -81,6 +81,10 @@ class TriggerWithExternalDeviceAndEncoder
         // Set the (encoder) "Trigger Interval" parameter to 10
         Utils.ShowError(
             userSet.SetIntValue(MMind.Eye.TriggerSettings.EncoderTriggerInterval.Name, 10));
+
+        // Set the "Encoder Resolution" parameter (unit: μm)
+        Utils.ShowError(
+            userSet.SetFloatValue(MMind.Eye.TriggerSettings.EncoderResolution.Name, encoderResolution));
     }
 
     private static void SetParameters(UserSet userSet)
@@ -123,7 +127,8 @@ class TriggerWithExternalDeviceAndEncoder
         // Set the (encoder) "Trigger Direction" parameter to "Both"
         // Set the (encoder) "Trigger Signal Counting Mode" parameter to "1×"
         // Set the (encoder) "Trigger Interval" parameter to 10
-        SetEncoderTrigger(userSet, MMind.Eye.TriggerSettings.EncoderTriggerDirection.Value.Both, MMind.Eye.TriggerSettings.EncoderTriggerSignalCountingMode.Value.Multiple_1, 10);
+        // Set the "Encoder Resolution" parameter to 5 μm
+        SetEncoderTrigger(userSet, MMind.Eye.TriggerSettings.EncoderTriggerDirection.Value.Both, MMind.Eye.TriggerSettings.EncoderTriggerSignalCountingMode.Value.Multiple_1, 10, 5);
 
         // Set the "Scan Line Count" parameter (the number of lines to be scanned) to 1600
         Utils.ShowError(
